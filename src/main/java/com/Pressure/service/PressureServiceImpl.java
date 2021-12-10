@@ -73,7 +73,7 @@ public class PressureServiceImpl implements PressureService{
 	@Override
 	public City getWeather(JSONObject obj) {
 		City city = new City();
-		Pressure pressure = new Pressure();
+		//Pressure pressure = new Pressure();
 		//Vector<Pressure> pressureVec = new Vector<Pressure>();
 		
 		JSONObject coordinate = (JSONObject) obj.get("coord");
@@ -81,10 +81,9 @@ public class PressureServiceImpl implements PressureService{
 		//JSONObject id = (JSONObject) obj.get("id");
 		//JSONObject name = (JSONObject) obj.get("name");
 		
-<<<<<<< HEAD
 		city.setLat((Double)coordinate.get("lat"));
 		city.setLongi((Double)coordinate.get("lon"));
-		city.getPressure.setPressure((int)main.get("pressure"));
+		city.getPressure().setPressure((int)main.get("pressure"));
 		city.setName((String)obj.get("name"));
 		city.setId((int)obj.get("id"));
 		
@@ -100,10 +99,6 @@ public class PressureServiceImpl implements PressureService{
 	@Override
 	public void save(JSONObject obj) {
 		// TODO Auto-generated method stub
-=======
-		city.setName((String) cityRep.get("name"));
-		city.setId(Integer.valueOf((String)cityRep.get("Id")));
->>>>>>> 7f13c70839e6f592970d40f226b746d74406d39b
 		
 	}
 }
