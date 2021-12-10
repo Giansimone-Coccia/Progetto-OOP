@@ -72,7 +72,7 @@ public class PressureServiceImpl implements PressureService{
 		JSONArray array = (JSONArray) obj.get("array");
 		
 		city.setName((String) cityRep.get("name"));
-		city.setId(String.valueOf(cityRep.get("Id")));
+		city.setId(Integer.valueOf((String)cityRep.get("Id")));
 		
 		for(int i = 0; i<array.size(); i++) {
 			JSONObject listElement = (JSONObject) array.get(i);

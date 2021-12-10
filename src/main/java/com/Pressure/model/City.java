@@ -19,9 +19,9 @@ public class City {
 	 */
 	private int id;
 	/**
-	 * Valore di pressione della città
+	 * Oggetto che descrive la pressione della città.
 	 */
-	private Vector<Integer> pressure;
+	private Pressure pressure;
 	
 	/**
 	 * Longitudine della città
@@ -89,18 +89,10 @@ public class City {
 	
 	/**
 	 * 
-	 * @return The pressure's Vector
+	 * @return The object pressure
 	 */
-	public Vector<Integer> getPressure() {
+	public Pressure getPressure() {
 		return pressure;
-	}
-	
-	/**
-	 * 
-	 * @param pressure The pressure values to set
-	 */
-	public void setPressure(Vector<Integer> pressure) {
-		this.pressure = pressure;
 	}
 
 	/**
