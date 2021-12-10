@@ -48,7 +48,7 @@ public class City {
 	 * @param pressure Valore pressione nella città
 	 */
 	
-	public City(String name, int id, int code, int timezone, Vector<Integer> pressure, Double lon, Double lat) {
+	public City(String name, int id, int code, int timezone, Pressure pressure, Double lon, Double lat) {
 		super();
 		this.name = name;
 		this.id = id;
