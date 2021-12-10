@@ -81,6 +81,7 @@ public class PressureServiceImpl implements PressureService{
 		//JSONObject id = (JSONObject) obj.get("id");
 		//JSONObject name = (JSONObject) obj.get("name");
 		
+<<<<<<< HEAD
 		city.setLat((Double)coordinate.get("lat"));
 		city.setLongi((Double)coordinate.get("lon"));
 		city.getPressure.setPressure((int)main.get("pressure"));
@@ -99,6 +100,10 @@ public class PressureServiceImpl implements PressureService{
 	@Override
 	public void save(JSONObject obj) {
 		// TODO Auto-generated method stub
+=======
+		city.setName((String) cityRep.get("name"));
+		city.setId(Integer.valueOf((String)cityRep.get("Id")));
+>>>>>>> 7f13c70839e6f592970d40f226b746d74406d39b
 		
 	}
 }
