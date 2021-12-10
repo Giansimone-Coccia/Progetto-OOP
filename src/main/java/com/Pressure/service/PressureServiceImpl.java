@@ -1,6 +1,7 @@
 package com.Pressure.service;
 
 import java.io.BufferedReader;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -15,6 +16,7 @@ import org.json.simple.JSONValue;
 import org.springframework.stereotype.Service;
 
 import com.Pressure.model.City;
+import Exception.*;
 
 /**
  * Questa classe implementa i metodi astratti di PressureService
@@ -55,6 +57,7 @@ public class PressureServiceImpl implements PressureService{
 		} catch(IOException IOe) {
 			IOe.printStackTrace();
 		}catch(ParseException parseE) {
+			//TODO concludi eccezione personalizzata
 			parseE.printStackTrace();
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -63,25 +66,39 @@ public class PressureServiceImpl implements PressureService{
 		return description;
 	}
 	
+	/**
+	 * This method is able to read the JSON file proposed by PostMan and to upload our object City 
+	 * and Pressure
+	 */
 	@Override
-	public City getPressure(JSONObject obj) {
+	public City getWeather(JSONObject obj) {
 		City city = new City();
-		Vector<Pressure> pressureVec = new Vector<Pressure>();
+		Pressure pressure = new Pressure();
+		//Vector<Pressure> pressureVec = new Vector<Pressure>();
 		
-		JSONObject cityRep = (JSONObject) obj.get("city");
-		JSONArray array = (JSONArray) obj.get("array");
+		JSONObject coordinate = (JSONObject) obj.get("coord");
+		JSONObject main = (JSONObject) obj.get("main");
+		//JSONObject id = (JSONObject) obj.get("id");
+		//JSONObject name = (JSONObject) obj.get("name");
 		
-		city.setName((String) cityRep.get("name"));
-		city.setId(String.valueOf(cityRep.get("Id")));
+		city.setLat((Double)coordinate.get("lat"));
+		city.setLongi((Double)coordinate.get("lon"));
+		city.getPressure.setPressure((int)main.get("pressure"));
+		city.setName((String)obj.get("name"));
+		city.setId((int)obj.get("id"));
 		
-		for(int i = 0; i<array.size(); i++) {
-			JSONObject listElement = (JSONObject) array.get(i);
-			Pressure press = new Pressure();
-			
-			JSONObject weather = (JSONObject)((JSONArray)listElement.get("weather"));
-			JSONObject main = (JSONObject)listElement.get("main");
-			
-			
-		}
+		return city;
+	}
+
+	@Override
+	public JSONObject toJSON(City city) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void save(JSONObject obj) {
+		// TODO Auto-generated method stub
+		
 	}
 }

@@ -30,7 +30,7 @@ public interface PressureService {
 	 * @param pressure Is the JSONObject passed
 	 * @return The city
 	 */
-	public abstract City getPressure(JSONObject pressure);
+	public abstract City getWeather(JSONObject pressure);
 	
 	/**
 	 * 
