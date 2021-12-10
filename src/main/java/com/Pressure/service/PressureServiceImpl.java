@@ -7,10 +7,14 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
 import java.text.ParseException;
+import java.util.Vector;
 
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 import org.springframework.stereotype.Service;
+
+import com.Pressure.model.City;
 
 /**
  * Questa classe implementa i metodi astratti di PressureService
@@ -57,5 +61,27 @@ public class PressureServiceImpl implements PressureService{
 		}
 		
 		return description;
+	}
+	
+	@Override
+	public City getPressure(JSONObject obj) {
+		City city = new City();
+		Vector<Pressure> pressureVec = new Vector<Pressure>();
+		
+		JSONObject cityRep = (JSONObject) obj.get("city");
+		JSONArray array = (JSONArray) obj.get("array");
+		
+		city.setName((String) cityRep.get("name"));
+		city.setId(String.valueOf(cityRep.get("Id")));
+		
+		for(int i = 0; i<array.size(); i++) {
+			JSONObject listElement = (JSONObject) array.get(i);
+			Pressure press = new Pressure();
+			
+			JSONObject weather = (JSONObject)((JSONArray)listElement.get("weather"));
+			JSONObject main = (JSONObject)listElement.get("main");
+			
+			
+		}
 	}
 }
