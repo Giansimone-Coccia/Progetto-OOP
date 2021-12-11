@@ -96,7 +96,7 @@ public class PressureServiceImpl implements PressureService{
 		city.getPressure().setPressure((int)main.get("pressure"));
 		city.setName((String)obj.get("name"));
 		city.setId((int)obj.get("id"));
-		city.setCountry((String)obj.get("country"));
+		city.setCountry((String)sys.get("country"));
 		
 		return city;
 	}
