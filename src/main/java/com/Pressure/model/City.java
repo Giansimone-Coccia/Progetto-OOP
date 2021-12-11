@@ -25,7 +25,7 @@ public class City {
 	/**
 	 * Oggetto che descrive la pressione della città.
 	 */
-	private Pressure pressure;
+	private Pressure pressure=new Pressure();
 	
 	/**
 	 * Longitudine della città
