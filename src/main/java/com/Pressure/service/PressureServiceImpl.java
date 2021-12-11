@@ -9,6 +9,7 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
 import java.text.ParseException;
+import java.util.Collection;
 import java.util.Vector;
 
 import org.json.simple.JSONArray;
@@ -17,6 +18,9 @@ import org.json.simple.JSONValue;
 import org.springframework.stereotype.Service;
 
 import com.Pressure.model.City;
+import com.Pressure.model.Pressure;
+import Exception.VectorNull;
+
 import Exception.*;
 
 /**
@@ -31,6 +35,7 @@ public class PressureServiceImpl implements PressureService{
 	private String apiKey = "10b2f29f8e21bd179b27ff96923bca4a";
 	//Stringa che contiene l'URL che verra richiamato
 	private String url = "api.openweathermap.org/data/2.5/weather?q=";
+	Pressure p = new Pressure();
 	
 	/**
 	 * This method gets the various JSON object from the JSON file returned by PostMan
@@ -106,10 +111,15 @@ public class PressureServiceImpl implements PressureService{
 		
 		return null;
 	}
-
+	
+	/**
+	 * This method return all the pressions' values registered in a city
+	 */
 	@Override
-	public void save(JSONObject obj) {
-		// TODO Auto-generated method stub
-		
+	public Vector<Integer> getAllPressure() throws VectorNull {
+		if(p.getPressureVector().isEmpty())
+			throw new VectorNull("Non ci sono pressioni registrate per questa città");
+		else
+			return p.getPressureVector();
 	}
 }

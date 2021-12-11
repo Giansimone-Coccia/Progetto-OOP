@@ -1,7 +1,12 @@
 package com.Pressure.service;
 
+//import java.util.Collection;
+import java.util.Vector;
+
 import org.json.simple.*;
 import com.Pressure.model.*;
+
+import Exception.VectorNull;
 
 /**
  * Public interface con metodi astratti basilari che verranno
@@ -34,7 +39,8 @@ public interface PressureService {
 	
 	/**
 	 * 
-	 * @param obj The object to save
+	 * @return All the pressures misured in that city
+	 * @throws VectorNull 
 	 */
-	public abstract void save(JSONObject obj);
+	public abstract Vector<Integer> getAllPressure() throws VectorNull;
 }
