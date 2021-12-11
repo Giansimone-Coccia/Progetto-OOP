@@ -82,6 +82,7 @@ public class PressureServiceImpl implements PressureService{
 		
 		JSONObject coordinate = (JSONObject) obj.get("coord");
 		JSONObject main = (JSONObject) obj.get("main");
+		JSONObject sys = (JSONObject) obj.get("sys");
 		//JSONObject id = (JSONObject) obj.get("id");
 		//JSONObject name = (JSONObject) obj.get("name");
 		
@@ -90,6 +91,7 @@ public class PressureServiceImpl implements PressureService{
 		city.getPressure().setPressure((int)main.get("pressure"));
 		city.setName((String)obj.get("name"));
 		city.setId((int)obj.get("id"));
+		city.setCountry((String)obj.get("country"));
 		
 		return city;
 	}
