@@ -102,7 +102,7 @@ public class PressureServiceImpl implements PressureService{
 	}
 	
 	/**
-	 * This method convert the city's details in a JSON object ready to upload in Postman
+	 * This method converts the city's details in a JSON object ready to upload in Postman
 	 */
 	@Override
 	public JSONObject toJSON(City city) {

@@ -1,27 +1,31 @@
 package GUI;
 
 import java.awt.event.ActionEvent;
-
 import java.awt.event.ActionListener;
 
+import com.Pressure.model.*;
+
+/**
+ * Classe che implementa ActionListener per assegnare le istruzioni al bottone
+ * @author Giasimone&Walter
+ *
+ */
 public class MenuActionListener implements ActionListener{
-	
-	// riferimento alla finestra dell'addizionatore
-		// (consente di accedere agli elementi)
+
 		private Menu window;
+		City city1 = new City();
+		City city2 = new City();
 		
 		// costruttore
 		public MenuActionListener(Menu window) {
 			this.window = window;
 		}
 		
-		// gestore dell'evento "pression del bottone"
+		// gestore dell'evento
 		public void actionPerformed(ActionEvent e) {
-			// recupera il primo addendo (tramite window)
-			int val1 = Integer.parseInt(window.campo1.getText());
-			// recupera il secondo addendo (tramite window)
-			int val2 = Integer.parseInt(window.campo2.getText());
-			// scrive il risultato (tramite window)
-			window.campo3.setText(Integer.toString(val1 + val2));
+			String c1 = (String)(window.campo1.getText());
+			String c2 = (String)(window.campo2.getText());
+			city1.setName(c1);
+			city2.setName(c2);
 		}
 }

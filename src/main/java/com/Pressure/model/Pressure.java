@@ -2,6 +2,12 @@ package com.Pressure.model;
 
 import java.util.Vector;
 
+/**
+ * Classe che descrive tutte le caratteristiche in termini di pressione(minima, massima,...)
+ * di una città
+ * @author Giansimone&Walter
+ *
+ */
 public class Pressure {
 
 	private Vector<Integer> pressure;
@@ -9,7 +15,11 @@ public class Pressure {
 	private int pressure_min;
 	private double pressure_med;
 	private int pressure_diff;
-
+	
+	/**
+	 * This method allows to set the pressure passed
+	 * @param pressure The pressure to set
+	 */
 	public void setPressure(int pressure) {
 
 		this.pressure.add(pressure);
@@ -43,23 +53,43 @@ public class Pressure {
 
 		this.pressure_diff=pressure_max-pressure_min;
 	}
-
+	
+	/**
+	 * 
+	 * @return The maximum pressure's value
+	 */
 	public int getPressure_max() {
 		return pressure_max;
 	}
-
+	
+	/**
+	 * 
+	 * @return The minimum pressure's value
+	 */
 	public int getPressure_min() {
 		return pressure_min;
 	}
-
+	
+	/**
+	 * 
+	 * @return The medium pressure
+	 */
 	public double getPressure_med() {
 		return pressure_med;
 	}
-
+	
+	/**
+	 * 
+	 * @return The difference between the maximum and minimum pressure
+	 */
 	public int getPressure_diff() {
 		return pressure_diff;
 	}
 	
+	/**
+	 * 
+	 * @return All pressure
+	 */
 	public Vector<Integer> getPressureVector() {
 		return this.pressure;
 	}
