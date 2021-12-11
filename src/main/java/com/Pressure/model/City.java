@@ -15,6 +15,10 @@ public class City {
 	 */
 	private String name;
 	/**
+	 * Nome Stato
+	 */
+	private String country;
+	/**
 	 * id città
 	 */
 	private int id;
@@ -48,9 +52,10 @@ public class City {
 	 * @param pressure Valore pressione nella città
 	 */
 	
-	public City(String name, int id, int code, int timezone, Pressure pressure, Double lon, Double lat) {
+	public City(String name,String country, int id, Pressure pressure, Double lon, Double lat) {
 		super();
 		this.name = name;
+		this.country=country;
 		this.id = id;
 		this.pressure = pressure;
 		this.lon = lon;
@@ -70,6 +75,22 @@ public class City {
 	 */
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	/**
+	 * 
+	 * @return The coutry's name
+	 */
+	public String getCountry() {
+		return country;
+	}
+	
+	/**
+	 * @param name The coutry?s name to set for the city
+	 */
+
+	public void setCountry(String country) {
+		this.country = country;
 	}
 	
 	/**
