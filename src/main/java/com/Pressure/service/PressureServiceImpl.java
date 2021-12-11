@@ -100,7 +100,10 @@ public class PressureServiceImpl implements PressureService{
 		
 		return city;
 	}
-
+	
+	/**
+	 * This method convert the city's details in a JSON object ready to upload in Postman
+	 */
 	@Override
 	public JSONObject toJSON(City city) {
 		// TODO Auto-generated method stub
