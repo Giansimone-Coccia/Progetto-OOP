@@ -100,11 +100,28 @@ public class PressureServiceImpl implements PressureService{
 	public JSONObject toJSON(City city) {
 		// TODO Auto-generated method stub
 		
-		JSONObject output =new JSONObject();
-		output.put("city", city.getName());
-		output.put("Id", city.getId());
+		JSONObject cityData =new JSONObject();
+		cityData.put("City", city.getName());
+		cityData.put("Country", city.getCountry());
+		cityData.put("Id", city.getId());
+		cityData.put("Lat", city.getLat());
+		cityData.put("Lon", city.getLon());
 		
-		return null;
+		JSONArray pressureData=new JSONArray();
+		
+		JSONObject pressureObj=new JSONObject();
+		
+		pressureObj.put("Pressure_max", city.getPressure().getPressure_max());
+		pressureObj.put("Pressure_min", city.getPressure().getPressure_min());
+		pressureObj.put("Pressure_med", city.getPressure().getPressure_min());
+		pressureObj.put("Pressure_diff", city.getPressure().getPressure_diff());
+		
+		pressureData.add(pressureObj);
+		
+		JSONObject arrayName=new JSONObject();
+		arrayName.put("Pressure_Data",pressureData);
+		
+		return arrayName;
 	}
 
 	@Override
