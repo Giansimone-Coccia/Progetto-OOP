@@ -2,6 +2,7 @@ package com.Pressure.service;
 
 import java.io.BufferedReader;
 
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -30,9 +31,12 @@ public class PressureServiceImpl implements PressureService{
 	private String apiKey = "10b2f29f8e21bd179b27ff96923bca4a";
 	//Stringa che contiene l'URL che verra richiamato
 	private String url = "api.openweathermap.org/data/2.5/weather?q=";
-
+	
+	/**
+	 * This method gets the various JSON object from the JSON file returned by PostMan
+	 */
 	@Override
-	public JSONObject getJSONfromPman(String city) {
+	public JSONObject getJSONfromPman (String city) {
 		JSONObject description = null;
 
 		try {
@@ -56,10 +60,10 @@ public class PressureServiceImpl implements PressureService{
 		
 		} catch(IOException IOe) {
 			IOe.printStackTrace();
-		}catch(ParseException parseE) {
+		}/*catch(ParseException parseE) {
 			//TODO concludi eccezione personalizzata
 			parseE.printStackTrace();
-		}catch(Exception e) {
+		}*/catch(Exception e) {
 			e.printStackTrace();
 		}
 		
@@ -67,7 +71,7 @@ public class PressureServiceImpl implements PressureService{
 	}
 	
 	/**
-	 * This method is able to read the JSON file proposed by PostMan and to upload our object City 
+	 * This method is able to read the JSON file proposed by PostMan and to upload in our object City 
 	 * and Pressure
 	 */
 	@Override
@@ -78,6 +82,7 @@ public class PressureServiceImpl implements PressureService{
 		
 		JSONObject coordinate = (JSONObject) obj.get("coord");
 		JSONObject main = (JSONObject) obj.get("main");
+		JSONObject sys = (JSONObject) obj.get("sys");
 		//JSONObject id = (JSONObject) obj.get("id");
 		//JSONObject name = (JSONObject) obj.get("name");
 		
@@ -86,6 +91,7 @@ public class PressureServiceImpl implements PressureService{
 		city.getPressure().setPressure((int)main.get("pressure"));
 		city.setName((String)obj.get("name"));
 		city.setId((int)obj.get("id"));
+		city.setCountry((String)obj.get("country"));
 		
 		return city;
 	}
