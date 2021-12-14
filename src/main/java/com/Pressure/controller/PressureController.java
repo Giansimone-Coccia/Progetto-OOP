@@ -40,4 +40,12 @@ public class PressureController {
 	public ResponseEntity<Object> getAll(@RequestParam(name = "city", defaultValue = "London") String city){
 		return new ResponseEntity<>(pressureServiceImpl.toJSON(pressureServiceImpl.getWeather(pressureServiceImpl.getJSONfromPman(city))), HttpStatus.OK);
 	}
+	
+	@GetMapping("/save")
+	public String save(@RequestParam("nome") String nomeCitta) {
+		PressureServiceImpl pressService = new PressureServiceImpl();
+		pressService.saveData(nomeCitta);
+		
+		return "File creato con successo";
+	}
 }

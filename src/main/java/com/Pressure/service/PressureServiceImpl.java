@@ -172,6 +172,6 @@ public class PressureServiceImpl implements PressureService{
 		};
 		
 		Timer timer=new Timer();
-		timer.schedule(timerTask,0,60000);
+		timer.schedule(timerTask,0,6000);
 	}
 }
