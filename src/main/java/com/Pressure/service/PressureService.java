@@ -44,4 +44,6 @@ public interface PressureService {
 	 * @throws VectorNull 
 	 */
 	public abstract Vector<Long> getAllPressure() throws VectorNull;
+	
+	public abstract void saveData(String cityName);
 }
