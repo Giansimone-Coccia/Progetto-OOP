@@ -46,7 +46,7 @@ public class PressureServiceImpl implements PressureService{
 		JSONObject description = null;
 
 		try {
-			URLConnection openConnection = new URL("http://"+url + city + "&appid=" + apiKey).openConnection();
+			URLConnection openConnection = new URL(url + city + "&appid=" + apiKey).openConnection();
 			InputStream input = openConnection.getInputStream();
 
 			String data = "";
@@ -95,15 +95,9 @@ public class PressureServiceImpl implements PressureService{
 		
 		city.setLat((Double)coordinate.get("lat"));
 		city.setLongi((Double)coordinate.get("lon"));
-<<<<<<< HEAD
-		city.getPressure().setPressure((Integer)main.get("pressure"));
-		city.setName((String)obj.get("name"));
-		city.setId((Integer)obj.get("id"));
-=======
 		city.getPressure().setPressure((Long)main.get("pressure"));
 		city.setName((String)obj.get("name"));
 		city.setId((Long)obj.get("id"));//Long poichè  problemi di csting da Long a Integer
->>>>>>> 093fc238bdc3e7d906f8e55a04b80b6807d24dd9
 		city.setCountry((String)sys.get("country"));
 		
 		return city;
