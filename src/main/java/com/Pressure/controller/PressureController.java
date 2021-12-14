@@ -23,7 +23,11 @@ import com.Pressure.service.PressureServiceImpl;
 public class PressureController {
 	
 	@Autowired
+<<<<<<< HEAD
 	private PressureServiceImpl pressureServiceImpl; // Bisogna istanziare l'impl
+=======
+	private PressureServiceImpl pressureService;
+>>>>>>> 093fc238bdc3e7d906f8e55a04b80b6807d24dd9
 	
 	@RequestMapping(value = "/getMilan", method = RequestMethod.GET)
 	public ResponseEntity<Object> getPressure(){

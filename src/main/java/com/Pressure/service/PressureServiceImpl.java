@@ -34,7 +34,7 @@ public class PressureServiceImpl implements PressureService{
 	//Stringa che contiene l'API key da utilizzare nella chiamata
 	private String apiKey = "10b2f29f8e21bd179b27ff96923bca4a";
 	//Stringa che contiene l'URL che verra richiamato
-	private String url = "api.openweathermap.org/data/2.5/weather?q=";
+	private String url = "https://api.openweathermap.org/data/2.5/weather?q=";
 	Pressure p = new Pressure();
 	
 	/**
@@ -95,9 +95,15 @@ public class PressureServiceImpl implements PressureService{
 		
 		city.setLat((Double)coordinate.get("lat"));
 		city.setLongi((Double)coordinate.get("lon"));
+<<<<<<< HEAD
 		city.getPressure().setPressure((Integer)main.get("pressure"));
 		city.setName((String)obj.get("name"));
 		city.setId((Integer)obj.get("id"));
+=======
+		city.getPressure().setPressure((Long)main.get("pressure"));
+		city.setName((String)obj.get("name"));
+		city.setId((Long)obj.get("id"));//Long poichè  problemi di csting da Long a Integer
+>>>>>>> 093fc238bdc3e7d906f8e55a04b80b6807d24dd9
 		city.setCountry((String)sys.get("country"));
 		
 		return city;
@@ -124,7 +130,7 @@ public class PressureServiceImpl implements PressureService{
 		
 		pressureObj.put("Pressure_max", city.getPressure().getPressure_max());
 		pressureObj.put("Pressure_min", city.getPressure().getPressure_min());
-		pressureObj.put("Pressure_med", city.getPressure().getPressure_min());
+		pressureObj.put("Pressure_med", city.getPressure().getPressure_med());
 		pressureObj.put("Pressure_diff", city.getPressure().getPressure_diff());
 		
 		pressureData.add(pressureObj);
@@ -140,7 +146,7 @@ public class PressureServiceImpl implements PressureService{
 	 * {@inheritDoc}
 	 */
 	@Override
-	public Vector<Integer> getAllPressure() throws VectorNull {
+	public Vector<Long> getAllPressure() throws VectorNull {
 		if(p.getPressureVector().isEmpty())
 			throw new VectorNull("Non ci sono pressioni registrate per questa città");
 		else

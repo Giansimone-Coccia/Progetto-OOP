@@ -21,7 +21,7 @@ public class City {
 	/**
 	 * id città
 	 */
-	private int id;
+	private Long id;
 	/**
 	 * Oggetto che descrive la pressione della città.
 	 */
@@ -52,7 +52,7 @@ public class City {
 	 * @param pressure Valore pressione nella città
 	 */
 	
-	public City(String name,String country, int id, Pressure pressure, Double lon, Double lat) {
+	public City(String name,String country, Long id, Pressure pressure, Double lon, Double lat) {
 		super();
 		this.name = name;
 		this.country=country;
@@ -97,14 +97,14 @@ public class City {
 	 * 
 	 * @return City's id
 	 */
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 	
 	/**
 	 * @param id City's id to set for
 	 */
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	
