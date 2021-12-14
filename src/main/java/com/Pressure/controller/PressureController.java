@@ -1,9 +1,14 @@
 package com.Pressure.controller;
 
+import java.io.IOException;
+
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -23,7 +28,7 @@ import com.Pressure.service.PressureServiceImpl;
 public class PressureController {
 	
 	@Autowired
-	private PressureServiceImpl pressureServiceImpl; // Bisogna istanziare l'impl
+	private PressureServiceImpl pressureServiceImpl;
 
 	
 	@RequestMapping(value = "/getMilan", method = RequestMethod.GET)
@@ -48,4 +53,9 @@ public class PressureController {
 		
 		return "File creato con successo";
 	}
+	
+	/*@PostMapping("/menu")
+	public JSONObject showCity(@RequestParam(nameOne = "nameOne") String cityName1, (@RequestParam(nameTwo = "nameTwo") String cityName2)) {
+		MenuInit menu = new MenuInit(nomeCitta1, nomeCitta2, inInstant, laInstant);
+	}*/
 }

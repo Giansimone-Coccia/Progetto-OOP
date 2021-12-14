@@ -17,6 +17,25 @@ public class Pressure {
 	private long pressure_diff;
 	
 	/**
+	 * Constructor
+	 * @param pressure_max The pressure's max value
+	 * @param pressure_min The pressure's min value
+	 * @param pressure_med The pressure's medium value
+	 */
+	public Pressure(long pressure_max, long pressure_min, double pressure_med, long pressure_diff) {
+		this.pressure_max = pressure_max;
+		this.pressure_min = pressure_min;
+		this.pressure_med = pressure_med;
+		this.pressure_diff = pressure_diff;
+	}
+	
+	/**
+	 * Default constructor
+	 */
+	public Pressure() {
+	}
+	
+	/**
 	 * This method allows to set the pressure passed
 	 * @param pressure The pressure to set
 	 * @throws ArrayIndexOutOfBoundsException, Exception
@@ -56,8 +75,10 @@ public class Pressure {
 			this.pressure_diff=pressure_max-pressure_min;
 		} catch(ArrayIndexOutOfBoundsException ArrayExc) {
 			System.out.println("Errore con indici del vettore");
+			System.out.println(ArrayExc);
 		} catch(Exception e) {
 			System.out.println("Errore generico");
+			System.out.println(e);
 		}
 
 		

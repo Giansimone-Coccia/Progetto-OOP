@@ -1,11 +1,17 @@
 package com.Pressure.service;
 
+import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.ObjectInputStream;
+import java.io.StreamCorruptedException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.text.ParseException;
@@ -89,20 +95,24 @@ public class PressureServiceImpl implements PressureService{
 		City city = new City();
 		//Pressure pressure = new Pressure();
 		//Vector<Pressure> pressureVec = new Vector<Pressure>();
-		
-		JSONObject coordinate = (JSONObject) obj.get("coord");
-		JSONObject main = (JSONObject) obj.get("main");
-		JSONObject sys = (JSONObject) obj.get("sys");
-		//JSONObject id = (JSONObject) obj.get("id");
-		//JSONObject name = (JSONObject) obj.get("name");
-		
-		city.setLat((Double)coordinate.get("lat"));
-		city.setLongi((Double)coordinate.get("lon"));
-		city.getPressure().setPressure((Long)main.get("pressure"));
-		city.setName((String)obj.get("name"));
-		city.setId((Long)obj.get("id"));//Long poichè  problemi di csting da Long a Integer
-		city.setNameC((String)sys.get("country"));
-		
+		try {
+			JSONObject coordinate = (JSONObject) obj.get("coord");
+			JSONObject main = (JSONObject) obj.get("main");
+			JSONObject sys = (JSONObject) obj.get("sys");
+			//JSONObject id = (JSONObject) obj.get("id");
+			//JSONObject name = (JSONObject) obj.get("name");
+
+			city.setLat((Double)coordinate.get("lat"));
+			city.setLongi((Double)coordinate.get("lon"));
+			city.getPressure().setPressure((Long)main.get("pressure"));
+			city.setName((String)obj.get("name"));
+			city.setId((Long)obj.get("id"));//Long poichè  problemi di csting da Long a Integer
+			city.setNameC((String)sys.get("country"));
+		} catch(ArrayIndexOutOfBoundsException IndexE) {
+			System.out.println("Errore nella lettura dell'array");
+			System.out.println(IndexE);
+		}
+
 		return city;
 	}
 	
@@ -149,6 +159,11 @@ public class PressureServiceImpl implements PressureService{
 			return p.getPressureVector();
 	}
 	
+	/**
+	 * This method is used to save the city's details in a local JSON file that We'll use to calcolate
+	 * the stats and show them on PostMan
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void saveData(String cityName) {
 		
@@ -172,15 +187,15 @@ public class PressureServiceImpl implements PressureService{
 			         e.printStackTrace();
 			      }*/
 				
-				JSONObject main=(JSONObject) getJSONfromPman(cityName).get("main");
-				long pressure=(long) main.get("pressure");
-				Long dt=(long) getJSONfromPman(cityName).get("dt");
+				JSONObject main = (JSONObject) getJSONfromPman(cityName).get("main");
+				long pressure = (long) main.get("pressure");
+				Long dt = (long) getJSONfromPman(cityName).get("dt");
 				JSONObject allData=new JSONObject();
 				allData.put("Pressure", pressure);
 				allData.put("dt", dt);
 				 try {
 			         FileWriter fileWriter = new FileWriter(file,true);
-			         BufferedWriter bufferedWriter=new BufferedWriter(fileWriter);
+			         BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
 			         bufferedWriter.write(allData.toJSONString()+"\n");
 			         bufferedWriter.close();
 			      } catch (IOException e) {
@@ -192,4 +207,49 @@ public class PressureServiceImpl implements PressureService{
 		Timer timer=new Timer();
 		timer.schedule(timerTask,0,6000);
 	}
+	
+	/**
+	 * This method is used to read the file JSON saved recently and calculate the minimum, maximum and
+	 * the medium pressions' values
+	 * {@inheritDoc}
+	 */
+	@Override
+	public Pressure readJSON(String fileName) {
+		//TODO controlla tipi
+		Vector<Long> pressVal = new Vector<Long>();
+		long pressMin = 1;
+		long pressMax = 1;
+		long medium = 0, sum = 0, diff = 0;
+		JSONObject obj;
+		try {
+			ObjectInputStream in = new ObjectInputStream(new BufferedInputStream(new FileInputStream(fileName)));
+			obj = (JSONObject) in.readObject();
+			pressVal.add((Long)obj.get("Pressure"));
+			
+			for(Long d : pressVal) {
+				if(d < pressMin) pressMin = d;
+				if(d > pressMax) pressMax = d;
+				sum += d;
+			}
+			medium = sum/pressVal.size();
+			diff = pressMax-pressMin;
+			Pressure p = new Pressure(pressMax, pressMin, medium, diff);
+					
+		} catch(StreamCorruptedException streamE) {
+			System.out.println("Stream incorretto");
+			System.out.println(streamE);
+		} catch(FileNotFoundException fnfE) {
+			System.out.println("File non trovato");
+			System.out.println(fnfE);
+		} catch(IOException ioE) {
+			System.out.println("Problema di I/O");
+			System.out.println(ioE);
+		} catch(Exception e) {
+			System.out.println("Problema");
+			System.out.println(e);
+		}
+		
+		return p;
+	}
+	
 }

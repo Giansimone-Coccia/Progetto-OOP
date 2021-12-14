@@ -1,5 +1,7 @@
 package com.Pressure.service;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 //import java.util.Collection;
 import java.util.Vector;
 
@@ -35,6 +37,7 @@ public interface PressureService {
 	 * 
 	 * @param pressure Is the JSONObject passed
 	 * @return The city
+	 * @throws ArrayIndexOutOfBoundsException
 	 */
 	public abstract City getWeather(JSONObject pressure);
 	
@@ -45,5 +48,17 @@ public interface PressureService {
 	 */
 	public abstract Vector<Long> getAllPressure() throws VectorNull;
 	
+	/**
+	 * 
+	 * @param cityName The city's name
+	 * @throws IOException
+	 */
 	public abstract void saveData(String cityName);
+	
+	/**
+	 * 
+	 * @param fileName The file's name to read
+	 * @throws FileNotFoundException, IOExcepton, Exception
+	 */
+	public abstract Pressure readJSON(String fileName);
 }
