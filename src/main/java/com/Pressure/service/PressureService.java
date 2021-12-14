@@ -27,6 +27,7 @@ public interface PressureService {
 	 * 
 	 * @param city The city
 	 * @return The Postman's JSONObject
+	 * @throws IOException, Exception
 	 */
 	public abstract JSONObject getJSONfromPman(String city);
 	
