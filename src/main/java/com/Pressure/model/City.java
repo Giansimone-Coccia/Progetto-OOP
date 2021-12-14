@@ -9,19 +9,34 @@ import java.util.Vector;
  * @author Giasimone&Walter
  *
  */
+<<<<<<< HEAD
 public class City extends Country{
+=======
+public class City {
+>>>>>>> 873d73f99a662bb3a51afe998ee45786868b230e
 	/**
 	 * Nome città
 	 */
 	private String name;
 	/**
+<<<<<<< HEAD
+=======
+	 * Nome Stato
+	 */
+	private String country;
+	/**
+>>>>>>> 873d73f99a662bb3a51afe998ee45786868b230e
 	 * id città
 	 */
 	private Long id;
 	/**
 	 * Oggetto che descrive la pressione della città.
 	 */
+<<<<<<< HEAD
 	private Pressure pressure = new Pressure();
+=======
+	private Pressure pressure=new Pressure();
+>>>>>>> 873d73f99a662bb3a51afe998ee45786868b230e
 	
 	/**
 	 * Longitudine della città
@@ -32,6 +47,15 @@ public class City extends Country{
 	 * Latitudine della città
 	 */
 	private Double lat;
+<<<<<<< HEAD
+=======
+	/**
+	 * Costruttore di default
+	 */
+	public City() {
+		super();
+	}
+>>>>>>> 873d73f99a662bb3a51afe998ee45786868b230e
 	
 	/**
 	 * Costruttore
@@ -41,9 +65,17 @@ public class City extends Country{
 	 * @param timezone Fuso orario della città
 	 * @param pressure Valore pressione nella città
 	 */
+<<<<<<< HEAD
 	public City(String nameC, String name, Long id, Pressure pressure, Double lon, Double lat) {
 		super(nameC);
 		this.name = name;
+=======
+	
+	public City(String name,String country, Long id, Pressure pressure, Double lon, Double lat) {
+		super();
+		this.name = name;
+		this.country=country;
+>>>>>>> 873d73f99a662bb3a51afe998ee45786868b230e
 		this.id = id;
 		this.pressure = pressure;
 		this.lon = lon;
@@ -51,6 +83,7 @@ public class City extends Country{
 	}
 	
 	/**
+<<<<<<< HEAD
 	 * Default constructor
 	 */
 	public City() {
@@ -58,6 +91,8 @@ public class City extends Country{
 	}
 	
 	/**
+=======
+>>>>>>> 873d73f99a662bb3a51afe998ee45786868b230e
 	 * 
 	 * @return The city's name
 	 */
@@ -74,6 +109,25 @@ public class City extends Country{
 	
 	/**
 	 * 
+<<<<<<< HEAD
+=======
+	 * @return The coutry's name
+	 */
+	public String getCountry() {
+		return country;
+	}
+	
+	/**
+	 * @param name The coutry?s name to set for the city
+	 */
+
+	public void setCountry(String country) {
+		this.country = country;
+	}
+	
+	/**
+	 * 
+>>>>>>> 873d73f99a662bb3a51afe998ee45786868b230e
 	 * @return City's id
 	 */
 	public Long getId() {

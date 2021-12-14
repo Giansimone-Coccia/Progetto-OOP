@@ -98,7 +98,11 @@ public class PressureServiceImpl implements PressureService{
 		city.getPressure().setPressure((Long)main.get("pressure"));
 		city.setName((String)obj.get("name"));
 		city.setId((Long)obj.get("id"));//Long poichè  problemi di csting da Long a Integer
+<<<<<<< HEAD
 		city.setNameC((String)sys.get("country"));
+=======
+		city.setCountry((String)sys.get("country"));
+>>>>>>> 873d73f99a662bb3a51afe998ee45786868b230e
 		
 		return city;
 	}
@@ -113,7 +117,11 @@ public class PressureServiceImpl implements PressureService{
 	
 		JSONObject cityData =new JSONObject();
 		cityData.put("City", city.getName());
+<<<<<<< HEAD
 		cityData.put("Country", city.getNameC());
+=======
+		cityData.put("Country", city.getCountry());
+>>>>>>> 873d73f99a662bb3a51afe998ee45786868b230e
 		cityData.put("Id", city.getId());
 		cityData.put("Lat", city.getLat());
 		cityData.put("Lon", city.getLon());

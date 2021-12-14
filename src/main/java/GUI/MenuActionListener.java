@@ -13,8 +13,13 @@ import com.Pressure.model.*;
 public class MenuActionListener implements ActionListener{
 
 		private Menu window;
+<<<<<<< HEAD
 		//City city1 = new City();
 		//City city2 = new City();
+=======
+		City city1 = new City();
+		City city2 = new City();
+>>>>>>> 873d73f99a662bb3a51afe998ee45786868b230e
 		
 		// costruttore
 		public MenuActionListener(Menu window) {
@@ -25,7 +30,12 @@ public class MenuActionListener implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
 			String c1 = (String)(window.campo1.getText());
 			String c2 = (String)(window.campo2.getText());
+<<<<<<< HEAD
 			//city1.setName(c1);
 			//city2.setName(c2);
+=======
+			city1.setName(c1);
+			city2.setName(c2);
+>>>>>>> 873d73f99a662bb3a51afe998ee45786868b230e
 		}
 }
