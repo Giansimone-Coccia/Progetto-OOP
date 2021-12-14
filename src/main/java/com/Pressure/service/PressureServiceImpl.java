@@ -108,6 +108,7 @@ public class PressureServiceImpl implements PressureService{
 	public JSONObject toJSON(City city) {
 		// TODO Auto-generated method stub
 		
+		JSONObject allData=new JSONObject();
 		JSONObject cityData =new JSONObject();
 		cityData.put("City", city.getName());
 		cityData.put("Country", city.getCountry());
@@ -126,10 +127,9 @@ public class PressureServiceImpl implements PressureService{
 		
 		pressureData.add(pressureObj);
 		
-		JSONObject arrayName=new JSONObject();
-		arrayName.put("Pressure_Data",pressureData);
+		cityData.put("Pressure_Data", pressureData);
 		
-		return arrayName;
+		return cityData;
 	}
 	
 	/**
