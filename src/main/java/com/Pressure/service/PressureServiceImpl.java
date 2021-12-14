@@ -152,7 +152,7 @@ public class PressureServiceImpl implements PressureService{
 	@Override
 	public void saveData(String cityName) {
 		
-		File file=new File("allData."+cityName+".json");
+		File file = new File("allData."+cityName+".json");
 		
 		TimerTask timerTask=new TimerTask() {
 
@@ -161,9 +161,12 @@ public class PressureServiceImpl implements PressureService{
 				City city=getWeather(getJSONfromPman(cityName));
 				JSONObject allData=toJSON(city);
 				 try {
-			         FileWriter fileWriter = new FileWriter(file);
-			         BufferedWriter bufferedWriter=new BufferedWriter(fileWriter);
+			         FileWriter fileWriter = new FileWriter(file, true);
+			         //FileWriter fileWriter = new FileWriter(file);
+			         BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
 			         bufferedWriter.write(allData.toJSONString());
+			         //bufferedWriter.close();
+			         //bufferedWriter.append(allData.toJSONString());
 			         bufferedWriter.close();
 			      } catch (IOException e) {
 			         e.printStackTrace();
