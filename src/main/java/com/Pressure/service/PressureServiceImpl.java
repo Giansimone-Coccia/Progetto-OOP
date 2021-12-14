@@ -155,15 +155,30 @@ public class PressureServiceImpl implements PressureService{
 		File file=new File("allData."+cityName+".json");
 		
 		TimerTask timerTask=new TimerTask() {
-
+			
 			@Override
 			public void run() {
-				City city=getWeather(getJSONfromPman(cityName));
+				/*City city=getWeather(getJSONfromPman(cityName));
 				JSONObject allData=toJSON(city);
 				 try {
 			         FileWriter fileWriter = new FileWriter(file);
 			         BufferedWriter bufferedWriter=new BufferedWriter(fileWriter);
 			         bufferedWriter.write(allData.toJSONString());
+			         bufferedWriter.close();
+			      } catch (IOException e) {
+			         e.printStackTrace();
+			      }*/
+				
+				JSONObject main=(JSONObject) getJSONfromPman(cityName).get("main");
+				long pressure=(long) main.get("pressure");
+				Long dt=(long) getJSONfromPman(cityName).get("dt");
+				JSONObject allData=new JSONObject();
+				allData.put("Pressure", pressure);
+				allData.put("dt", dt);
+				 try {
+			         FileWriter fileWriter = new FileWriter(file,true);
+			         BufferedWriter bufferedWriter=new BufferedWriter(fileWriter);
+			         bufferedWriter.write(allData.toJSONString()+"\n");
 			         bufferedWriter.close();
 			      } catch (IOException e) {
 			         e.printStackTrace();
