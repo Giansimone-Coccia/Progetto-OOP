@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.Pressure.service.PressureService;
+import com.Pressure.service.PressureServiceImpl;
 
 /**
  * Piccola classe del controller per provare che tutto
@@ -21,7 +22,7 @@ import com.Pressure.service.PressureService;
 public class PressureController {
 	
 	@Autowired
-	private PressureService pressureService;
+	private PressureServiceImpl pressureService;
 	
 	@RequestMapping(value = "/getMilan")
 	public ResponseEntity<Object> getPressure(){

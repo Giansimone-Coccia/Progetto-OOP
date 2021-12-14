@@ -42,5 +42,5 @@ public interface PressureService {
 	 * @return All the pressures misured in that city
 	 * @throws VectorNull 
 	 */
-	public abstract Vector<Integer> getAllPressure() throws VectorNull;
+	public abstract Vector<Long> getAllPressure() throws VectorNull;
 }

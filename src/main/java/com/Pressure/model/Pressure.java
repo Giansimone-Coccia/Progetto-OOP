@@ -10,17 +10,17 @@ import java.util.Vector;
  */
 public class Pressure {
 
-	private Vector<Integer> pressure;
-	private int pressure_max;
-	private int pressure_min;
+	private Vector<Long> pressure=new Vector<Long>();
+	private long pressure_max;
+	private long pressure_min;
 	private double pressure_med;
-	private int pressure_diff;
+	private long pressure_diff;
 	
 	/**
 	 * This method allows to set the pressure passed
 	 * @param pressure The pressure to set
 	 */
-	public void setPressure(int pressure) {
+	public void setPressure(long pressure) {
 
 		this.pressure.add(pressure);
 
@@ -28,8 +28,8 @@ public class Pressure {
 			this.pressure.remove(0);
 
 		double pressure_med=0;
-		int pressure_max=this.pressure.get(0);
-		int pressure_min=this.pressure.get(0);
+		long pressure_max=this.pressure.get(0);
+		long pressure_min=this.pressure.get(0);
 
 		for(int i=0;i<this.pressure.size();i++) {
 			pressure_med+=this.pressure.get(i);
@@ -58,7 +58,7 @@ public class Pressure {
 	 * 
 	 * @return The maximum pressure's value
 	 */
-	public int getPressure_max() {
+	public long getPressure_max() {
 		return pressure_max;
 	}
 	
@@ -66,7 +66,7 @@ public class Pressure {
 	 * 
 	 * @return The minimum pressure's value
 	 */
-	public int getPressure_min() {
+	public long getPressure_min() {
 		return pressure_min;
 	}
 	
@@ -82,7 +82,7 @@ public class Pressure {
 	 * 
 	 * @return The difference between the maximum and minimum pressure
 	 */
-	public int getPressure_diff() {
+	public long getPressure_diff() {
 		return pressure_diff;
 	}
 	
@@ -90,7 +90,7 @@ public class Pressure {
 	 * 
 	 * @return All pressure
 	 */
-	public Vector<Integer> getPressureVector() {
+	public Vector<Long> getPressureVector() {
 		return this.pressure;
 	}
 }
