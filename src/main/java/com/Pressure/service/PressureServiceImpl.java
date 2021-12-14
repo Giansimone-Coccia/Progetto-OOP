@@ -107,8 +107,7 @@ public class PressureServiceImpl implements PressureService{
 	@Override
 	public JSONObject toJSON(City city) {
 		// TODO Auto-generated method stub
-		
-		JSONObject allData=new JSONObject();
+	
 		JSONObject cityData =new JSONObject();
 		cityData.put("City", city.getName());
 		cityData.put("Country", city.getCountry());
