@@ -39,13 +39,14 @@ public class PressureServiceImpl implements PressureService{
 	
 	/**
 	 * This method gets the various JSON object from the JSON file returned by PostMan
+	 * {@inheritDoc}
 	 */
 	@Override
 	public JSONObject getJSONfromPman (String city) {
 		JSONObject description = null;
 
 		try {
-			URLConnection openConnection = new URL(url + city + "&appid=" + apiKey).openConnection();
+			URLConnection openConnection = new URL("http://"+url + city + "&appid=" + apiKey).openConnection();
 			InputStream input = openConnection.getInputStream();
 
 			String data = "";
@@ -78,6 +79,7 @@ public class PressureServiceImpl implements PressureService{
 	/**
 	 * This method is able to read the JSON file proposed by PostMan and to upload in our object City 
 	 * and Pressure
+	 * {@inheritDoc}
 	 */
 	@Override
 	public City getWeather(JSONObject obj) {
@@ -93,9 +95,9 @@ public class PressureServiceImpl implements PressureService{
 		
 		city.setLat((Double)coordinate.get("lat"));
 		city.setLongi((Double)coordinate.get("lon"));
-		city.getPressure().setPressure((int)main.get("pressure"));
+		city.getPressure().setPressure((Integer)main.get("pressure"));
 		city.setName((String)obj.get("name"));
-		city.setId((int)obj.get("id"));
+		city.setId((Integer)obj.get("id"));
 		city.setCountry((String)sys.get("country"));
 		
 		return city;
@@ -103,6 +105,7 @@ public class PressureServiceImpl implements PressureService{
 	
 	/**
 	 * This method converts the city's details in a JSON object ready to upload in Postman
+	 * {@inheritDoc}
 	 */
 	@Override
 	public JSONObject toJSON(City city) {
@@ -134,6 +137,7 @@ public class PressureServiceImpl implements PressureService{
 	
 	/**
 	 * This method return all the pressions' values registered in a city
+	 * {@inheritDoc}
 	 */
 	@Override
 	public Vector<Integer> getAllPressure() throws VectorNull {
