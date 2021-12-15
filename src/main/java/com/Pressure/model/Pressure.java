@@ -2,6 +2,8 @@ package com.Pressure.model;
 
 import java.util.Vector;
 
+import Statistics.PressureStats;
+
 /**
  * Classe che descrive tutte le caratteristiche in termini di pressione(minima, massima,...)
  * di una città
@@ -57,31 +59,16 @@ public class Pressure implements Value{
 			/*if(this.pressure.size()>24)
 				this.pressure.remove(0);*/
 
-			double pressure_med=0;
-			long pressure_max=this.pressure.get(0);
-			long pressure_min=this.pressure.get(0);
+			PressureStats pressureStats=new PressureStats();
 
-			for(int i=0;i<this.pressure.size();i++) {
-				pressure_med+=this.pressure.get(i);
-			}
+			this.pressure_med= pressureStats.getMedValue(this.pressure);
 
-			for(int i=0;i<this.pressure.size();i++) {
-				if(pressure_max<this.pressure.get(i))
-					pressure_max=this.pressure.get(i);
-			}
+			this.pressure_min=pressureStats.getMinValue(this.pressure);
 
-			for(int i=0;i<this.pressure.size();i++) {
-				if(pressure_min>this.pressure.get(i))
-					pressure_min=this.pressure.get(i);
-			}
+			this.pressure_max=pressureStats.getMaxValue(this.pressure);
 
-			this.pressure_med= pressure_med/this.pressure.size();
-
-			this.pressure_min=pressure_min;
-
-			this.pressure_max=pressure_max;
-
-			this.pressure_diff=pressure_max-pressure_min;
+			this.pressure_diff=pressureStats.getDiffValue(pressure_max, pressure_min);
+			
 		} catch(ArrayIndexOutOfBoundsException ArrayExc) {
 			System.out.println("Errore con indici del vettore");
 			System.out.println(ArrayExc);
