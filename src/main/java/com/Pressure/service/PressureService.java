@@ -23,7 +23,7 @@ public interface PressureService {
 	 * @param city The city
 	 * @return A JSONObject 
 	 */
-	public abstract JSONObject toJSON(City city);
+	public JSONObject toJSON(City city);
 	
 	/**
 	 * 
@@ -31,7 +31,7 @@ public interface PressureService {
 	 * @return The Postman's JSONObject
 	 * @throws IOException, Exception
 	 */
-	public abstract JSONObject getJSONfromPman(String city);
+	public JSONObject getJSONfromPman(String city);
 	
 	/**
 	 * 
@@ -39,26 +39,26 @@ public interface PressureService {
 	 * @return The city
 	 * @throws ArrayIndexOutOfBoundsException
 	 */
-	public abstract City getWeather(JSONObject pressure);
+	public City getWeather(JSONObject pressure);
 	
 	/**
 	 * 
 	 * @return All the pressures misured in that city
 	 * @throws VectorNull 
 	 */
-	public abstract Vector<Long> getAllPressure() throws VectorNull;
+	public Vector<Long> getAllPressure() throws VectorNull;
 	
 	/**
 	 * 
 	 * @param cityName The city's name
 	 * @throws IOException
 	 */
-	public abstract void saveData(String cityName);
+	public void saveData(String cityName);
 	
 	/**
 	 * 
 	 * @param fileName The file's name to read
 	 * @throws FileNotFoundException, IOExcepton, Exception
 	 */
-	public abstract Pressure readJSON(String fileName);
+	public Pressure readJSON(String fileName);
 }

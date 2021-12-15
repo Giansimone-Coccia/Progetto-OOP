@@ -104,7 +104,8 @@ public class PressureServiceImpl implements PressureService{
 
 			city.setLat((Double)coordinate.get("lat"));
 			city.setLongi((Double)coordinate.get("lon"));
-			city.getPressure().setPressure((Long)main.get("pressure"));
+			//city.getPressure().setPressure((Long)main.get("pressure"));
+			city.getPressure().setValue((Long)main.get("pressure"));
 			city.setName((String)obj.get("name"));
 			city.setId((Long)obj.get("id"));//Long poichè  problemi di csting da Long a Integer
 			city.setNameC((String)sys.get("country"));
@@ -135,10 +136,10 @@ public class PressureServiceImpl implements PressureService{
 		
 		JSONObject pressureObj=new JSONObject();
 		
-		pressureObj.put("Pressure_max", city.getPressure().getPressure_max());
-		pressureObj.put("Pressure_min", city.getPressure().getPressure_min());
-		pressureObj.put("Pressure_med", city.getPressure().getPressure_med());
-		pressureObj.put("Pressure_diff", city.getPressure().getPressure_diff());
+		pressureObj.put("Pressure_max", city.getPressure().getValue_max());
+		pressureObj.put("Pressure_min", city.getPressure().getValue_min());
+		pressureObj.put("Pressure_med", city.getPressure().getValue_med());
+		pressureObj.put("Pressure_diff", city.getPressure().getValue_diff());
 		
 		pressureData.add(pressureObj);
 		

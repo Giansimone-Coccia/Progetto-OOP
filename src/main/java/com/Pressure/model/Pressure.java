@@ -8,7 +8,7 @@ import java.util.Vector;
  * @author Giansimone&Walter
  *
  */
-public class Pressure {
+public class Pressure implements Value{
 
 	private Vector<Long> pressure=new Vector<Long>();
 	private long pressure_max;
@@ -36,12 +36,21 @@ public class Pressure {
 	}
 	
 	/**
+	 * 
+	 * @return All pressure
+	 */
+	public Vector<Long> getPressureVector() {
+		return this.pressure;
+	}
+	
+	/**
 	 * This method allows to set the pressure passed
 	 * @param pressure The pressure to set
 	 * @throws ArrayIndexOutOfBoundsException, Exception
 	 */
-	public void setPressure(long pressure) {
-
+	@Override
+	public void setValue(long pressure) {
+		
 		try {
 			this.pressure.add(pressure);
 
@@ -80,47 +89,42 @@ public class Pressure {
 			System.out.println("Errore generico");
 			System.out.println(e);
 		}
-
 		
 	}
-
+	
 	/**
 	 * 
 	 * @return The maximum pressure's value
 	 */
-	public long getPressure_max() {
+	@Override
+	public long getValue_max() {
 		return pressure_max;
 	}
-
+	
 	/**
 	 * 
 	 * @return The minimum pressure's value
 	 */
-	public long getPressure_min() {
+	@Override
+	public long getValue_min() {
 		return pressure_min;
 	}
-
+	
 	/**
 	 * 
 	 * @return The medium pressure
 	 */
-	public double getPressure_med() {
+	@Override
+	public double getValue_med() {
 		return pressure_med;
 	}
-
+	
 	/**
 	 * 
 	 * @return The difference between the maximum and minimum pressure
 	 */
-	public long getPressure_diff() {
+	@Override
+	public long getValue_diff() {
 		return pressure_diff;
-	}
-
-	/**
-	 * 
-	 * @return All pressure
-	 */
-	public Vector<Long> getPressureVector() {
-		return this.pressure;
 	}
 }
