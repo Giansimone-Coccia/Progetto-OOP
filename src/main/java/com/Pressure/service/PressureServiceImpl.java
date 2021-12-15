@@ -203,7 +203,8 @@ public class PressureServiceImpl implements PressureService{
 			         bufferedWriter.write(allData.toJSONString()+"\n");
 			         bufferedWriter.close();
 			      } catch (IOException e) {
-			         e.printStackTrace();
+			         System.out.println("Errore di I/O");
+			         System.out.println(e);
 			      }
 			}	
 		};
