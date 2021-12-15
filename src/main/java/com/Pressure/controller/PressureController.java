@@ -2,6 +2,7 @@ package com.Pressure.controller;
 
 import java.io.IOException;
 
+
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -17,8 +18,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.Pressure.service.PressureService;
 import com.Pressure.service.PressureServiceImpl;
-
-import GUI.MenuInit;
 
 /**
  * Piccola classe del controller per provare che tutto
@@ -54,11 +53,5 @@ public class PressureController {
 		pressService.saveData(nomeCitta);
 		
 		return "File creato con successo";
-	}
-	
-	@PostMapping("/menu")
-	public String showCity(@RequestParam("nameOne") String cityName1,@RequestParam("nameTwo") String cityName2,@RequestParam("init") String init,@RequestParam("last") String last) {
-		MenuInit menu = new MenuInit(cityName1, cityName2, init, last);
-		return "Il menu è stato creato";
 	}
 }
