@@ -1,7 +1,7 @@
 package com.Pressure.controller;
 
 import java.io.IOException;
-
+import java.text.ParseException;
 
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.Pressure.service.PressureService;
 import com.Pressure.service.PressureServiceImpl;
+
+import Statistics.cityCompare;
 
 /**
  * Piccola classe del controller per provare che tutto
@@ -53,5 +55,11 @@ public class PressureController {
 		pressService.saveData(nomeCitta);
 		
 		return "File creato con successo";
+	}
+	
+	@GetMapping("/compare")
+	public ResponseEntity<Object> compareStats (@RequestParam("name1") String name1, @RequestParam("name2") String name2, @RequestParam("tempInit") String in, @RequestParam("tempFin") String last){
+		cityCompare comp = new cityCompare();
+		return new ResponseEntity<>(comp.compare(name1, name2, in, last)/*.toString()*/, HttpStatus.OK);
 	}
 }
