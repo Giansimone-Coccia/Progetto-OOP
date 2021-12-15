@@ -14,7 +14,9 @@ import java.io.ObjectInputStream;
 import java.io.StreamCorruptedException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.sql.Date;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Collection;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -29,7 +31,8 @@ import org.springframework.stereotype.Service;
 import com.Pressure.model.City;
 import com.Pressure.model.Pressure;
 import Exception.VectorNull;
-
+import Utilities.DateConverter;
+import ch.qos.logback.classic.pattern.DateConverter.*;
 import Exception.*;
 
 /**
@@ -217,25 +220,19 @@ public class PressureServiceImpl implements PressureService{
 	@Override
 	public Pressure readJSON(String fileName,String init,String last) {
 		//TODO controlla tipi
-		Vector<Long> pressVal = new Vector<Long>();
-		long pressMin = 1;
-		long pressMax = 1;
-		long medium = 0, sum = 0, diff = 0;
+		
+	    DateConverter converter=new DateConverter();
+	    Long initS=converter.dateToSeconds(init);
+	    Long lastS=converter.dateToSeconds(last);
+	    Pressure pressure=new Pressure();
 		JSONObject obj;
 		try {
 			ObjectInputStream in = new ObjectInputStream(new BufferedInputStream(new FileInputStream(fileName)));
-			obj = (JSONObject) in.readObject();
-			pressVal.add((Long)obj.get("Pressure"));
-			
-			for(Long d : pressVal) {
-				if(d < pressMin) pressMin = d;
-				if(d > pressMax) pressMax = d;
-				sum += d;
-			}
-			medium = sum/pressVal.size();
-			diff = pressMax-pressMin;
-			Pressure p = new Pressure(pressMax, pressMin, medium, diff);
-					
+			do {
+				obj = (JSONObject) in.readObject();
+				if((Long)obj.get("dt")>=initS)
+					pressure.setValue((Long)obj.get("pressure"));
+			}while((Long)obj.get("dt")<=lastS);		
 		} catch(StreamCorruptedException streamE) {
 			System.out.println("Stream incorretto");
 			System.out.println(streamE);
@@ -249,8 +246,7 @@ public class PressureServiceImpl implements PressureService{
 			System.out.println("Problema");
 			System.out.println(e);
 		}
-		
-		return p;
+		return pressure;
 	}
 	
 }
