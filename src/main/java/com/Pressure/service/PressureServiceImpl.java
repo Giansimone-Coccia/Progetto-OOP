@@ -205,7 +205,7 @@ public class PressureServiceImpl implements PressureService{
 		};
 		
 		Timer timer=new Timer();
-		timer.schedule(timerTask,0,6000);
+		timer.schedule(timerTask,0,60000);
 	}
 	
 	/**
@@ -214,7 +214,7 @@ public class PressureServiceImpl implements PressureService{
 	 * {@inheritDoc}
 	 */
 	@Override
-	public Pressure readJSON(String fileName) {
+	public Pressure readJSON(String fileName,String init,String last) {
 		//TODO controlla tipi
 		Vector<Long> pressVal = new Vector<Long>();
 		long pressMin = 1;

@@ -51,7 +51,7 @@ public class MenuInit {
 	 * the stats
 	 */
 	public void choice() {
-		System.out.println("Pleas insert the two following cities You want compare: ");
+		System.out.println("Please insert the two following cities You want compare: ");
 		String c1 = input.next();
 		String c2 = input.next();
 		

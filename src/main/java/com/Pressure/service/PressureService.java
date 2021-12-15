@@ -60,5 +60,5 @@ public interface PressureService {
 	 * @param fileName The file's name to read
 	 * @throws FileNotFoundException, IOExcepton, Exception
 	 */
-	public abstract Pressure readJSON(String fileName);
+	public abstract Pressure readJSON(String fileName,String init,String last);
 }

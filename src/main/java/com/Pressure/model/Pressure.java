@@ -45,8 +45,8 @@ public class Pressure {
 		try {
 			this.pressure.add(pressure);
 
-			if(this.pressure.size()>24)
-				this.pressure.remove(0);
+			/*if(this.pressure.size()>24)
+				this.pressure.remove(0);*/
 
 			double pressure_med=0;
 			long pressure_max=this.pressure.get(0);
