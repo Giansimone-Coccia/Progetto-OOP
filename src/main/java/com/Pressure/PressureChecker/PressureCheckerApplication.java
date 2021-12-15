@@ -3,6 +3,8 @@ package com.Pressure.PressureChecker;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.Pressure.service.PressureServiceImpl;
+
 @SpringBootApplication(scanBasePackages= {"com.Pressure.controller", "com.Pressure.PressureChecker", "com.Pressure.service", "com.Pressure.model", "Exception", "GUI", "Utilities"})
 public class PressureCheckerApplication {
 
