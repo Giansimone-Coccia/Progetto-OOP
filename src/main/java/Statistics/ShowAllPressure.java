@@ -8,11 +8,21 @@ import org.json.simple.JSONObject;
 import com.Pressure.model.PressureAndTime;
 import com.Pressure.service.PressureServiceImpl;
 
+/**
+ * Classe che viene richiamata per mostrare tutti i valori di pressioni registrati per una città
+ * @author Giasimone&Walter
+ *
+ */
 public class ShowAllPressure {
 	
 	PressureAndTime press = new PressureAndTime();
 	PressureServiceImpl pressService = new PressureServiceImpl();
 	
+	/**
+	 * 
+	 * @param cityName The city's name
+	 * @return The JSONObject
+	 */
 	@SuppressWarnings("unchecked")
 	public JSONObject showAllPressure(String cityName) {
 		
