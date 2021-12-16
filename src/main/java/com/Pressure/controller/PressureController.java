@@ -32,12 +32,16 @@ public class PressureController {
 	@Autowired
 	private PressureServiceImpl pressureServiceImpl;
 
-	
-	/*@RequestMapping(value = "/getMilan", method = RequestMethod.GET)
+	/**
+	 * 
+	 * @return The Milan's carachteristics We've selectioned
+	 */
+	@RequestMapping(value = "/getMilan", method = RequestMethod.GET)
 	public ResponseEntity<Object> getPressure(){
 		return new ResponseEntity<>(pressureServiceImpl.toJSON(pressureServiceImpl.getWeather(pressureServiceImpl.getJSONfromPman("Milan"))), HttpStatus.OK);
 	}
 	
+	/*
 	@RequestMapping(value = "/getPressure")
 	public ResponseEntity<Object> getPressurebyCity(@RequestParam(name = "city", defaultValue = "Milan") String city){
 		return new ResponseEntity<>(pressureServiceImpl.toJSON(pressureServiceImpl.getWeather(pressureServiceImpl.getJSONfromPman(city))), HttpStatus.OK);
