@@ -9,7 +9,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import com.Pressure.model.Pressure;
 import com.Pressure.service.PressureServiceImpl;
 
 class PressureServiceTest {
