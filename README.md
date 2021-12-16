@@ -62,4 +62,52 @@ http://api.openweathermap.org/data/2.5/weather?q={cityname}&appid={APIkey}
     "name": "Milan",
     "cod": 200
 }
-```
+
+Dove i campi riportati precedentemente hanno i seguenti significati:
+- ***coord***
+  - *"lat"* indicates the city's laitude
+  - *"lon"* indicates the city's longitude
+- ***weather***
+  - *"id"* weather condition id
+  - *"main"* weather parameters
+  - *"description"* weather condition susch as rain, sun,...
+  - *"icon"* weather icon id rappresentation
+- ***base*** other parameter
+- ***main***
+  -*"temp"* indicates the temperature                                                                                                                                   
+  -*"feels-like"* temperature percepetid                                                                                                                                         
+  -*"temp_min"* minimum temperature's value                                                                                                                                   
+  -*"temp_max"* maximum temperature's value                                                                                                                                      
+  -*"pressure"* pressure's value                                                                                                                                            
+  -*"humidity"* humidity's value                                                                                                                                                
+- ***visibility*** the percentage of visibility
+- ***wind*** contains some wind's values We've not considered for the project
+- ***clouds*** contains cloud's values We've not considered
+- ***dt*** indicates the time passed since 1 Jenuary 1970(Epoch) express in seconds
+- ***sys*** We have considered only the following value
+  -*"country"* indicates the city's country
+-***id*** indicates the city's id (identification code)
+-***name*** indicates the city's name
+
+# Utilità del progetto
+Questo progetto interessa tutti coloro che hanno bisogno di conoscere i valori delle pressioni di una certà città in un certo intervallo di tempo, ad esempio Società che 
+operano nell'ambito portuale, marittimo ecc.
+
+# Applicazione
+## Avvio
+Una volta avviata l'applicazione, vengono scelte le due città di cui si vuole comparare le statistiche e il range orario, fatto ciò tramite una chiamata ad un metodo GET di
+Postman, in cui viene passato come parametro il nome della città, viene salvato in locale il file delle due città, identico a quello precedentemente mostrato. Fatto ciò, 
+vi è la possibilità di effettuare un'altra chiamata tramite metodo GET per comparare le statistiche che vengono elaborate e poi mostrate, questo passando come parametri nella
+chiamata, i nomi delle due città insimee al rispettivo istante iniziale in cui si vuole iniziare l'elaborazione dei dati e, il rispettivo istante finale.
+## Rotte disponibili
+|  Rotta  |  Metodo |       Funzione                                     |
+|---------|---------|----------------------------------------------------|
+|/save    |GET      |Salva il file JSON della città restituito da Postman|
+|/compare |GET      |Compara le statistiche calcolate delle due città    |
+|/getP    |GET      |Restituisce tutti i valori delle pressioni registrate per quella città|
+
+## Statistiche
+Le statistiche riguardanti tutti i valori richiesti delle pressioni, come il valore minimo, massimo, media o differenza vengono calcolati dopo essere stati letti da un file
+JSON che ci siamo creati localmente dopo aver ottenuto il file JSON principale restituito da Postman, ovvero come quello sù riportato. Questo file è stato creato utilizzando
+solo due caratteristiche, il tempo e il valore della pressione. Per crearlo abbiamo utilizzato la libreria "Timer" di Java la quale, periodicamente, rinnova la chiamata del
+metodo, che ogni volta si fa restituire i valori da Postman, e salva solo quei valori interessati in questo file locale che viene utilizzato per il calcolo delle statistiche.
