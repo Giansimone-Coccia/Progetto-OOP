@@ -11,10 +11,10 @@ public class DateConverter {
 	}
 
 	public Long dateToSeconds(String date){
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-		Date dateObj;
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+	
 		try {
-			dateObj = (Date) sdf.parse(date);
+			java.util.Date dateObj = sdf.parse(date);
 			long seconds = dateObj.getTime()/1000;
 
 			return seconds;
