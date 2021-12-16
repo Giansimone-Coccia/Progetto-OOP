@@ -33,6 +33,8 @@ import org.springframework.stereotype.Service;
 
 import com.Pressure.model.City;
 import com.Pressure.model.Pressure;
+import com.Pressure.model.PressureAndTime;
+
 import Exception.VectorNull;
 import Utilities.DateConverter;
 import ch.qos.logback.classic.pattern.DateConverter.*;
@@ -241,6 +243,34 @@ public class PressureServiceImpl implements PressureService{
 					break;
 				if((Long)obj.get("dt")>=initS && (Long)obj.get("dt")<=lastS)
 					pressure.setValue((Long)obj.get("pressure"));
+			}
+		} catch(FileNotFoundException fnfE) {
+			System.out.println("File non trovato");
+			System.out.println(fnfE);
+		} catch(IOException ioE) {
+			System.out.println("Problema di I/O");
+			System.out.println(ioE);
+		} catch(Exception e) {
+			System.out.println("Problema");
+			System.out.println(e);
+		}
+		return pressure;
+	}
+	
+	public PressureAndTime readAll(String fileName) {
+		//TODO controlla tipi
+
+		PressureAndTime pressure=new PressureAndTime();
+		try {
+			Scanner file_input =new Scanner ( new BufferedReader (new FileReader (fileName )));
+
+			while ( file_input.hasNext()) {
+
+				String string=file_input.nextLine();
+				JSONParser parser= new JSONParser();
+				JSONObject obj=(JSONObject) parser.parse(string);
+				pressure.setTime((Long) obj.get("dt"));
+				pressure.setValue((Long)obj.get("pressure"));
 			}
 		} catch(FileNotFoundException fnfE) {
 			System.out.println("File non trovato");

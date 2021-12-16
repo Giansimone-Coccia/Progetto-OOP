@@ -58,11 +58,11 @@ public class PressureController {
 	 * @return The file JSON saved in local with all the pressures registered
 	 */
 	@GetMapping("/save")
-	public String save(@RequestParam("nome") String nomeCitta) {
+	public ResponseEntity<String> save(@RequestParam("name") String nomeCitta) {
 		PressureServiceImpl pressService = new PressureServiceImpl();
 		pressService.saveData(nomeCitta);
 		
-		return "File creato con successo";
+		return new ResponseEntity<>("File creato con successo", HttpStatus.OK);
 	}
 	
 	/**
@@ -74,7 +74,7 @@ public class PressureController {
 	 * @return The comparison in terms of pressure's stats beetween the two cities choosen
 	 */
 	@GetMapping("/compare")
-	public ResponseEntity<Object> compareStats (@RequestParam("name1") String name1, @RequestParam("name2") String name2, @RequestParam("tempInit") String in, @RequestParam("tempFin") String last){
+	public ResponseEntity<Object> compareStats (@RequestParam("city1") String name1, @RequestParam("city2") String name2, @RequestParam("timeInit") String in, @RequestParam("endTime") String last){
 		cityCompare comp = new cityCompare();
 		return new ResponseEntity<>(comp.compare(name1, name2, in, last)/*.toString()*/, HttpStatus.OK);
 	}
@@ -85,7 +85,7 @@ public class PressureController {
 	 * @return The JSONObject city, with all values on pressure and some general values
 	 */
 	@GetMapping("/getCity")
-	public ResponseEntity<Object> getCity(@RequestParam(name = "city")String nameCity){
+	public ResponseEntity<Object> getCity(@RequestParam("city")String nameCity){
 		return new ResponseEntity<>(pressureServiceImpl.toJSON(pressureServiceImpl.getWeather(pressureServiceImpl.getJSONfromPman(nameCity))), HttpStatus.OK);
 	}
 }
