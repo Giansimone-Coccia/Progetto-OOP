@@ -2,6 +2,7 @@ package Statistics;
 
 import java.util.Vector;
 
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 import com.Pressure.model.PressureAndTime;
@@ -17,8 +18,12 @@ public class ShowAllPressure {
 		PressureAndTime p=pressService.readAll("allData."+cityName+".json");
 		
 		JSONObject objM = new JSONObject();
-		
+		JSONObject objI = new JSONObject();
 		JSONObject objS = new JSONObject();
+		
+		JSONArray array=new JSONArray();
+		
+	
 		
 		objS.put("Valore di pressione massima totale", p.getValue_max());
 		objS.put("Valore di pressione minima totale", p.getValue_min());
@@ -35,13 +40,13 @@ public class ShowAllPressure {
 			JSONObject obj = new JSONObject();
 			obj.put("pressure",pressure.get(i));
 			obj.put("date", dates.get(i));
-			objM.put("info n."+(i+1),obj);
+			objI.put("info n."+(i+1),obj);
 		}
+		array.add(objI);
 		
-		
+		objM.put("infos",array);
 		
 		return objM;
-		
 	}
 
 }
