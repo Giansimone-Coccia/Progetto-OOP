@@ -19,7 +19,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.Pressure.service.PressureService;
 import com.Pressure.service.PressureServiceImpl;
 
-import Statistics.cityCompare;
+import Statistics.CityCompare;
+import Statistics.ShowAllPressure;
+
+
 
 /**
  * Classe controller che gestisce le rotte per le chiamate dell'API da Postaman
@@ -71,7 +74,7 @@ public class PressureController {
 	 */
 	@GetMapping("/compare")
 	public ResponseEntity<Object> compareStats (@RequestParam("city1") String name1, @RequestParam("city2") String name2, @RequestParam("timeInit") String in, @RequestParam("endTime") String last){
-		cityCompare comp = new cityCompare();
+		CityCompare comp = new CityCompare();
 		return new ResponseEntity<>(comp.compare(name1, name2, in, last)/*.toString()*/, HttpStatus.OK);
 	}
 	
@@ -83,5 +86,11 @@ public class PressureController {
 	@GetMapping("/getCity")
 	public ResponseEntity<Object> getCity(@RequestParam("city")String nameCity){
 		return new ResponseEntity<>(pressureServiceImpl.toJSON(pressureServiceImpl.getWeather(pressureServiceImpl.getJSONfromPman(nameCity))), HttpStatus.OK);
+	}
+	
+	@GetMapping("/getAllPressure")
+	public ResponseEntity<Object> getAllPressure(@RequestParam("city")String nameCity){
+		ShowAllPressure show = new ShowAllPressure ();
+		return new ResponseEntity<>((show.showAllPressure(nameCity)), HttpStatus.OK);
 	}
 }

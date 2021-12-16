@@ -13,7 +13,7 @@ import Utilities.DateConverter;
  * @author Giansimone&Walter
  *
  */
-public class cityCompare {
+public class CityCompare {
 	
 	private double minC1, minC2;
 	private double maxC1, maxC2;
