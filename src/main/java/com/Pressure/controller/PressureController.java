@@ -62,4 +62,9 @@ public class PressureController {
 		cityCompare comp = new cityCompare();
 		return new ResponseEntity<>(comp.compare(name1, name2, in, last)/*.toString()*/, HttpStatus.OK);
 	}
+	
+	@GetMapping("/getCity")
+	public ResponseEntity<Object> getCity(@RequestParam(name = "city")String nameCity){
+		return new ResponseEntity<>(pressureServiceImpl.toJSON(pressureServiceImpl.getWeather(pressureServiceImpl.getJSONfromPman(nameCity))), HttpStatus.OK);
+	}
 }

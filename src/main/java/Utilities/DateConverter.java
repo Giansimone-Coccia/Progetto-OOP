@@ -4,12 +4,25 @@ import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
+/**
+ * Classe utilizzata per effettuare le conversione da Date in millisecondi e viceversa
+ * @author Giansimone&Walter
+ *
+ */
 public class DateConverter {
-
+	
+	/**
+	 * Default constructor
+	 */
 	public DateConverter() {
 		super();
 	}
-
+	
+	/**
+	 * 
+	 * @param date The string date passed
+	 * @return The seconds converted
+	 */
 	public Long dateToSeconds(String date){
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 	

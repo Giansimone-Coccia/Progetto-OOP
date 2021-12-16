@@ -8,6 +8,11 @@ import com.Pressure.service.PressureServiceImpl;
 
 import Utilities.DateConverter;
 
+/**
+ * Classe utilizzata per comparare le statistiche tra due città
+ * @author Giansimone&Walter
+ *
+ */
 public class cityCompare {
 	
 	private double minC1, minC2;
@@ -18,6 +23,15 @@ public class cityCompare {
 	Pressure press = new Pressure();
 	PressureServiceImpl pressService = new PressureServiceImpl();
 	
+	/**
+	 * 
+	 * @param name1 The first city name
+	 * @param name2 The second city name
+	 * @param init The initial instant time for calculating stats
+	 * @param last The final instant time for calculating stats
+	 * @return The JSONObject with right values
+	 */
+	@SuppressWarnings("unchecked")
 	public JSONObject compare(String name1, String name2, String init, String last) {
 		Pressure p1;
 		Pressure p2;
@@ -29,9 +43,9 @@ public class cityCompare {
 		medC1 = p1.getValue_med();
 		diffC1 = p1.getValue_med();
 		minC2 = p2.getValue_min();
-		maxC2 = p1.getValue_max();
-		medC2 = p1.getValue_med();
-		diffC1 = p1.getValue_med();
+		maxC2 = p2.getValue_max();
+		medC2 = p2.getValue_med();
+		diffC2 = p2.getValue_med();
 		
 		JSONObject obj1 = new JSONObject();
 		JSONObject obj2 = new JSONObject();
@@ -49,7 +63,7 @@ public class cityCompare {
 		JSONObject maxPress = new JSONObject();
 		maxPress.put("Valore di pressione massima "+name1, maxC1);
 		maxPress.put("Valore di pressione massima "+name2, maxC2);
-		objM.put("Valori di pressione minimi ", maxPress);
+		objM.put("Valori di pressione massimi ", maxPress);
 		
 		JSONObject medPress = new JSONObject();
 		medPress.put("Valore di pressione medi "+name1, medC1);
