@@ -18,6 +18,7 @@ import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Collection;
+import java.util.Scanner;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.Vector;
@@ -26,6 +27,8 @@ import java.io.FileWriter;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
+import org.json.simple.parser.JSONParser;
+import org.springframework.boot.json.JsonParserFactory;
 import org.springframework.stereotype.Service;
 
 import com.Pressure.model.City;
@@ -195,7 +198,7 @@ public class PressureServiceImpl implements PressureService{
 				long pressure = (long) main.get("pressure");
 				Long dt = (long) getJSONfromPman(cityName).get("dt");
 				JSONObject allData=new JSONObject();
-				allData.put("Pressure", pressure);
+				allData.put("pressure", pressure);
 				allData.put("dt", dt);
 				 try {
 			         FileWriter fileWriter = new FileWriter(file,true);
@@ -221,22 +224,24 @@ public class PressureServiceImpl implements PressureService{
 	@Override
 	public Pressure readJSON(String fileName,String init,String last) {
 		//TODO controlla tipi
-		
-	    DateConverter converter=new DateConverter();
-	    Long initS=converter.dateToSeconds(init);
-	    Long lastS=converter.dateToSeconds(last);
-	    Pressure pressure=new Pressure();
-		JSONObject obj;
+
+		DateConverter converter=new DateConverter();
+		Long initS=converter.dateToSeconds(init);
+		Long lastS=converter.dateToSeconds(last);
+		Pressure pressure=new Pressure();
 		try {
-			ObjectInputStream in = new ObjectInputStream(new BufferedInputStream(new FileInputStream(fileName)));
-			do {
-				obj = (JSONObject) in.readObject();
-				if((Long)obj.get("dt")>=initS)
+			Scanner file_input =new Scanner ( new BufferedReader (new FileReader (fileName )));
+
+			while ( file_input.hasNext()) {
+
+				String string=file_input.nextLine();
+				JSONParser parser= new JSONParser();
+				JSONObject obj=(JSONObject) parser.parse(string);
+				if((Long)obj.get("dt")>=lastS)
+					break;
+				if((Long)obj.get("dt")>=initS && (Long)obj.get("dt")<=lastS)
 					pressure.setValue((Long)obj.get("pressure"));
-			}while((Long)obj.get("dt")<=lastS);		
-		} catch(StreamCorruptedException streamE) {
-			System.out.println("Stream incorretto");
-			System.out.println(streamE);
+			}
 		} catch(FileNotFoundException fnfE) {
 			System.out.println("File non trovato");
 			System.out.println(fnfE);
@@ -249,5 +254,5 @@ public class PressureServiceImpl implements PressureService{
 		}
 		return pressure;
 	}
-	
+
 }
