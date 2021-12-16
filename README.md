@@ -138,13 +138,50 @@ Questo è un esempio di JSON restituito:
     }
 }
 ```
+5. *Altro*                                                                                                                                                                    
+Inoltre, affinchè sia possibile accertarsi dei reali valori di media, pressione minima, massima e differenza tra le due, abbiamo deciso di aggiungere anche una rotta che
+restituisca tutti i valori di pressione registrati per quella città. La rotta in questione si richiama tramite il metodo "GET /getAllPressure" e passando come parametro
+il nome della città di cui si vuoole ottenere la lista di tutte le pressioni, ordinate anche per data e ora.
+Questo è un esempio di file JSON che si ottiene:                                                                                                                              
+```
+{
+    "info n.5": {
+        "date": "16/12/2021 14:29:19",
+        "pressure": 1025
+    },
+    "info n.4": {
+        "date": "16/12/2021 14:29:19",
+        "pressure": 1025
+    },
+    "info n.3": {
+        "date": "16/12/2021 14:29:19",
+        "pressure": 1025
+    },
+    "info n.2": {
+        "date": "16/12/2021 14:29:19",
+        "pressure": 1025
+    },
+    "info n.1": {
+        "date": "16/12/2021 14:29:19",
+        "pressure": 1025
+    },
+    "Statistics": {
+        "Differenze di pressione totale": 0,
+        "Valore di pressione minima totale": 1025,
+        "Valore di pressione massima totale": 1025,
+        "Valore di pressione medi totale": 1025.0
+    }
+}
+```
 
 ## Rotte disponibili
-|  Rotta  |  Metodo |       Funzione                                     |
-|---------|---------|----------------------------------------------------|
-|/save    |GET      |Salva il file JSON della città restituito da Postman|
-|/compare |GET      |Compara le statistiche calcolate delle due città    |
-|/getP    |GET      |Restituisce tutti i valori delle pressioni registrate per quella città|
+|      Rotta        |  Metodo | Parametri                                            |       Funzione                                                       |
+|-------------------|---------|------------------------------------------------------|----------------------------------------------------------------------|
+|/save              |GET      |Nome città                                            |Salva il file JSON della città restituito da Postman                  |
+|/compare           |GET      |Nomi delle due città, istante iniziale, istante finale|Compara le statistiche calcolate delle due città                      |
+|/getAllPressure    |GET      |Nome della città                                      |Restituisce tutti i valori delle pressioni registrate per quella città|
+|/getCity           |GET      |Nome della città                                      |Resitutisce tutti i valori utilizzati nell'applicativo per la città   |
+!/getMilan          |GET      |//                                                    |Chiamata di prova che restituisce i valori di Milano                  |
 
 ## Statistiche
 Le statistiche riguardanti tutti i valori richiesti delle pressioni, come il valore minimo, massimo, media o differenza vengono calcolati dopo essere stati letti da un file
