@@ -22,8 +22,7 @@ import com.Pressure.service.PressureServiceImpl;
 import Statistics.cityCompare;
 
 /**
- * Piccola classe del controller per provare che tutto
- * proceda senza problemi
+ * Classe controller che gestisce le rotte per le chiamate dell'API da Postaman
  * @author Giansimone&Walter
  *
  */
@@ -34,7 +33,7 @@ public class PressureController {
 	private PressureServiceImpl pressureServiceImpl;
 
 	
-	@RequestMapping(value = "/getMilan", method = RequestMethod.GET)
+	/*@RequestMapping(value = "/getMilan", method = RequestMethod.GET)
 	public ResponseEntity<Object> getPressure(){
 		return new ResponseEntity<>(pressureServiceImpl.toJSON(pressureServiceImpl.getWeather(pressureServiceImpl.getJSONfromPman("Milan"))), HttpStatus.OK);
 	}
@@ -47,8 +46,13 @@ public class PressureController {
 	@GetMapping("/getP")
 	public ResponseEntity<Object> getAll(@RequestParam(name = "city", defaultValue = "London") String city){
 		return new ResponseEntity<>(pressureServiceImpl.toJSON(pressureServiceImpl.getWeather(pressureServiceImpl.getJSONfromPman(city))), HttpStatus.OK);
-	}
+	}*/
 	
+	/**
+	 * 
+	 * @param nomeCitta The city's name
+	 * @return The file JSON saved in local with all the pressures registered
+	 */
 	@GetMapping("/save")
 	public String save(@RequestParam("nome") String nomeCitta) {
 		PressureServiceImpl pressService = new PressureServiceImpl();
@@ -57,12 +61,25 @@ public class PressureController {
 		return "File creato con successo";
 	}
 	
+	/**
+	 * 
+	 * @param name1 The first city's name
+	 * @param name2 The second city's name
+	 * @param in The initial instant time
+	 * @param last The final instant time
+	 * @return The comparison in terms of pressure's stats beetween the two cities choosen
+	 */
 	@GetMapping("/compare")
 	public ResponseEntity<Object> compareStats (@RequestParam("name1") String name1, @RequestParam("name2") String name2, @RequestParam("tempInit") String in, @RequestParam("tempFin") String last){
 		cityCompare comp = new cityCompare();
 		return new ResponseEntity<>(comp.compare(name1, name2, in, last)/*.toString()*/, HttpStatus.OK);
 	}
 	
+	/**
+	 * 
+	 * @param nameCity The city's name
+	 * @return The JSONObject city, with all values on pressure and some general values
+	 */
 	@GetMapping("/getCity")
 	public ResponseEntity<Object> getCity(@RequestParam(name = "city")String nameCity){
 		return new ResponseEntity<>(pressureServiceImpl.toJSON(pressureServiceImpl.getWeather(pressureServiceImpl.getJSONfromPman(nameCity))), HttpStatus.OK);

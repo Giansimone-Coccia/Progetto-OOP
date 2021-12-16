@@ -46,6 +46,7 @@ public class cityCompare {
 		maxC2 = p2.getValue_max();
 		medC2 = p2.getValue_med();
 		diffC2 = p2.getValue_diff();
+
 		
 		JSONObject obj1 = new JSONObject();
 		JSONObject obj2 = new JSONObject();
@@ -64,6 +65,7 @@ public class cityCompare {
 		maxPress.put("Valore di pressione massima "+name1, maxC1);
 		maxPress.put("Valore di pressione massima "+name2, maxC2);
 		objM.put("Valori di pressione massimi", maxPress);
+
 		
 		JSONObject medPress = new JSONObject();
 		medPress.put("Valore di pressione medi "+name1, medC1);

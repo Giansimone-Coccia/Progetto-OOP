@@ -55,6 +55,20 @@ public class City extends Country{
 	
 	/**
 	 * 
+	 * @param name The city's name
+	 * @param id The id
+	 * @param lon The longitude
+	 * @param lat The latitude
+	 */
+	public City(String name, Long id, Double lon, Double lat) {
+		this.name = name;
+		this.id = id;
+		this.lon = lon;
+		this.lat = lat;
+	}
+	
+	/**
+	 * 
 	 * @return The city's name
 	 */
 	public String getName() {
