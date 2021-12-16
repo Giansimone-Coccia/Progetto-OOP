@@ -40,5 +40,11 @@ public class DateConverter {
 		}
 		return null;	
 	}
-
+	
+	public String secondsToDate(long seconds){
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+		Date dateObj=new Date((long)seconds*1000);
+			String dateString =(String) sdf.format(dateObj);
+			return dateString;
+	}
 }

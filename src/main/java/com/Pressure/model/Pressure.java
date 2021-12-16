@@ -35,6 +35,7 @@ public class Pressure implements Value{
 	 * Default constructor
 	 */
 	public Pressure() {
+		super();
 	}
 	
 	/**
