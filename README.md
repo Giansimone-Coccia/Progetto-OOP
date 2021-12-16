@@ -16,7 +16,50 @@ http://api.openweathermap.org/data/2.5/weather?q={cityname}&appid={APIkey}
   - APIkey è la chiave di accesso al servizio
     - Ad esempio richiamando attraverso il metodo HTTP GET la seguente API:                                                                                                     
     http://api.openweathermap.org/data/2.5/weather?q=Milan&appid=10b2f29f8e21bd179b27ff96923bca4a otteniamo il seguente JSON:
-    
-    ![](https://github.com/Walter-Di-Sabatino/ProgettoEsameCocciaDiSabatinoGennaio2022/blob/Main/Immagine%202021-12-16%20113408.png)
-    ![](https://github.com/Walter-Di-Sabatino/ProgettoEsameCocciaDiSabatinoGennaio2022/blob/Main/Immagine%202021-12-16%20113439.png)
-    
+        
+    ```
+    {
+    "coord": {
+        "lon": 9.1895,
+        "lat": 45.4643
+    },
+    "weather": [
+        {
+            "id": 801,
+            "main": "Clouds",
+            "description": "few clouds",
+            "icon": "02d"
+        }
+    ],
+    "base": "stations",
+    "main": {
+        "temp": 280.66,
+        "feels_like": 280.16,
+        "temp_min": 276.36,
+        "temp_max": 285.87,
+        "pressure": 1029,
+        "humidity": 82
+    },
+    "visibility": 10000,
+    "wind": {
+        "speed": 1.34,
+        "deg": 240,
+        "gust": 1.79
+    },
+    "clouds": {
+        "all": 19
+    },
+    "dt": 1639650695,
+    "sys": {
+        "type": 2,
+        "id": 2010245,
+        "country": "IT",
+        "sunrise": 1639637832,
+        "sunset": 1639669242
+    },
+    "timezone": 3600,
+    "id": 3173435,
+    "name": "Milan",
+    "cod": 200
+}
+```
