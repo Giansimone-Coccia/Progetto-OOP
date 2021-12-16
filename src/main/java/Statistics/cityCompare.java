@@ -41,11 +41,15 @@ public class cityCompare {
 		minC1 = p1.getValue_min();
 		maxC1 = p1.getValue_max();
 		medC1 = p1.getValue_med();
-		diffC1 = p1.getValue_med();
+		diffC1 = p1.getValue_diff();
 		minC2 = p2.getValue_min();
 		maxC2 = p2.getValue_max();
 		medC2 = p2.getValue_med();
+<<<<<<< HEAD
 		diffC2 = p2.getValue_med();
+=======
+		diffC1 = p2.getValue_diff();
+>>>>>>> 1b3a83185ec972a11b44008e05e047eca5fb6cdd
 		
 		JSONObject obj1 = new JSONObject();
 		JSONObject obj2 = new JSONObject();
@@ -58,22 +62,26 @@ public class cityCompare {
 		JSONObject minPress = new JSONObject();
 		minPress.put("Valore di pressione minima "+name1, minC1);
 		minPress.put("Valore di pressione minima "+name2, minC2);
-		objM.put("Valori di pressione minimi ", minPress);
+		objM.put("Valori di pressione minimi", minPress);
 		
 		JSONObject maxPress = new JSONObject();
 		maxPress.put("Valore di pressione massima "+name1, maxC1);
 		maxPress.put("Valore di pressione massima "+name2, maxC2);
+<<<<<<< HEAD
 		objM.put("Valori di pressione massimi ", maxPress);
+=======
+		objM.put("Valori di pressione massimi", maxPress);
+>>>>>>> 1b3a83185ec972a11b44008e05e047eca5fb6cdd
 		
 		JSONObject medPress = new JSONObject();
 		medPress.put("Valore di pressione medi "+name1, medC1);
 		medPress.put("Valore di pressione medi "+name2, medC2);
-		objM.put("Valori di pressione medi ", medPress);
+		objM.put("Valori di pressione medi", medPress);
 		
 		JSONObject diffPress = new JSONObject();
 		diffPress.put("Differenze di pressione "+name1, diffC1);
 		diffPress.put("Differenze di pressione "+name2, diffC2);
-		objM.put("Differenze di pressione ", diffPress);
+		objM.put("Differenze di pressione", diffPress);
 		
 		return objM;
 	}
