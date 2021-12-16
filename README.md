@@ -16,4 +16,7 @@ http://api.openweathermap.org/data/2.5/weather?q={cityname}&appid={APIkey}
   - APIkey è la chiave di accesso al servizio
     - Ad esempio richiamando attraverso il metodo HTTP GET la seguente API:                                                                                                     
     http://api.openweathermap.org/data/2.5/weather?q=Milan&appid=10b2f29f8e21bd179b27ff96923bca4a otteniamo il seguente JSON:
-    ![JSON]("C:\Users\gians_ji5genm\OneDrive\Desktop\Progetto OOP\ProgettoEsameCocciaDiSabatinoGennaio2022-Main\ProgettoEsameCocciaDiSabatinoGennaio2022-Main\Immagine 2021-12-16 113408.png")
+    
+    ![](https://github.com/Walter-Di-Sabatino/ProgettoEsameCocciaDiSabatinoGennaio2022/blob/Main/Immagine%202021-12-16%20113408.png)
+    ![](https://github.com/Walter-Di-Sabatino/ProgettoEsameCocciaDiSabatinoGennaio2022/blob/Main/Immagine%202021-12-16%20113439.png)
+    
