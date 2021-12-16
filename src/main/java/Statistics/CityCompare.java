@@ -1,12 +1,9 @@
 package Statistics;
 
-import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 import com.Pressure.model.Pressure;
 import com.Pressure.service.PressureServiceImpl;
-
-import Utilities.DateConverter;
 
 /**
  * Classe utilizzata per comparare le statistiche tra due città
