@@ -94,11 +94,51 @@ Questo progetto interessa tutti coloro che hanno bisogno di conoscere i valori d
 operano nell'ambito portuale, marittimo ecc.
 
 # Applicazione
-## Avvio
-Una volta avviata l'applicazione, vengono scelte le due città di cui si vuole comparare le statistiche e il range orario, fatto ciò tramite una chiamata ad un metodo GET di
-Postman, in cui viene passato come parametro il nome della città, viene salvato in locale il file delle due città, identico a quello precedentemente mostrato. Fatto ciò, 
-vi è la possibilità di effettuare un'altra chiamata tramite metodo GET per comparare le statistiche che vengono elaborate e poi mostrate, questo passando come parametri nella
-chiamata, i nomi delle due città insimee al rispettivo istante iniziale in cui si vuole iniziare l'elaborazione dei dati e, il rispettivo istante finale.
+## Funzionamento
+1. *Inizio*                                                                                                                                                                 
+Per prima cosa, bisogna scegliere due diverse città di cui si vogliano calcolare le statistiche per poi confrontarle, per semplicità abbiamo considerato solo cinque città,
+tra cui Milano, Roma, Londra, Parigi e New York, di cui abbiamo accumulato per ciascuno, per alcuni giorni, i valori. Fatto ciò è possibile controllare gli attuali valori 
+meteodi quella città tramite la chiamata "GET /getCity", che restituisci tutti i valori che abbiamo settato come fondamentali per l'applicativo, come il nome della città, 
+il nome della nazione e via dicendo, compresi anche tutti i possibili valori di pressione.
+2. *Salvataggio*                                                                                                                                                            
+Scelte le due città, queste vengono "sottoposte" ad una fase di salvataggio in cui, tramite la chiamata "GET /save", una per volta, inizia un processo di salvataggio dei
+dati da Postman su un file locale. Questo salvataggio viene scandito ora per ora, utilizzando la libreria Timer di Java. Inoltre tra i vari valori che abbiamo deciso di
+salvare, abbiamo considerato il tempo, indicato come 'dt' nel file JSON riportato precedentemente e il valore della pressione 'pressure', così da semplificare poi la successiva lettura del file locale. Un esempio del file che viene salvato in locale:                                                                                                    
+
+![](https://github.com/Walter-Di-Sabatino/ProgettoEsameCocciaDiSabatinoGennaio2022/blob/Main/fileSaved.png)
+
+3. *Lettura e calcolo statistiche*                                                                                                                                             
+Dopo aver effettuato il salvataggio delle singole città, il file locale viene sottoposto ad una lettura che acquisice i due diversi valori, tempo e pressioni. Questi 
+vengono utilizzati per calcolare le varie statistiche, nel nostro caso la pressione minima e massima di ogni città , la media tra tutte le pressioni e la differenza tra la pressione  massima e la pressione minima.
+4. *Compare*                                                                                                                                                                
+Avute le statistiche per ogni città, è possibile effettuare una chiamata "GET /compare" passando come parametro il nome delle due città, l'istante iniziale della ricerca e
+l'istante finale, questi ultimi sono rappresentati nel file con 'dt' in secondi, ovvero tutti i secondi trascorsi dal 1 Gennaio 1970(Epoch), per cui, nel momento
+in cui l'utente passa come parametri le date e i rispettivi orari, abbiamo dovuto effettuare tramite alcuni metodi, la conversione da data in secondi per compararli poi
+con i secondi del file di cui abbiamo effettuato la modifica. Effettuata questa chiamata, si vede restituire per ogni città, il valore minimo, massimo ecc così da poter
+avere una visuale più chiara su quale tra le due ha registrato valori maggiori, minori ecc...
+Questo è un esempio di JSON restituito:                                                                                                                                       
+
+```
+{
+    "Valori di pressione minimi": {
+        "Valore di pressione minima Milan": 1028.0,
+        "Valore di pressione minima Rome": 1025.0
+    },
+    "Valori di pressione medi": {
+        "Valore di pressione medi Milan": 1028.0,
+        "Valore di pressione medi Rome": 1025.0
+    },
+    "Valori di pressione massimi ": {
+        "Valore di pressione massima Rome": 1025.0,
+        "Valore di pressione massima Milan": 1028.0
+    },
+    "Differenze di pressione": {
+        "Differenze di pressione Milan": 0.0,
+        "Differenze di pressione Rome": 0.0
+    }
+}
+```
+
 ## Rotte disponibili
 |  Rotta  |  Metodo |       Funzione                                     |
 |---------|---------|----------------------------------------------------|
