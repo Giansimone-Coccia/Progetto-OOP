@@ -111,3 +111,19 @@ Le statistiche riguardanti tutti i valori richiesti delle pressioni, come il val
 JSON che ci siamo creati localmente dopo aver ottenuto il file JSON principale restituito da Postman, ovvero come quello sù riportato. Questo file è stato creato utilizzando
 solo due caratteristiche, il tempo e il valore della pressione. Per crearlo abbiamo utilizzato la libreria "Timer" di Java la quale, periodicamente, rinnova la chiamata del
 metodo, che ogni volta si fa restituire i valori da Postman, e salva solo quei valori interessati in questo file locale che viene utilizzato per il calcolo delle statistiche.
+
+# Strumenti utilizzati
+Per sviluppare questo applicativo abbiamo utilizzato i seguenti strumenti:
+- Il framework ***Spring*** includedo i moduli:
+  - *Spring boot*
+  - *Spring web*
+- La libreria ***JSON.simple*** per la conversione, lettura e scrittura di JSONObject 
+- ***Javadoc*** per generare la documentazione del codice sorgente
+- L'ambiente di sviluppo ***Eclipse*** per lo sviluppo 
+- ***GIT*** e ***GitHub*** per il versioning del codice tra i vari componenti del gruppo
+- L'applicativo ***Postman*** per richiamare le varie API utilizzate 
+- Il framework ***JUnit5*** per lo unit testing
+
+# Autori
+- *Walter Di Sabatino* (referente)
+- *Giansimone Coccia*
