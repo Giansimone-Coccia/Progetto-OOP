@@ -1,22 +1,16 @@
 package com.Pressure.controller;
 
-import java.io.IOException;
-import java.text.ParseException;
-
-import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 //import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.Pressure.service.PressureService;
 import com.Pressure.service.PressureServiceImpl;
 
 import Statistics.CityCompare;
@@ -44,17 +38,6 @@ public class PressureController {
 		return new ResponseEntity<>(pressureServiceImpl.toJSON(pressureServiceImpl.getWeather(pressureServiceImpl.getJSONfromPman("Milan"))), HttpStatus.OK);
 	}
 	
-	/*
-	@RequestMapping(value = "/getPressure")
-	public ResponseEntity<Object> getPressurebyCity(@RequestParam(name = "city", defaultValue = "Milan") String city){
-		return new ResponseEntity<>(pressureServiceImpl.toJSON(pressureServiceImpl.getWeather(pressureServiceImpl.getJSONfromPman(city))), HttpStatus.OK);
-	}
-	
-	@GetMapping("/getP")
-	public ResponseEntity<Object> getAll(@RequestParam(name = "city", defaultValue = "London") String city){
-		return new ResponseEntity<>(pressureServiceImpl.toJSON(pressureServiceImpl.getWeather(pressureServiceImpl.getJSONfromPman(city))), HttpStatus.OK);
-	}*/
-	
 	/**
 	 * 
 	 * @param nomeCitta The city's name
@@ -79,7 +62,7 @@ public class PressureController {
 	@GetMapping("/compare")
 	public ResponseEntity<Object> compareStats (@RequestParam("city1") String name1, @RequestParam("city2") String name2, @RequestParam("timeInit") String in, @RequestParam("endTime") String last){
 		CityCompare comp = new CityCompare();
-		return new ResponseEntity<>(comp.compare(name1, name2, in, last)/*.toString()*/, HttpStatus.OK);
+		return new ResponseEntity<>(comp.compare(name1, name2, in, last), HttpStatus.OK);
 	}
 	
 	/**
@@ -92,6 +75,11 @@ public class PressureController {
 		return new ResponseEntity<>(pressureServiceImpl.toJSON(pressureServiceImpl.getWeather(pressureServiceImpl.getJSONfromPman(nameCity))), HttpStatus.OK);
 	}
 	
+	/**
+	 * 
+	 * @param nameCity The city'sname
+	 * @return All pressure's value registered for a city
+	 */
 	@GetMapping("/getAllPressure")
 	public ResponseEntity<Object> getAllPressure(@RequestParam("city")String nameCity){
 		ShowAllPressure show = new ShowAllPressure ();

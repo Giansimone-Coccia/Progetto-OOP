@@ -12,6 +12,7 @@ public class ShowAllPressure {
 	PressureAndTime press = new PressureAndTime();
 	PressureServiceImpl pressService = new PressureServiceImpl();
 	
+	@SuppressWarnings("unchecked")
 	public JSONObject showAllPressure(String cityName) {
 		
 		PressureAndTime p=pressService.readAll("allData."+cityName+".json");
