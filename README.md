@@ -181,7 +181,7 @@ Questo è un esempio di file JSON che si ottiene:
 |/compare           |GET      |Nomi delle due città, istante iniziale, istante finale|Compara le statistiche calcolate delle due città                      |
 |/getAllPressure    |GET      |Nome della città                                      |Restituisce tutti i valori delle pressioni registrate per quella città|
 |/getCity           |GET      |Nome della città                                      |Resitutisce tutti i valori utilizzati nell'applicativo per la città   |
-!/getMilan          |GET      |//                                                    |Chiamata di prova che restituisce i valori di Milano                  |
+|/getMilan          |GET      |//                                                    |Chiamata di prova che restituisce i valori di Milano                  |
 
 ## Statistiche
 Le statistiche riguardanti tutti i valori richiesti delle pressioni, come il valore minimo, massimo, media o differenza vengono calcolati dopo essere stati letti da un file
