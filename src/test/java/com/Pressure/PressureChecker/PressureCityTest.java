@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import com.Pressure.model.City;
@@ -22,8 +23,9 @@ class PressureCityTest {
 	@AfterEach
 	void tearDown() throws Exception {
 	}
-
+	
 	@Test
+	@DisplayName("Test prima città")
 	void testCity() {
 		assertEquals("Amsterdam", city1.getName());
 		assertEquals(574395l, city1.getId());
@@ -32,6 +34,9 @@ class PressureCityTest {
 	}
 	
 	@Test
+	@DisplayName("Test seconda città")
+	//Le righe ignorate sono i valori esatti, utilizzando quelle
+	//il test termina correttamente
 	void testCity2() {
 		assertEquals("Berlino", city1.getName());
 		//assertEquals("Tokyo", city2.getName());
