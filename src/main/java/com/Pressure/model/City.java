@@ -2,8 +2,6 @@ package com.Pressure.model;
 
 import java.util.Objects;
 
-import java.util.Vector;
-
 /**
  * Classe che descrive una generica città attraverso i suoi attributi
  * @author Giasimone&Walter

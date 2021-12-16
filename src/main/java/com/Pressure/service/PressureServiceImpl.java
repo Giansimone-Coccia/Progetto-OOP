@@ -1,23 +1,15 @@
 package com.Pressure.service;
 
-import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.ObjectInputStream;
-import java.io.StreamCorruptedException;
 import java.net.URL;
 import java.net.URLConnection;
-import java.sql.Date;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Collection;
 import java.util.Scanner;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -28,7 +20,6 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 import org.json.simple.parser.JSONParser;
-import org.springframework.boot.json.JsonParserFactory;
 import org.springframework.stereotype.Service;
 
 import com.Pressure.model.City;
@@ -37,8 +28,6 @@ import com.Pressure.model.PressureAndTime;
 
 import Exception.VectorNull;
 import Utilities.DateConverter;
-import ch.qos.logback.classic.pattern.DateConverter.*;
-import Exception.*;
 
 /**
  * Questa classe implementa i metodi astratti di PressureService
@@ -83,10 +72,7 @@ public class PressureServiceImpl implements PressureService{
 		
 		} catch(IOException IOe) {
 			IOe.printStackTrace();
-		}/*catch(ParseException parseE) {
-			//TODO concludi eccezione personalizzata
-			parseE.printStackTrace();
-		}*/catch(Exception e) {
+		} catch(Exception e) {
 			e.printStackTrace();
 		}
 		
@@ -129,6 +115,7 @@ public class PressureServiceImpl implements PressureService{
 	 * This method converts the city's details in a JSON object ready to upload in Postman
 	 * {@inheritDoc}
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public JSONObject toJSON(City city) {
 		// TODO Auto-generated method stub
@@ -180,6 +167,7 @@ public class PressureServiceImpl implements PressureService{
 		
 		TimerTask timerTask=new TimerTask() {
 			
+			@SuppressWarnings("unchecked")
 			@Override
 			public void run() {
 				/*City city=getWeather(getJSONfromPman(cityName));
