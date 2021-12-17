@@ -186,6 +186,86 @@ scorrere il vettore di Pressure in cui abbiamo salvato volta per volta i dati e,
 procedimento è analogo ma, tutti i valori contenuti nel vettore vengono sommati ed assegnati ad una variabile che viene poi divisa per il numero di misure rilevate.
 Infine, per la differenza tra la pressione massima e minima, si è trattato di implementare solo una piccola differenza tra i due valori già ricavati in precedenza.
 
+# Come si usa
+Clonando questa repository sul vostro computer e importando nell'IDE Eclipse il progetto PressureChecker sarete subito pronti a partire: infatti, nel pacchetto scaricato, oltre all'applicativo, sono già presenti i file di configurazione predefiniti e il file di database contenente un cospicuo set di campioni su cui fare le prove. Una volta aperto Eclipse, per avviare il programma, basta selezionare PressureCheckerApplication nel proprio package explorer e dare il comando Run as -> Spring Boot App. L'avvio dell'applicazione è riconoscibile dalla comparsa del logo di Spring e di molte righe di informazioni scritte in formato logging. L'applicativo espone i propri Endpoint sulla rete interna all'indirizzo localhost, sulla porta 8080 dove, se tutto è stato lanciato in modo corretto, potrete accertarvi della partenza del server Tomcat. Per usufruire delle  funzionalità potete collegarvi alle rotte messe a disposizione con un'applicazione come Postman.                                                                                
+***Metodo di utilizzo degli endpoint***                                                                                                                                         
+- *localhost:8080/compare*                                                                                                                                                      
+Vi mostrerà le statistiche calcolate per le due città passate come parametro, ecco un esempio:                                                                                  
+```
+{
+    "Valori di pressione minimi": {
+        "Valore di pressione minima Milan": 1026.0,
+        "Valore di pressione minima Rome": 1025.0
+    },
+    "Valori di pressione medi": {
+        "Valore di pressione medi Milan": 1028.0,
+        "Valore di pressione medi Rome": 1025.0
+    },
+    "Differenze di pressione": {
+        "Differenze di pressione Milan": 5.0,
+        "Differenze di pressione Rome": 0.0
+    },
+    "Valori di pressione massimi": {
+        "Valore di pressione massima Rome": 1025.0,
+        "Valore di pressione massima Milan": 1031.0
+    }
+}
+```
+
+- *localhost:8080/getAllPressure*                                                                                                                                               
+Otterrete una lista di tutte le misure rilevate/salvate con le rispettive date e orari in cui sono avvenute                                                                   
+```
+{
+    "Statistics": {
+        "Differenze di pressione totale": 5,
+        "Valore di pressione minima totale": 1026,
+        "Valore di pressione massima totale": 1031,
+        "Valore di pressione medi totale": 1028.0
+    },
+    "infos": [
+        {
+            "info n.4": {
+                "date": "16/12/2021 14:35:13",
+                "pressure": 1031
+            },
+            "info n.3": {
+                "date": "16/12/2021 14:35:12",
+                "pressure": 1028
+            },
+            "info n.2": {
+                "date": "16/12/2021 14:35:11",
+                "pressure": 1026
+            },
+            "info n.1": {
+                "date": "16/12/2021 14:35:10",
+                "pressure": 1028
+            }
+        }
+    ]
+}
+```
+
+- *localhost:80807getCity*                                                                                                                                                    
+In questo caso, passando come parametro una qualsiasi città, riceverete alcune informazioni su di essa, come nome, id, nazione e, inoltre, tutti i valori di pressione,
+massime, minime, medie e differenza, che si sono verificate                                                                                                                     
+```
+{
+    "Country": "JP",
+    "Lon": 139.6917,
+    "City": "Tokyo",
+    "Id": 1850144,
+    "Pressure_Data": [
+        {
+            "Pressure_med": 994.0,
+            "Pressure_diff": 0,
+            "Pressure_max": 994,
+            "Pressure_min": 994
+        }
+    ],
+    "Lat": 35.6895
+}
+```
+
 # Strumenti utilizzati
 Per sviluppare questo applicativo abbiamo utilizzato i seguenti strumenti:
 - Il framework ***Spring*** includedo i moduli:
