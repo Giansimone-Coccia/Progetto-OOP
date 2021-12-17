@@ -3,7 +3,7 @@ Il nostro applicativo è un RESTful Web Service, ovvero un sistema software che,
 essere un'applicazione, un sito web o Postman, così da consentire agli utenti che vi si collegano di usufruire delle azioni che mette a disposizione.
 
 Il progetto implementa un servizio meteo che, raccogliendo le informazioni meteo generali su due città, restituisce successivamente, delle statistiche calcolate sulla pressione,
-quali pressione minima, massima, differenza tra le due e la media in un determinato periodo di tempo scelto, così da poter confrontare i diversi valori ottenuti nelle due città
+quali pressione minima, massima, differenza tra le due e la media, in un determinato periodo di tempo scelto, così da poter confrontare i diversi valori ottenuti nelle due città
 precedentemente scelte.
 
 A scopo dimostrativo, durante il periodo di sviluppo e testing dell'applicazione sono stati raccolti i dati di varie città, tra cui Milano, Roma, Londra, Parigi e New York. 
@@ -12,8 +12,8 @@ Questi dati sono stati analizzati e salvati in file JSON locali per poi essere s
 La chiamata API di OpenWeather utilizzata nel nostro progetto è la seguente:                                                                                                  
 http://api.openweathermap.org/data/2.5/weather?q={cityname}&appid={APIkey}
 
-  - cityname è il nome della città scelta
-  - APIkey è la chiave di accesso al servizio
+  - *cityname* è il nome della città scelta
+  - *APIkey* è la chiave di accesso al servizio
     - Ad esempio richiamando attraverso il metodo HTTP GET la seguente API:                                                                                                     
     http://api.openweathermap.org/data/2.5/weather?q=Milan&appid=10b2f29f8e21bd179b27ff96923bca4a otteniamo il seguente JSON:
         
@@ -60,8 +60,7 @@ http://api.openweathermap.org/data/2.5/weather?q={cityname}&appid={APIkey}
     "timezone": 3600,
     "id": 3173435,
     "name": "Milan",
-    "cod": 200
-}
+    "cod": 200}
 
 Dove i campi riportati precedentemente hanno i seguenti significati:
 - ***coord***
@@ -73,7 +72,7 @@ Dove i campi riportati precedentemente hanno i seguenti significati:
   - *"description"* weather condition susch as rain, sun,...
   - *"icon"* weather icon id rappresentation
 - ***base*** other parameter
-- ***main***
+- ***main***                                                                                                                                                                  
   -*"temp"* indicates the temperature                                                                                                                                   
   -*"feels-like"* temperature percepetid                                                                                                                                         
   -*"temp_min"* minimum temperature's value                                                                                                                                   
@@ -83,40 +82,37 @@ Dove i campi riportati precedentemente hanno i seguenti significati:
 - ***visibility*** the percentage of visibility
 - ***wind*** contains some wind's values We've not considered for the project
 - ***clouds*** contains cloud's values We've not considered
-- ***dt*** indicates the time passed since 1 Jenuary 1970(Epoch) express in seconds
-- ***sys*** We have considered only the following value
-  -*"country"* indicates the city's country
--***id*** indicates the city's id (identification code)
--***name*** indicates the city's name
+- ***dt*** indicates the time passed since 1 Jenuary 1970(Epoch) expressed in seconds
+- ***sys*** We have considered only the following value                                                                                                                         
+  -*"country"* indicates the city's country  
+- ***id*** indicates the city's id (identification code)                                                                                                                       
+- ***name*** indicates the city's name                                                                                                                                           
 
 # Utilità del progetto
-Questo progetto interessa tutti coloro che hanno bisogno di conoscere i valori delle pressioni di una certà città in un certo intervallo di tempo, ad esempio Società che 
+Questo progetto interessa tutti coloro che hanno bisogno di conoscere i valori delle pressioni di alcune città in un certo intervallo di tempo, ad esempio Società che 
 operano nell'ambito portuale, marittimo ecc.
 
 # Applicazione
 ## Funzionamento
 1. *Inizio*                                                                                                                                                                 
-Per prima cosa, bisogna scegliere due diverse città di cui si vogliano calcolare le statistiche per poi confrontarle, per semplicità abbiamo considerato solo cinque città,
-tra cui Milano, Roma, Londra, Parigi e New York, di cui abbiamo accumulato per ciascuno, per alcuni giorni, i valori. Fatto ciò è possibile controllare gli attuali valori 
-meteodi quella città tramite la chiamata "GET /getCity", che restituisci tutti i valori che abbiamo settato come fondamentali per l'applicativo, come il nome della città, 
-il nome della nazione e via dicendo, compresi anche tutti i possibili valori di pressione.
+Per prima cosa, bisogna scegliere due diverse città di cui si vogliano calcolare le statistiche per poi confrontarle, per semplicità abbiamo considerato solo cinque città di cui abbiamo salavto i dati, tra cui Milano, Roma, Londra, Parigi e New York, di cui abbiamo accumulato per ciascuno, per alcuni giorni, i valori restituiti. Fatto ciò è possibile controllare gli attuali valori meteo di quella città tramite la chiamata "GET /getCity", che restituisci tutti i valori che abbiamo settato come fondamentali per l'applicativo, come il nome della città, il nome della nazione e via dicendo, compresi anche tutti i possibili valori di pressione.
 2. *Salvataggio*                                                                                                                                                            
-Scelte le due città, queste vengono "sottoposte" ad una fase di salvataggio in cui, tramite la chiamata "GET /save", una per volta, inizia un processo di salvataggio dei
-dati da Postman su un file locale. Questo salvataggio viene scandito ora per ora, utilizzando la libreria Timer di Java. Inoltre tra i vari valori che abbiamo deciso di
-salvare, abbiamo considerato il tempo, indicato come 'dt' nel file JSON riportato precedentemente e il valore della pressione 'pressure', così da semplificare poi la successiva lettura del file locale. Un esempio del file che viene salvato in locale:                                                                                                    
+Scelte le due città, queste vengono "sottoposte" ad una fase di salvataggio in cui, tramite la chiamata "GET /save", inizia un processo di salvataggio dei
+dati da Postman su un file locale. Questo salvataggio viene eseguito ogni ora, utilizzando la libreria "Timer" di Java. Inoltre tra i vari valori che abbiamo deciso di
+salvare, abbiamo considerato il tempo, indicato come 'dt' nel file JSON riportato precedentemente e il valore della pressione 'pressure', così da semplificare poi la successiva lettura del file locale per il calcolo delle statistiche. Un esempio del file che viene salvato in locale:                                                                                                  
 
 ![](https://github.com/Walter-Di-Sabatino/ProgettoEsameCocciaDiSabatinoGennaio2022/blob/Main/fileSaved.png)
 
 3. *Lettura e calcolo statistiche*                                                                                                                                             
-Dopo aver effettuato il salvataggio delle singole città, il file locale viene sottoposto ad una lettura che acquisice i due diversi valori, tempo e pressioni. Questi 
+Dopo aver effettuato il salvataggio delle singole città, il file locale viene sottoposto ad una lettura che acquisice i due diversi valori, tempo e pressione. Questi 
 vengono utilizzati per calcolare le varie statistiche, nel nostro caso la pressione minima e massima di ogni città , la media tra tutte le pressioni e la differenza tra la pressione  massima e la pressione minima.
 4. *Compare*                                                                                                                                                                
 Avute le statistiche per ogni città, è possibile effettuare una chiamata "GET /compare" passando come parametro il nome delle due città, l'istante iniziale della ricerca e
 l'istante finale, questi ultimi sono rappresentati nel file con 'dt' in secondi, ovvero tutti i secondi trascorsi dal 1 Gennaio 1970(Epoch), per cui, nel momento
-in cui l'utente passa come parametri le date e i rispettivi orari, abbiamo dovuto effettuare tramite alcuni metodi, la conversione da data in secondi per compararli poi
-con i secondi del file di cui abbiamo effettuato la modifica. Effettuata questa chiamata, si vede restituire per ogni città, il valore minimo, massimo ecc così da poter
-avere una visuale più chiara su quale tra le due ha registrato valori maggiori, minori ecc...
-Questo è un esempio di JSON restituito:                                                                                                                                       
+in cui l'utente passa come parametri le date e i rispettivi orari, abbiamo dovuto effettuare tramite alcuni metodi, la conversione da data in secondi per effettuare il
+matching. Effettuata questa chiamata, si vede restituire per ogni città, il valore minimo, massimo, la differenza tra i due e la media di tutti i valori salvati, così da poter
+avere una visuale più chiara su quale tra le due città ha registrato valori maggiori, minori ecc...
+Questo è un esempio del JSON restituito:                                                                                                                                       
 
 ```
 {
@@ -140,8 +136,8 @@ Questo è un esempio di JSON restituito:
 ```
 5. *Altro*                                                                                                                                                                    
 Inoltre, affinchè sia possibile accertarsi dei reali valori di media, pressione minima, massima e differenza tra le due, abbiamo deciso di aggiungere anche una rotta che
-restituisca tutti i valori di pressione registrati per quella città. La rotta in questione si richiama tramite il metodo "GET /getAllPressure" e passando come parametro
-il nome della città di cui si vuoole ottenere la lista di tutte le pressioni, ordinate anche per data e ora.
+restituisca tutti i valori di pressione registrati per quella città. La rotta in questione si richiama tramite il metodo "GET /getAllPressure" e, passando come parametro
+il nome della città, si ottiene la lista di tutte le pressioni, ordinate anche per data e ora.
 Questo è un esempio di file JSON che si ottiene:                                                                                                                              
 ```
 {
@@ -184,10 +180,11 @@ Questo è un esempio di file JSON che si ottiene:
 |/getMilan          |GET      |//                                                    |Chiamata di prova che restituisce i valori di Milano                  |
 
 ## Statistiche
-Le statistiche riguardanti tutti i valori richiesti delle pressioni, come il valore minimo, massimo, media o differenza vengono calcolati dopo essere stati letti da un file
-JSON che ci siamo creati localmente dopo aver ottenuto il file JSON principale restituito da Postman, ovvero come quello sù riportato. Questo file è stato creato utilizzando
-solo due caratteristiche, il tempo e il valore della pressione. Per crearlo abbiamo utilizzato la libreria "Timer" di Java la quale, periodicamente, rinnova la chiamata del
-metodo, che ogni volta si fa restituire i valori da Postman, e salva solo quei valori interessati in questo file locale che viene utilizzato per il calcolo delle statistiche.
+Le statistiche riguardanti tutti i valori richiesti delle pressioni, come il valore minimo, massimo, media o differenza, vengono calcolati dopo essere stati letti da un file
+JSON che ci siamo creati localmente, dopo aver ottenuto il JSON principale restituito da Postman, ovvero come quello riportato nella prima parte del README.md. Questo file è stato creato utilizzando solo due caratteristiche, il tempo e il valore della pressione. Per crearlo abbiamo utilizzato la libreria "Timer" di Java la quale, periodicamente, rinnova la chiamata del metodo, che ogni volta si fa restituire i valori da Postman, salvando solo ciò che è necessario in questo file locale, che viene utilizzato per il calcolo delle statistiche. Quest'ultime sono state calcolate utilizzando metodi e funzioni di libreria. Ad esempio, per il calcolo del valore massimo e minimo, ci è bastato 
+scorrere il vettore di Pressure in cui abbiamo salvato volta per volta i dati e, confrontando, ci siamo trovati i valori di pressione massimi e minimi. Ergo, per la media, il 
+procedimento è analogo ma, tutti i valori contenuti nel vettore vengono sommati ed assegnati ad una variabile che viene poi divisa per il numero di misure rilevate.
+Infine, per la differenza tra la pressione massima e minima, si è trattato di implementare solo una piccola differenza tra i due valori già ricavati in precedenza.
 
 # Strumenti utilizzati
 Per sviluppare questo applicativo abbiamo utilizzato i seguenti strumenti:
