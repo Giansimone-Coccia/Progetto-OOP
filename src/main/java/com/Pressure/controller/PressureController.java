@@ -1,5 +1,7 @@
 package com.Pressure.controller;
 
+import java.io.FileNotFoundException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.http.HttpStatus;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.Pressure.service.PressureServiceImpl;
 
+import Exception.DateFormatException;
 import Statistics.CityCompare;
 import Statistics.ShowAllPressure;
 
@@ -48,7 +51,7 @@ public class PressureController {
 		PressureServiceImpl pressService = new PressureServiceImpl();
 		pressService.saveData(nomeCitta);
 		
-		return new ResponseEntity<>("File creato con successo", HttpStatus.OK);
+		return new ResponseEntity<>("File creato/aggiornato con successo", HttpStatus.OK);
 	}
 	
 	/**
@@ -58,9 +61,10 @@ public class PressureController {
 	 * @param in The initial instant time
 	 * @param last The final instant time
 	 * @return The comparison in terms of pressure's stats beetween the two cities choosen
+	 * @throws DateFormatException 
 	 */
 	@GetMapping("/compare")
-	public ResponseEntity<Object> compareStats (@RequestParam("city1") String name1, @RequestParam("city2") String name2, @RequestParam("timeInit") String in, @RequestParam("endTime") String last){
+	public ResponseEntity<Object> compareStats (@RequestParam("city1") String name1, @RequestParam("city2") String name2, @RequestParam("timeInit") String in, @RequestParam("endTime") String last) throws DateFormatException{
 		CityCompare comp = new CityCompare();
 		return new ResponseEntity<>(comp.compare(name1, name2, in, last), HttpStatus.OK);
 	}
