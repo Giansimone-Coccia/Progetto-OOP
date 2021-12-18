@@ -4,7 +4,7 @@ import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
-import Exception.DateIOException;
+import Exception.DateIOExeption;
 
 /**
  * Classe utilizzata per effettuare le conversione da Date in millisecondi e viceversa
