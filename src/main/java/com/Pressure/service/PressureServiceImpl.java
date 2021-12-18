@@ -27,12 +27,9 @@ import com.Pressure.model.City;
 import com.Pressure.model.Pressure;
 import com.Pressure.model.PressureAndTime;
 
-<<<<<<< HEAD
-import Exception.DateIOExeption;
-=======
+
 import Exception.DateFormatException;
-import Exception.DateIOException;
->>>>>>> ad729cad2ba6487efe1ef283a7b007d924dedf79
+import Exception.DateIOExeption;
 import Exception.VectorNull;
 import Utilities.DateConverter;
 
@@ -46,7 +43,7 @@ public class PressureServiceImpl implements PressureService{
 
 	//Stringa che contiene l'API key da utilizzare nella chiamata
 	private String apiKey = "10b2f29f8e21bd179b27ff96923bca4a";
-	//Stringa che contiene l'URL che verra richiamato
+	//Stringa che contiene l'URL che verrà richiamato
 	private String url = "https://api.openweathermap.org/data/2.5/weather?q=";
 	Pressure p = new Pressure();
 	
@@ -108,7 +105,7 @@ public class PressureServiceImpl implements PressureService{
 			//city.getPressure().setPressure((Long)main.get("pressure"));
 			city.getPressure().setValue((Long)main.get("pressure"));
 			city.setName((String)obj.get("name"));
-			city.setId((Long)obj.get("id"));//Long poichè  problemi di csting da Long a Integer
+			city.setId((Long)obj.get("id"));//Long poichè  problemi di casting da Long a Integer
 			city.setNameC((String)sys.get("country"));
 		} catch(ArrayIndexOutOfBoundsException IndexE) {
 			System.out.println("Errore nella lettura dell'array");
@@ -163,8 +160,8 @@ public class PressureServiceImpl implements PressureService{
 	}
 	
 	/**
-	 * This method is used to save the city's details in a local JSON file that We'll use to calcolate
-	 * the stats and show them on PostMan
+	 * This method is used to save the city's details in a local JSON file that We'll use to calculate
+	 * the statistics and show them on PostMan
 	 * {@inheritDoc}
 	 */
 	@Override

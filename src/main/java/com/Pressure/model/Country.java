@@ -47,7 +47,7 @@ public class Country {
 	}
 	
 	/**
-	 * Overrdie del metodo hashCode utile in caso di utilizzo del debugger
+	 * Override del metodo hashCode utile in caso di utilizzo del debugger
 	 */
 	@Override
 	public int hashCode() {
@@ -55,7 +55,7 @@ public class Country {
 	}
 	
 	/**
-	 * Override del metodo equals, per controntare oggetti
+	 * Override del metodo equals, per confrontare oggetti
 	 */
 	@Override
 	public boolean equals(Object obj) {
