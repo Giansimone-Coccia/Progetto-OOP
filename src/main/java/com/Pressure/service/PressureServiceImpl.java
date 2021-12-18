@@ -26,6 +26,7 @@ import com.Pressure.model.City;
 import com.Pressure.model.Pressure;
 import com.Pressure.model.PressureAndTime;
 
+import Exception.DateIOException;
 import Exception.VectorNull;
 import Utilities.DateConverter;
 
@@ -203,7 +204,7 @@ public class PressureServiceImpl implements PressureService{
 		};
 		
 		Timer timer=new Timer();
-		timer.schedule(timerTask,0,6000);
+		timer.schedule(timerTask,0,1800000);
 	}
 	
 	/**
@@ -216,8 +217,10 @@ public class PressureServiceImpl implements PressureService{
 		//TODO controlla tipi
 
 		DateConverter converter=new DateConverter();
-		Long initS=converter.dateToSeconds(init);
-		Long lastS=converter.dateToSeconds(last);
+		Long initS = null, lastS = null;
+			initS = converter.dateToSeconds(init);
+			lastS=converter.dateToSeconds(last);
+		
 		Pressure pressure=new Pressure();
 		try {
 			Scanner file_input =new Scanner ( new BufferedReader (new FileReader (fileName )));
