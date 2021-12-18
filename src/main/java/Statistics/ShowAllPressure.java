@@ -1,5 +1,6 @@
 package Statistics;
 
+import java.io.FileNotFoundException;
 import java.util.Vector;
 
 import org.json.simple.JSONArray;
@@ -24,7 +25,7 @@ public class ShowAllPressure {
 	 * @return The JSONObject
 	 */
 	@SuppressWarnings("unchecked")
-	public JSONObject showAllPressure(String cityName) {
+	public JSONObject showAllPressure(String cityName){
 		
 		PressureAndTime p=pressService.readAll("allData."+cityName+".json");
 		
@@ -35,7 +36,7 @@ public class ShowAllPressure {
 		JSONArray array=new JSONArray();
 		
 	
-		
+		objS.put("Numero totale di info raccolte", p.getPressureVector().size());
 		objS.put("Valore di pressione massima totale", p.getValue_max());
 		objS.put("Valore di pressione minima totale", p.getValue_min());
 		objS.put("Valore di pressione medi totale", p.getValue_med());
@@ -55,7 +56,7 @@ public class ShowAllPressure {
 		}
 		array.add(objI);
 		
-		objM.put("infos",array);
+		objM.put("info",array);
 		
 		return objM;
 	}

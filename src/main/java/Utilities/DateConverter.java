@@ -4,6 +4,7 @@ import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
+import Exception.DateFormatException;
 import Exception.DateIOException;
 
 /**
@@ -25,15 +26,31 @@ public class DateConverter{
 	 * @param date The string date passed
 	 * @return The seconds converted
 	 */
-	public Long dateToSeconds(String date){
+	public Long dateToSeconds(String date) throws DateFormatException{
 		
 		SimpleDateFormat sdf;
 		
-		if(date.length()==("dd/MM/yyyy HH:mm:ss").length()) 
-			sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-		else
-			sdf = new SimpleDateFormat("dd/MM/yyyy");
-	
+		Boolean bool1;
+
+		if(date.length()==("dd/MM/yyyy HH:mm:ss").length())
+		{
+			bool1= date.charAt(2)=='/' && date.charAt(5)=='/' && date.charAt(10)==' '&& date.charAt(13)==':' && date.charAt(16)==':';
+			if(bool1)
+				sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+			else 
+				throw new DateFormatException("Formato data errato,le date possono essere solo nel formato dd/MM/yyyy HH:mm:ss o dd/MM/yyyy");
+		}
+		else if(date.length()==("dd/MM/yyyy").length())
+		{
+			bool1= date.charAt(2)=='/' && date.charAt(5)=='/';
+			if(bool1)
+				sdf = new SimpleDateFormat("dd/MM/yyyy");
+			else 
+				throw new DateFormatException("Formato data errato,le date possono essere solo nel formato dd/MM/yyyy HH:mm:ss o dd/MM/yyyy");
+		}
+		else 
+			throw new DateFormatException("Formato data errato,le date possono essere solo nel formato dd/MM/yyyy HH:mm:ss o dd/MM/yyyy");
+
 		try {
 			java.util.Date dateObj = sdf.parse(date);
 			long seconds = dateObj.getTime()/1000;

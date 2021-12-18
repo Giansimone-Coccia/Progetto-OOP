@@ -26,6 +26,7 @@ import com.Pressure.model.City;
 import com.Pressure.model.Pressure;
 import com.Pressure.model.PressureAndTime;
 
+import Exception.DateFormatException;
 import Exception.DateIOException;
 import Exception.VectorNull;
 import Utilities.DateConverter;
@@ -211,15 +212,17 @@ public class PressureServiceImpl implements PressureService{
 	 * This method is used to read the file JSON saved recently and calculate the minimum, maximum and
 	 * the medium pressions' values
 	 * {@inheritDoc}
+	 * @throws DateFormatException 
 	 */
 	@Override
-	public Pressure readJSON(String fileName,String init,String last) {
+	public Pressure readJSON(String fileName,String init,String last) throws DateFormatException{
 		//TODO controlla tipi
 
 		DateConverter converter=new DateConverter();
 		Long initS = null, lastS = null;
-			initS = converter.dateToSeconds(init);
-			lastS=converter.dateToSeconds(last);
+	
+				initS = converter.dateToSeconds(init);
+				lastS=converter.dateToSeconds(last);
 		
 		Pressure pressure=new Pressure();
 		try {
@@ -248,7 +251,7 @@ public class PressureServiceImpl implements PressureService{
 		return pressure;
 	}
 	
-	public PressureAndTime readAll(String fileName) {
+	public PressureAndTime readAll(String fileName){
 		//TODO controlla tipi
 
 		PressureAndTime pressure=new PressureAndTime();

@@ -8,6 +8,7 @@ import java.util.Vector;
 import org.json.simple.*;
 import com.Pressure.model.*;
 
+import Exception.DateFormatException;
 import Exception.VectorNull;
 
 /**
@@ -58,8 +59,9 @@ public interface PressureService {
 	/**
 	 * 
 	 * @param fileName The file's name to read
+	 * @throws DateFormatException 
 	 * @throws FileNotFoundException, IOExcepton, Exception
 	 */
-	public Pressure readJSON(String fileName,String init,String last);
+	public Pressure readJSON(String fileName,String init,String last) throws DateFormatException;
 
 }
