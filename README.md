@@ -7,7 +7,7 @@ quali pressione minima, massima, differenza tra le due e la media, in un determi
 precedentemente scelte.
 
 A scopo dimostrativo, durante il periodo di sviluppo e testing dell'applicazione sono stati raccolti i dati di varie città, tra cui Milano, Tokyo, Londra, Parigi e New York. 
-Il salvataggio è avvenuto in diversi giorni, ad esempio il 16/12/21, 17/12/21 ma non è assicurata la totale copertura delle fasce orarie, per cui, nel caso di inserimento di
+Il salvataggio è avvenuto in diversi giorni, ad esempio il 16/12/21, 17/12/21, 18/12/21 e 19/12/21, ma non è assicurata la totale copertura delle fasce orarie, per cui, nel caso di inserimento di
 orari in cui non si sono verificate registrazioni di dati, avrete sempicemente dei valori pari a zero nelle statistiche richieste.
 Questi dati sono stati analizzati e salvati in file JSON locali per poi essere stati utilizzati per calcolare le varie statistiche richieste.
 
@@ -254,7 +254,13 @@ Infine, per la differenza tra la pressione massima e minima, si è trattato di i
 
 # Come si usa
 Clonando questa repository sul vostro computer e importando nell'IDE Eclipse il progetto PressureChecker sarete subito pronti a partire: infatti, nel pacchetto scaricato, oltre all'applicativo, sono già presenti i file di configurazione predefiniti e il file di database contenente un cospicuo set di campioni su cui fare le prove. Una volta aperto Eclipse, per avviare il programma, basta selezionare PressureCheckerApplication nel proprio package explorer e dare il comando Run as -> Spring Boot App. L'avvio dell'applicazione è riconoscibile dalla comparsa del logo di Spring e di molte righe di informazioni scritte in formato logging. L'applicativo espone i propri Endpoint sulla rete interna all'indirizzo localhost, sulla porta 8080 dove, se tutto è stato lanciato in modo corretto, potrete accertarvi della partenza del server Tomcat. Per usufruire delle  funzionalità potete collegarvi alle rotte messe a disposizione con un'applicazione come Postman.                                                                                
-***Metodo di utilizzo degli endpoint***                                                                                                                                         
+***Metodo di utilizzo degli endpoint***    
+- *localhost:8080/save*                                                                                                                                                       
+Utilizzando come parametro il nome di una città, consente di salvare in locale, un file JSON con tutti i valori di pressioni aggiornati ogni 30 minuti. Questo è il file che viene poi utilizzato per calcolare le statistiche e così restituire i valori richiesti. Nel caso di immissione giusta dei parametri, vedrete restituirvi un messaggio del genere: "File creato/aggiornato con successo", ad indicare la riuscita creazione/aggiornamento del file. Ecco un esempio:
+
+
+
+
 - *localhost:8080/compare*                                                                                                                                                      
 Vi mostrerà le statistiche calcolate per le due città passate come parametro, ecco un esempio(ho passato come città Milan e New York nei giorni 16/12/2021 13:43:12 e 17/12/2021 17:15:54:                                                                                  
 ```
@@ -279,7 +285,7 @@ Vi mostrerà le statistiche calcolate per le due città passate come parametro, 
 ```
 
 - *localhost:8080/getAllPressure*                                                                                                                                               
-Otterrete una lista di tutte le misure rilevate/salvate con le rispettive date e orari in cui sono avvenute (nell'esempio ho considerato come parametr/cittò Paris, riportando solo alcune delle numerose rilevazioni)                                                                                                                                                                                                          
+Otterrete una lista di tutte le misure rilevate/salvate con le rispettive date e orari in cui sono avvenute (nell'esempio ho considerato come parametro/città Paris, riportando solo alcune delle numerose rilevazioni)                                                                                                                                                                                                          
 ```
 {
     "Statistics": {
@@ -393,7 +399,7 @@ Otterrete una lista di tutte le misure rilevate/salvate con le rispettive date e
 
 - *localhost:80807getCity*                                                                                                                                                    
 In questo caso, passando come parametro una qualsiasi città, riceverete alcune informazioni su di essa, come nome, id, nazione e, inoltre, tutti i valori di pressione,
-massime, minime, medie e differenza, che si sono verificate                                                                                                                     
+massime, minime, medie e differenza, che si sono verificate (nel mio esempio, il parametro passato è stato Tokyo)                                                                                                                                                                               
 ```
 {
     "Country": "JP",
