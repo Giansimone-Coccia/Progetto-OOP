@@ -101,8 +101,7 @@ Per prima cosa, bisogna scegliere due diverse città di cui si vogliano calcolar
 2. *Salvataggio*                                                                                                                                                            
 Scelte le due città, queste vengono "sottoposte" ad una fase di salvataggio in cui, tramite la chiamata "GET /save", inizia un processo di salvataggio dei
 dati da Postman su un file locale. Questo salvataggio viene eseguito ogni ora, utilizzando la libreria "Timer" di Java. Inoltre tra i vari valori che abbiamo deciso di
-salvare, abbiamo considerato il tempo, indicato come 'dt' nel file JSON riportato precedentemente e il valore della pressione 'pressure', così da semplificare poi la successiva lettura del file locale per il calcolo delle statistiche. Un esempio del file che viene salvato in locale:                                                                                                  
-
+salvare, abbiamo considerato il tempo, indicato come 'dt' nel file JSON riportato precedentemente e il valore della pressione 'pressure', così da semplificare poi la successiva lettura del file locale per il calcolo delle statistiche. Un esempio del file che viene salvato in locale:                                                                                                 
 ![](https://github.com/Walter-Di-Sabatino/ProgettoEsameCocciaDiSabatinoGennaio2022/blob/Main/fileSaved.png)
 
 3. *Lettura e calcolo statistiche*                                                                                                                                             
@@ -111,10 +110,7 @@ vengono utilizzati per calcolare le varie statistiche, nel nostro caso la pressi
 4. *Compare*                                                                                                                                                                
 Avute le statistiche per ogni città, è possibile effettuare una chiamata "GET /compare" passando come parametro il nome delle due città, l'istante iniziale della ricerca e
 l'istante finale, questi ultimi sono rappresentati nel file con 'dt' in secondi, ovvero tutti i secondi trascorsi dal 1 Gennaio 1970(Epoch), per cui, nel momento
-in cui l'utente passa come parametri le date e i rispettivi orari, abbiamo dovuto effettuare tramite alcuni metodi, la conversione da data in secondi per effettuare il
-matching. Effettuata questa chiamata, si vede restituire per ogni città, il valore minimo, massimo, la differenza tra i due e la media di tutti i valori salvati, così da poter
-avere una visuale più chiara su quale tra le due città ha registrato valori maggiori, minori ecc... E' bene ricordare che, in caso di inserimento di date errate, come ad esempio nel caso in cui la data iniziale risulta posticipata rispetto alla data finale, o anche per errori legati al formato, questi ultimi vengono gestiti correttamente mostrando un messaggio di errore all'utente.                                                                                                                                                 
-Questo è un esempio del JSON restituito:                                                                                                                                       
+in cui l'utente passa come parametri le date e i rispettivi orari nei formati dd/MM/yyyy oppure dd/MM/yyyy HH:mm:ss, abbiamo dovuto effettuare tramite alcuni metodi, la conversione da data in secondi per effettuare il matching. Effettuata questa chiamata, si vede restituire per ogni città, il valore minimo, massimo, la differenza tra i due e la media di tutti i valori salvati, così da poter avere una visuale più chiara su quale tra le due città ha registrato valori maggiori, minori ecc... E' bene ricordare che, in caso di inserimento di date errate, come ad esempio nel caso in cui la data iniziale risulta posticipata rispetto alla data finale, o anche per errori legati al formato, questi ultimi vengono gestiti correttamente mostrando un messaggio di errore all'utente.                                                                                                  Questo è un esempio del JSON restituito:                                                                                                                                       
 
 ```
 {
@@ -239,7 +235,7 @@ Questo è un esempio di file JSON che si ottiene(riporto solo parte del file JSO
 ## Rotte disponibili
 |      Rotta        |  Metodo | Parametri                                            |       Funzione                                                       |
 |-------------------|---------|------------------------------------------------------|----------------------------------------------------------------------|
-|/save              |GET      |Nome città                                            |Salva il file JSON della città restituito da Postman                  |
+|/save              |GET      |Nome della città                                      |Salva il file JSON della città restituito da Postman                  |
 |/compare           |GET      |Nomi delle due città, istante iniziale, istante finale|Compara le statistiche calcolate delle due città                      |
 |/getAllPressure    |GET      |Nome della città                                      |Restituisce tutti i valori delle pressioni registrate per quella città|
 |/getCity           |GET      |Nome della città                                      |Resitutisce tutti i valori utilizzati nell'applicativo per la città   |
