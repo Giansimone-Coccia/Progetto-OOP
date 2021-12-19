@@ -27,12 +27,7 @@ import com.Pressure.model.City;
 import com.Pressure.model.Pressure;
 import com.Pressure.model.PressureAndTime;
 
-<<<<<<< HEAD
-import Exception.DateIOExeption;
-=======
 import Exception.DateFormatException;
-import Exception.DateIOException;
->>>>>>> ad729cad2ba6487efe1ef283a7b007d924dedf79
 import Exception.VectorNull;
 import Utilities.DateConverter;
 
