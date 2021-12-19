@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.Pressure.service.PressureServiceImpl;
 
+import Exception.DateChronologyException;
 import Exception.DateFormatException;
 import Statistics.CityCompare;
 import Statistics.ShowAllPressure;
@@ -62,9 +63,10 @@ public class PressureController {
 	 * @param last The final instant time
 	 * @return The comparison in terms of pressure's stats beetween the two cities choosen
 	 * @throws DateFormatException 
+	 * @throws DateChronologyException 
 	 */
 	@GetMapping("/compare")
-	public ResponseEntity<Object> compareStats (@RequestParam("city1") String name1, @RequestParam("city2") String name2, @RequestParam("timeInit") String in, @RequestParam("endTime") String last) throws DateFormatException{
+	public ResponseEntity<Object> compareStats (@RequestParam("city1") String name1, @RequestParam("city2") String name2, @RequestParam("timeInit") String in, @RequestParam("endTime") String last) throws DateFormatException, DateChronologyException{
 		CityCompare comp = new CityCompare();
 		return new ResponseEntity<>(comp.compare(name1, name2, in, last), HttpStatus.OK);
 	}

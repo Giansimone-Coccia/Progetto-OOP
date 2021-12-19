@@ -1,1 +1,1 @@
-memberSearchIndex = [{"p":"com.Pressure.PressureChecker","c":"PressureCheckerApplication","l":"main(String[])","u":"main(java.lang.String[])"},{"p":"com.Pressure.PressureChecker","c":"PressureCheckerApplication","l":"PressureCheckerApplication()","u":"%3Cinit%3E()"}];updateSearchResults();
+memberSearchIndex = [{"p":"Statistics","c":"CityCompare","l":"CityCompare()","u":"%3Cinit%3E()"},{"p":"Statistics","c":"CityCompare","l":"compare(String, String, String, String)","u":"compare(java.lang.String,java.lang.String,java.lang.String,java.lang.String)"}];updateSearchResults();

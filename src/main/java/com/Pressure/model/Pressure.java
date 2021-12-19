@@ -40,7 +40,7 @@ public class Pressure implements Value{
 	
 	/**
 	 * 
-	 * @return All pressure
+	 * @return All pressures' value
 	 */
 	public Vector<Long> getPressureVector() {
 		return this.pressure;

@@ -6,7 +6,9 @@ Il progetto implementa un servizio meteo che, raccogliendo le informazioni meteo
 quali pressione minima, massima, differenza tra le due e la media, in un determinato periodo di tempo scelto, così da poter confrontare i diversi valori ottenuti nelle due città
 precedentemente scelte.
 
-A scopo dimostrativo, durante il periodo di sviluppo e testing dell'applicazione sono stati raccolti i dati di varie città, tra cui Milano, Roma, Londra, Parigi e New York. 
+A scopo dimostrativo, durante il periodo di sviluppo e testing dell'applicazione sono stati raccolti i dati di varie città, tra cui Milano, Tokyo, Londra, Parigi e New York. 
+Il salvataggio è avvenuto in diversi giorni, ad esempio il 16/12/21, 17/12/21 ma non è assicurata la totale copertura delle fasce orarie, per cui, nel caso di inserimento di
+orari in cui non si sono verificate registrazioni di dati, avrete sempicemente dei valori pari a zero nelle statistiche richieste.
 Questi dati sono stati analizzati e salvati in file JSON locali per poi essere stati utilizzati per calcolare le varie statistiche richieste.
 
 La chiamata API di OpenWeather utilizzata nel nostro progetto è la seguente:                                                                                                  
@@ -138,37 +140,101 @@ Questo è un esempio del JSON restituito:
 Inoltre, affinchè sia possibile accertarsi dei reali valori di media, pressione minima, massima e differenza tra le due, abbiamo deciso di aggiungere anche una rotta che
 restituisca tutti i valori di pressione registrati per quella città. La rotta in questione si richiama tramite il metodo "GET /getAllPressure" e, passando come parametro
 il nome della città, si ottiene la lista di tutte le pressioni, ordinate anche per data e ora.
-Questo è un esempio di file JSON che si ottiene:                                                                                                                              
+Questo è un esempio di file JSON che si ottiene(riporto solo parte del file JSON per motivi di lunghezza):                                                                                                                                                                                                    
 ```
 {
-    "info n.5": {
-        "date": "16/12/2021 14:29:19",
-        "pressure": 1025
-    },
-    "info n.4": {
-        "date": "16/12/2021 14:29:19",
-        "pressure": 1025
-    },
-    "info n.3": {
-        "date": "16/12/2021 14:29:19",
-        "pressure": 1025
-    },
-    "info n.2": {
-        "date": "16/12/2021 14:29:19",
-        "pressure": 1025
-    },
-    "info n.1": {
-        "date": "16/12/2021 14:29:19",
-        "pressure": 1025
-    },
     "Statistics": {
-        "Differenze di pressione totale": 0,
-        "Valore di pressione minima totale": 1025,
-        "Valore di pressione massima totale": 1025,
-        "Valore di pressione medi totale": 1025.0
-    }
-}
-```
+        "Differenze di pressione totale": 3,
+        "Numero totale di info raccolte": 73,
+        "Valore di pressione minima totale": 1039,
+        "Valore di pressione massima totale": 1042,
+        "Valore di pressione medi totale": 1039.0
+    },
+    "info": [
+        {
+            "info n.61": {
+                "date": "18/12/2021 12:06:57",
+                "pressure": 1040
+            },
+            "info n.60": {
+                "date": "18/12/2021 11:34:54",
+                "pressure": 1040
+            },
+            "info n.63": {
+                "date": "18/12/2021 13:07:00",
+                "pressure": 1039
+            },
+            "info n.62": {
+                "date": "18/12/2021 12:39:46",
+                "pressure": 1039
+            },
+            "info n.29": {
+                "date": "17/12/2021 18:53:21",
+                "pressure": 1040
+            },
+            "info n.28": {
+                "date": "17/12/2021 18:43:50",
+                "pressure": 1040
+            },
+            "info n.25": {
+                "date": "17/12/2021 18:13:31",
+                "pressure": 1040
+            },
+            "info n.69": {
+                "date": "18/12/2021 16:00:53",
+                "pressure": 1039
+            },
+            "info n.24": {
+                "date": "17/12/2021 18:05:11",
+                "pressure": 1040
+            },
+            "info n.68": {
+                "date": "18/12/2021 15:30:58",
+                "pressure": 1039
+            },
+            "info n.27": {
+                "date": "17/12/2021 18:36:10",
+                "pressure": 1040
+            },
+            "info n.26": {
+                "date": "17/12/2021 18:23:02",
+                "pressure": 1040
+            },
+            "info n.21": {
+                "date": "17/12/2021 17:32:19",
+                "pressure": 1040
+            },
+            "info n.65": {
+                "date": "18/12/2021 14:03:14",
+                "pressure": 1039
+            },
+            "info n.20": {
+                "date": "17/12/2021 17:23:38",
+                "pressure": 1040
+            },
+            "info n.64": {
+                "date": "18/12/2021 13:33:11",
+                "pressure": 1039
+            },
+            "info n.23": {
+                "date": "17/12/2021 17:55:04",
+                "pressure": 1040
+            },
+            "info n.67": {
+                "date": "18/12/2021 15:10:37",
+                "pressure": 1039
+            },
+            "info n.22": {
+                "date": "17/12/2021 17:43:56",
+                "pressure": 1040
+            },
+            "info n.66": {
+                "date": "18/12/2021 14:35:22",
+                "pressure": 1039
+            }
+        }
+ }
+ ```
 
 ## Rotte disponibili
 |      Rotta        |  Metodo | Parametri                                            |       Funzione                                                       |
@@ -190,58 +256,138 @@ Infine, per la differenza tra la pressione massima e minima, si è trattato di i
 Clonando questa repository sul vostro computer e importando nell'IDE Eclipse il progetto PressureChecker sarete subito pronti a partire: infatti, nel pacchetto scaricato, oltre all'applicativo, sono già presenti i file di configurazione predefiniti e il file di database contenente un cospicuo set di campioni su cui fare le prove. Una volta aperto Eclipse, per avviare il programma, basta selezionare PressureCheckerApplication nel proprio package explorer e dare il comando Run as -> Spring Boot App. L'avvio dell'applicazione è riconoscibile dalla comparsa del logo di Spring e di molte righe di informazioni scritte in formato logging. L'applicativo espone i propri Endpoint sulla rete interna all'indirizzo localhost, sulla porta 8080 dove, se tutto è stato lanciato in modo corretto, potrete accertarvi della partenza del server Tomcat. Per usufruire delle  funzionalità potete collegarvi alle rotte messe a disposizione con un'applicazione come Postman.                                                                                
 ***Metodo di utilizzo degli endpoint***                                                                                                                                         
 - *localhost:8080/compare*                                                                                                                                                      
-Vi mostrerà le statistiche calcolate per le due città passate come parametro, ecco un esempio:                                                                                  
+Vi mostrerà le statistiche calcolate per le due città passate come parametro, ecco un esempio(ho passato come città Milan e New York nei giorni 16/12/2021 13:43:12 e 17/12/2021 17:15:54:                                                                                  
 ```
 {
     "Valori di pressione minimi": {
-        "Valore di pressione minima Milan": 1026.0,
-        "Valore di pressione minima Rome": 1025.0
+        "Valore di pressione minima New York": 1012.0,
+        "Valore di pressione minima Milan": 1028.0
     },
     "Valori di pressione medi": {
-        "Valore di pressione medi Milan": 1028.0,
-        "Valore di pressione medi Rome": 1025.0
+        "Valore di pressione medi New York": 1016.0,
+        "Valore di pressione medi Milan": 1029.0
     },
     "Differenze di pressione": {
-        "Differenze di pressione Milan": 5.0,
-        "Differenze di pressione Rome": 0.0
+        "Differenze di pressione Milan": 4.0,
+        "Differenze di pressione New York": 7.0
     },
     "Valori di pressione massimi": {
-        "Valore di pressione massima Rome": 1025.0,
-        "Valore di pressione massima Milan": 1031.0
+        "Valore di pressione massima Milan": 1032.0,
+        "Valore di pressione massima New York": 1019.0
     }
 }
 ```
 
 - *localhost:8080/getAllPressure*                                                                                                                                               
-Otterrete una lista di tutte le misure rilevate/salvate con le rispettive date e orari in cui sono avvenute                                                                   
+Otterrete una lista di tutte le misure rilevate/salvate con le rispettive date e orari in cui sono avvenute (nell'esempio ho considerato come parametr/cittò Paris, riportando solo alcune delle numerose rilevazioni)                                                                                                                                                                                                          
 ```
 {
     "Statistics": {
-        "Differenze di pressione totale": 5,
-        "Valore di pressione minima totale": 1026,
-        "Valore di pressione massima totale": 1031,
-        "Valore di pressione medi totale": 1028.0
+        "Differenze di pressione totale": 3,
+        "Numero totale di info raccolte": 75,
+        "Valore di pressione minima totale": 1034,
+        "Valore di pressione massima totale": 1037,
+        "Valore di pressione medi totale": 1035.0
     },
-    "infos": [
+    "info": [
         {
-            "info n.4": {
-                "date": "16/12/2021 14:35:13",
-                "pressure": 1031
+            "info n.61": {
+                "date": "18/12/2021 11:36:16",
+                "pressure": 1035
             },
-            "info n.3": {
-                "date": "16/12/2021 14:35:12",
-                "pressure": 1028
+            "info n.60": {
+                "date": "18/12/2021 00:06:57",
+                "pressure": 1036
             },
-            "info n.2": {
-                "date": "16/12/2021 14:35:11",
-                "pressure": 1026
+            "info n.63": {
+                "date": "18/12/2021 12:37:15",
+                "pressure": 1035
             },
-            "info n.1": {
-                "date": "16/12/2021 14:35:10",
-                "pressure": 1028
+            "info n.62": {
+                "date": "18/12/2021 12:12:05",
+                "pressure": 1035
+            },
+            "info n.29": {
+                "date": "17/12/2021 18:59:27",
+                "pressure": 1035
+            },
+            "info n.28": {
+                "date": "17/12/2021 18:47:39",
+                "pressure": 1035
+            },
+            "info n.25": {
+                "date": "17/12/2021 18:06:38",
+                "pressure": 1035
+            },
+            "info n.69": {
+                "date": "18/12/2021 15:34:22",
+                "pressure": 1034
+            },
+            "info n.24": {
+                "date": "17/12/2021 17:58:04",
+                "pressure": 1035
+            },
+            "info n.68": {
+                "date": "18/12/2021 15:08:16",
+                "pressure": 1034
+            },
+            "info n.27": {
+                "date": "17/12/2021 18:28:50",
+                "pressure": 1035
+            },
+            "info n.26": {
+                "date": "17/12/2021 18:28:50",
+                "pressure": 1035
+            },
+            "info n.21": {
+                "date": "17/12/2021 17:37:21",
+                "pressure": 1035
+            },
+            "info n.65": {
+                "date": "18/12/2021 13:38:24",
+                "pressure": 1035
+            },
+            "info n.20": {
+                "date": "17/12/2021 17:27:10",
+                "pressure": 1035
+            },
+            "info n.64": {
+                "date": "18/12/2021 13:10:01",
+                "pressure": 1035
+            },
+            "info n.23": {
+                "date": "17/12/2021 17:58:04",
+                "pressure": 1035
+            },
+            "info n.67": {
+                "date": "18/12/2021 14:36:39",
+                "pressure": 1034
+            },
+            "info n.22": {
+                "date": "17/12/2021 17:47:31",
+                "pressure": 1035
+            },
+            "info n.66": {
+                "date": "18/12/2021 14:05:07",
+                "pressure": 1034
+            },
+            "info n.50": {
+                "date": "17/12/2021 22:22:47",
+                "pressure": 1035
+            },
+            "info n.52": {
+                "date": "17/12/2021 22:44:35",
+                "pressure": 1036
+            },
+            "info n.51": {
+                "date": "17/12/2021 22:34:25",
+                "pressure": 1035
+            },
+            "info n.18": {
+                "date": "17/12/2021 16:56:00",
+                "pressure": 1035
             }
         }
-    ]
 }
 ```
 

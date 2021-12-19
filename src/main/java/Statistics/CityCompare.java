@@ -2,14 +2,17 @@ package Statistics;
 
 import org.json.simple.JSONObject;
 
+
 import com.Pressure.model.Pressure;
 import com.Pressure.service.PressureServiceImpl;
 
+import Utilities.DateConverter;
+import Exception.DateChronologyException;
 import Exception.DateFormatException;
 
 /**
  * Classe utilizzata per comparare le statistiche tra due città
- * @author Giansimone&Walter
+ *@author Giasimone&Walter
  *
  */
 public class CityCompare {
@@ -21,6 +24,7 @@ public class CityCompare {
 	
 	Pressure press = new Pressure();
 	PressureServiceImpl pressService = new PressureServiceImpl();
+	DateConverter converter = new DateConverter();
 	
 	/**
 	 * 
@@ -29,10 +33,14 @@ public class CityCompare {
 	 * @param init The initial instant time for calculating stats
 	 * @param last The final instant time for calculating stats
 	 * @return The JSONObject with right values
-	 * @throws DateFormatException 
+	 * @throws DateFormatException for date format error
+	 * @throws DateChronologyException for date chronological error 
 	 */
 	@SuppressWarnings("unchecked")
-	public JSONObject compare(String name1, String name2, String init, String last) throws DateFormatException {
+	public JSONObject compare(String name1, String name2, String init, String last) throws DateFormatException, DateChronologyException {
+		
+		if(converter.dateToSeconds(init) > converter.dateToSeconds(last)) throw new DateChronologyException("Immissione cronologica delle date errato");
+		
 		Pressure p1;
 		Pressure p2;
 		p1 = pressService.readJSON("allData."+name1+".json", init, last);

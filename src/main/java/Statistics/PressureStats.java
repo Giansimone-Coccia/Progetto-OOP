@@ -12,7 +12,7 @@ public class PressureStats {
 
 	/**
 	 * 
-	 * @param pressure The pressure
+	 * @param pressure The pressure max value
 	 * @return The pressure's max value
 	 */
 	public Long getMaxValue(Vector<Long> pressure) {
@@ -28,7 +28,7 @@ public class PressureStats {
 	
 	/**
 	 * 
-	 * @param pressure The pressure
+	 * @param pressure The pressure min value
 	 * @return The pressure's minimum value
 	 */
 	public Long getMinValue(Vector<Long> pressure) {
@@ -44,7 +44,7 @@ public class PressureStats {
 	
 	/**
 	 * 
-	 * @param pressure The pressure
+	 * @param pressure The pressures's values
 	 * @return The pressure's medium value
 	 */
 	public Long getMedValue(Vector<Long> pressure) {
