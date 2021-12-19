@@ -7,7 +7,7 @@ quali pressione minima, massima, differenza tra le due e la media, in un determi
 precedentemente scelte.
 
 A scopo dimostrativo, durante il periodo di sviluppo e testing dell'applicazione sono stati raccolti i dati di varie città, tra cui Milano, Tokyo, Londra, Parigi e New York. 
-Il salvataggio è avvenuto in diversi giorni, ad esempio il 16/12/21, 17/12/21 ma non è assicurata la totale copertura delle fasce orarie, per cui, nel caso di inserimento di
+Il salvataggio è avvenuto in diversi giorni, ad esempio il 16/12/21, 17/12/21, 18/12/21 e 19/12/21, ma non è assicurata la totale copertura delle fasce orarie, per cui, nel caso di inserimento di
 orari in cui non si sono verificate registrazioni di dati, avrete sempicemente dei valori pari a zero nelle statistiche richieste.
 Questi dati sono stati analizzati e salvati in file JSON locali per poi essere stati utilizzati per calcolare le varie statistiche richieste.
 
@@ -101,7 +101,7 @@ Per prima cosa, bisogna scegliere due diverse città di cui si vogliano calcolar
 2. *Salvataggio*                                                                                                                                                            
 Scelte le due città, queste vengono "sottoposte" ad una fase di salvataggio in cui, tramite la chiamata "GET /save", inizia un processo di salvataggio dei
 dati da Postman su un file locale. Questo salvataggio viene eseguito ogni ora, utilizzando la libreria "Timer" di Java. Inoltre tra i vari valori che abbiamo deciso di
-salvare, abbiamo considerato il tempo, indicato come 'dt' nel file JSON riportato precedentemente e il valore della pressione 'pressure', così da semplificare poi la successiva lettura del file locale per il calcolo delle statistiche. Un esempio del file che viene salvato in locale:                                                                                                  
+salvare, abbiamo considerato il tempo, indicato come 'dt' nel file JSON riportato precedentemente e il valore della pressione 'pressure', così da semplificare poi la successiva lettura del file locale per il calcolo delle statistiche. Un esempio del file che viene salvato in locale:                                                                        
 
 ![](https://github.com/Walter-Di-Sabatino/ProgettoEsameCocciaDiSabatinoGennaio2022/blob/Main/fileSaved.png)
 
@@ -111,10 +111,7 @@ vengono utilizzati per calcolare le varie statistiche, nel nostro caso la pressi
 4. *Compare*                                                                                                                                                                
 Avute le statistiche per ogni città, è possibile effettuare una chiamata "GET /compare" passando come parametro il nome delle due città, l'istante iniziale della ricerca e
 l'istante finale, questi ultimi sono rappresentati nel file con 'dt' in secondi, ovvero tutti i secondi trascorsi dal 1 Gennaio 1970(Epoch), per cui, nel momento
-in cui l'utente passa come parametri le date e i rispettivi orari, abbiamo dovuto effettuare tramite alcuni metodi, la conversione da data in secondi per effettuare il
-matching. Effettuata questa chiamata, si vede restituire per ogni città, il valore minimo, massimo, la differenza tra i due e la media di tutti i valori salvati, così da poter
-avere una visuale più chiara su quale tra le due città ha registrato valori maggiori, minori ecc...
-Questo è un esempio del JSON restituito:                                                                                                                                       
+in cui l'utente passa come parametri le date e i rispettivi orari nei formati dd/MM/yyyy oppure dd/MM/yyyy HH:mm:ss, abbiamo dovuto effettuare tramite alcuni metodi, la conversione da data in secondi per effettuare il matching. Effettuata questa chiamata, si vede restituire per ogni città, il valore minimo, massimo, la differenza tra i due e la media di tutti i valori salvati, così da poter avere una visuale più chiara su quale tra le due città ha registrato valori maggiori, minori ecc... E' bene ricordare che, in caso di inserimento di date errate, come ad esempio nel caso in cui la data iniziale risulta posticipata rispetto alla data finale, o anche per errori legati al formato, questi ultimi vengono gestiti correttamente mostrando un messaggio di errore all'utente.                                                                                                  Questo è un esempio del JSON restituito:                                                                                                                                       
 
 ```
 {
@@ -239,7 +236,7 @@ Questo è un esempio di file JSON che si ottiene(riporto solo parte del file JSO
 ## Rotte disponibili
 |      Rotta        |  Metodo | Parametri                                            |       Funzione                                                       |
 |-------------------|---------|------------------------------------------------------|----------------------------------------------------------------------|
-|/save              |GET      |Nome città                                            |Salva il file JSON della città restituito da Postman                  |
+|/save              |GET      |Nome della città                                      |Salva il file JSON della città restituito da Postman                  |
 |/compare           |GET      |Nomi delle due città, istante iniziale, istante finale|Compara le statistiche calcolate delle due città                      |
 |/getAllPressure    |GET      |Nome della città                                      |Restituisce tutti i valori delle pressioni registrate per quella città|
 |/getCity           |GET      |Nome della città                                      |Resitutisce tutti i valori utilizzati nell'applicativo per la città   |
@@ -254,9 +251,19 @@ Infine, per la differenza tra la pressione massima e minima, si è trattato di i
 
 # Come si usa
 Clonando questa repository sul vostro computer e importando nell'IDE Eclipse il progetto PressureChecker sarete subito pronti a partire: infatti, nel pacchetto scaricato, oltre all'applicativo, sono già presenti i file di configurazione predefiniti e il file di database contenente un cospicuo set di campioni su cui fare le prove. Una volta aperto Eclipse, per avviare il programma, basta selezionare PressureCheckerApplication nel proprio package explorer e dare il comando Run as -> Spring Boot App. L'avvio dell'applicazione è riconoscibile dalla comparsa del logo di Spring e di molte righe di informazioni scritte in formato logging. L'applicativo espone i propri Endpoint sulla rete interna all'indirizzo localhost, sulla porta 8080 dove, se tutto è stato lanciato in modo corretto, potrete accertarvi della partenza del server Tomcat. Per usufruire delle  funzionalità potete collegarvi alle rotte messe a disposizione con un'applicazione come Postman.                                                                                
-***Metodo di utilizzo degli endpoint***                                                                                                                                         
+***Metodo di utilizzo degli endpoint***    
+- *localhost:8080/save*                                                                                                                                                       
+Utilizzando come parametro il nome di una città, consente di salvare in locale, un file JSON con tutti i valori di pressioni aggiornati ogni 30 minuti. Questo è il file che viene poi utilizzato per calcolare le statistiche e così restituire i valori richiesti. Nel caso di immissione giusta dei parametri, vedrete restituirvi un messaggio del genere: "File creato/aggiornato con successo", ad indicare la riuscita creazione/aggiornamento del file. Ecco un esempio(il cui parametro passato come città è Tokyo):                 
+
+![](https://github.com/Walter-Di-Sabatino/ProgettoEsameCocciaDiSabatinoGennaio2022/blob/Main/saveTokyo.png)
+
 - *localhost:8080/compare*                                                                                                                                                      
 Vi mostrerà le statistiche calcolate per le due città passate come parametro, ecco un esempio(ho passato come città Milan e New York nei giorni 16/12/2021 13:43:12 e 17/12/2021 17:15:54:                                                                                  
+
+![](https://github.com/Walter-Di-Sabatino/ProgettoEsameCocciaDiSabatinoGennaio2022/blob/Main/chiamataCompare.png)                                                               
+
+
+E questo è ciò che restituisce:                                                                                                                                               
 ```
 {
     "Valori di pressione minimi": {
@@ -279,7 +286,10 @@ Vi mostrerà le statistiche calcolate per le due città passate come parametro, 
 ```
 
 - *localhost:8080/getAllPressure*                                                                                                                                               
-Otterrete una lista di tutte le misure rilevate/salvate con le rispettive date e orari in cui sono avvenute (nell'esempio ho considerato come parametr/cittò Paris, riportando solo alcune delle numerose rilevazioni)                                                                                                                                                                                                          
+Otterrete una lista di tutte le misure rilevate/salvate con le rispettive date e orari in cui sono avvenute (nell'esempio ho considerato come parametro/città Paris, riportando solo alcune delle numerose rilevazioni)                                                                                                                                                                                                          
+![](https://github.com/Walter-Di-Sabatino/ProgettoEsameCocciaDiSabatinoGennaio2022/blob/Main/getAllPressureParis.png)                                                           
+
+Questo è ciò che viene restituito:                                                                                                                                              
 ```
 {
     "Statistics": {
@@ -393,7 +403,11 @@ Otterrete una lista di tutte le misure rilevate/salvate con le rispettive date e
 
 - *localhost:80807getCity*                                                                                                                                                    
 In questo caso, passando come parametro una qualsiasi città, riceverete alcune informazioni su di essa, come nome, id, nazione e, inoltre, tutti i valori di pressione,
-massime, minime, medie e differenza, che si sono verificate                                                                                                                     
+massime, minime, medie e differenza, che si sono verificate (nel mio esempio, il parametro passato è stato Tokyo)                                                                 
+
+![](https://github.com/Walter-Di-Sabatino/ProgettoEsameCocciaDiSabatinoGennaio2022/blob/Main/getCityTokyo.png)                                                                  
+
+Di seguito, ciò che restituisce:                                                                                                                                                
 ```
 {
     "Country": "JP",
