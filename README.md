@@ -101,7 +101,8 @@ Per prima cosa, bisogna scegliere due diverse città di cui si vogliano calcolar
 2. *Salvataggio*                                                                                                                                                            
 Scelte le due città, queste vengono "sottoposte" ad una fase di salvataggio in cui, tramite la chiamata "GET /save", inizia un processo di salvataggio dei
 dati da Postman su un file locale. Questo salvataggio viene eseguito ogni ora, utilizzando la libreria "Timer" di Java. Inoltre tra i vari valori che abbiamo deciso di
-salvare, abbiamo considerato il tempo, indicato come 'dt' nel file JSON riportato precedentemente e il valore della pressione 'pressure', così da semplificare poi la successiva lettura del file locale per il calcolo delle statistiche. Un esempio del file che viene salvato in locale:                                                                                                 
+salvare, abbiamo considerato il tempo, indicato come 'dt' nel file JSON riportato precedentemente e il valore della pressione 'pressure', così da semplificare poi la successiva lettura del file locale per il calcolo delle statistiche. Un esempio del file che viene salvato in locale:                                                                        
+
 ![](https://github.com/Walter-Di-Sabatino/ProgettoEsameCocciaDiSabatinoGennaio2022/blob/Main/fileSaved.png)
 
 3. *Lettura e calcolo statistiche*                                                                                                                                             
