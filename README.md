@@ -16,7 +16,7 @@ http://api.openweathermap.org/data/2.5/weather?q={cityname}&appid={APIkey}
   - *cityname* è il nome della città scelta
   - *APIkey* è la chiave di accesso al servizio
     - Ad esempio richiamando attraverso il metodo HTTP GET la seguente API:                                                                                                     
-    http://api.openweathermap.org/data/2.5/weather?q=Milan&appid=10b2f29f8e21bd179b27ff96923bca4a otteniamo il seguente JSON:
+    http://api.openweathermap.org/data/2.5/weather?q=Milan&appid=10b2f29f8e21bd179b27ff96923bca4a otteniamo il seguente JSON:                                                 
         
     ```
     {
