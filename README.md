@@ -7,8 +7,7 @@ quali pressione minima, massima, differenza tra le due e la media, in un determi
 precedentemente scelte.
 
 A scopo dimostrativo, durante il periodo di sviluppo e testing dell'applicazione sono stati raccolti i dati di varie città, tra cui Milano, Tokyo, Londra, Parigi e New York. 
-Il salvataggio è avvenuto in diversi giorni, ad esempio il 16/12/21, 17/12/21, 18/12/21 e 19/12/21, ma non è assicurata la totale copertura delle fasce orarie, per cui, nel caso di inserimento di
-orari in cui non si sono verificate registrazioni di dati, avrete sempicemente dei valori pari a zero nelle statistiche richieste.
+Il salvataggio è avvenuto in diversi giorni, ad esempio il 17/12/2021, 18/12/2021, 19/12/2021 e 20/12/2021, ma non è assicurata la totale copertura delle fasce orarie, per cui, nel caso di inserimento di orari in cui non si sono verificate registrazioni di dati, avrete semplicemente dei valori pari a zero nelle statistiche richieste.
 Questi dati sono stati analizzati e salvati in file JSON locali per poi essere stati utilizzati per calcolare le varie statistiche richieste.
 
 La chiamata API di OpenWeather utilizzata nel nostro progetto è la seguente:                                                                                                  
