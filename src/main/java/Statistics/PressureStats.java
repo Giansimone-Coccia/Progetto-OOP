@@ -60,7 +60,7 @@ public class PressureStats {
 	 * 
 	 * @param value1 The first value
 	 * @param value2 The second value
-	 * @return The difference beetwwen these two values
+	 * @return The difference between these two values
 	 */
 	public Long getDiffValue(long value1,long value2) {
 

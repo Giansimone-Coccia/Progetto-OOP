@@ -35,13 +35,13 @@ class PressureCityTest {
 	
 	@Test
 	@DisplayName("Test seconda città")
-	//Le righe ignorate sono i valori esatti, utilizzando quelle
-	//il test termina correttamente
+	//Le righe ignorate sono i valori errati, utilizzando quelle
+	//il test termina termina con "failures"
 	void testCity2() {
-		assertEquals("Berlino", city1.getName());
-		//assertEquals("Tokyo", city2.getName());
-		//assertEquals(23104l, city2.getId());
-		assertEquals(564655, city2.getId());
+		//assertEquals("Berlino", city1.getName());
+		assertEquals("Tokyo", city2.getName());
+		assertEquals(23104l, city2.getId());
+		//assertEquals(564655, city2.getId());
 		assertEquals(19203.5, city2.getLon());
 		assertEquals(13947.6, city2.getLat());
 	}

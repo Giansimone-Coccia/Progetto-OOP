@@ -20,7 +20,7 @@ class PressureStatsTest {
 	void setUp() throws Exception {
 		pressure = new Pressure();
 		pService = new PressureServiceImpl();
-		pressure = pService.readJSON("allData.Milan.json", "16/12/2021  13:30:00", "16/12/2021 19:43:58" );
+		pressure = pService.readJSON("allData.Milan.json", "17/12/2021 13:30:00", "17/12/2021 19:43:58" );
 	}
 
 	@AfterEach
@@ -29,19 +29,18 @@ class PressureStatsTest {
 
 	@Test
 	@DisplayName("Test sulle statistiche")
-	/*Le righe // le ho escluse per evidenziare il fatto che il test termina
-	 * correttamente, se le utilizziamo, notiamo che poi il test comporta
-	 * delle failures
+	/*Le righe // le ho escluse per evidenziare il fatto che il test in quel caso
+	 * non funziona, se le utilizziamo, notiamo che poi il test termina con "failures"
 	 */
 	void test() {
 		//assertEquals(1020, pressure.getValue_min());
-		assertEquals(1028, pressure.getValue_min());
 		//assertEquals(1021, pressure.getValue_max());
-		assertEquals(1028, pressure.getValue_max());
 		//assertEquals(1022, pressure.getValue_med());
-		assertEquals(1028, pressure.getValue_med());
 		//assertEquals(23, pressure.getValue_diff());
-		assertEquals(0, pressure.getValue_diff());
+		assertEquals(1025, pressure.getValue_min());
+		assertEquals(1029, pressure.getValue_max());
+		assertEquals(1027, pressure.getValue_med());
+		assertEquals(4, pressure.getValue_diff());
 	}
 
 }
