@@ -17,7 +17,6 @@ import java.util.TimerTask;
 import java.util.Vector;
 import java.io.FileWriter;
 
-import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 import org.json.simple.parser.JSONParser;
@@ -211,9 +210,10 @@ public class PressureServiceImpl implements PressureService{
 	 * the medium pressions' values
 	 * {@inheritDoc}
 	 * @throws DateFormatException 
+	 * @throws FileNotFoundException 
 	 */
 	@Override
-	public Pressure readJSON(String fileName,String init,String last) throws DateFormatException{
+	public Pressure readJSON(String fileName,String init,String last) throws DateFormatException, FileNotFoundException{
 		//TODO controlla tipi
 
 		DateConverter converter=new DateConverter();
@@ -237,8 +237,9 @@ public class PressureServiceImpl implements PressureService{
 					pressure.setValue((Long)obj.get("pressure"));
 			}
 		} catch(FileNotFoundException fnfE) {
-			System.out.println("File non trovato");
-			System.out.println(fnfE);
+			//System.out.println("File non trovato");
+			//System.out.println(fnfE);
+			throw new FileNotFoundException("File non trovato");//Throw necessario per visualizzazione su postman.
 		} catch(IOException ioE) {
 			System.out.println("Problema di I/O");
 			System.out.println(ioE);

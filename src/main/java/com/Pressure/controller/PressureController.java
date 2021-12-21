@@ -64,9 +64,10 @@ public class PressureController {
 	 * @return The comparison in terms of pressure's stats beetween the two cities choosen
 	 * @throws DateFormatException 
 	 * @throws DateChronologyException 
+	 * @throws FileNotFoundException 
 	 */
 	@GetMapping("/compare")
-	public ResponseEntity<Object> compareStats (@RequestParam("city1") String name1, @RequestParam("city2") String name2, @RequestParam("timeInit") String in, @RequestParam("endTime") String last) throws DateFormatException, DateChronologyException{
+	public ResponseEntity<Object> compareStats (@RequestParam("city1") String name1, @RequestParam("city2") String name2, @RequestParam("timeInit") String in, @RequestParam("endTime") String last) throws DateFormatException, DateChronologyException, FileNotFoundException{
 		CityCompare comp = new CityCompare();
 		return new ResponseEntity<>(comp.compare(name1, name2, in, last), HttpStatus.OK);
 	}
