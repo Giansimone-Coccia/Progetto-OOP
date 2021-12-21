@@ -9,6 +9,9 @@ import org.json.simple.JSONObject;
 import com.Pressure.model.PressureAndTime;
 import com.Pressure.service.PressureServiceImpl;
 
+import Exception.DateFormatException;
+import Utilities.DateConverter;
+
 /**
  * Classe che viene richiamata per mostrare tutti i valori di pressioni registrati per una città
  * @author Giasimone&Walter
@@ -23,15 +26,18 @@ public class ShowAllPressure {
 	 * 
 	 * @param cityName The city's name
 	 * @return The JSONObject
+	 * @throws DateFormatException 
 	 */
 	@SuppressWarnings("unchecked")
-	public JSONObject showAllPressure(String cityName){
+	public JSONObject showAllPressure(String cityName) throws DateFormatException{
 		
 		PressureAndTime p=pressService.readAll("allData."+cityName+".json");
 		
 		JSONObject objM = new JSONObject();
-		JSONObject objI = new JSONObject();
+		
 		JSONObject objS = new JSONObject();
+		
+		JSONArray objArray = new JSONArray();
 		
 	
 		objS.put("Numero totale di info raccolte", p.getPressureVector().size());
@@ -45,15 +51,19 @@ public class ShowAllPressure {
 		
 		Vector<Long> pressure=p.getPressureVector();
 		Vector<String> dates=p.getTimeVector();
+		DateConverter dateConverter=new DateConverter();
 		
 		for(int i=0;i<pressure.size() && i<dates.size();i++) {
 			JSONObject obj = new JSONObject();
+			obj.put("index",i+1);
 			obj.put("pressure",pressure.get(i));
 			obj.put("date", dates.get(i));
-			objI.put("info n."+(i+1),obj);
+			obj.put("unix time", dateConverter.dateToSeconds(dates.get(i)));
+			
+			objArray.add(obj);
 		}
 		
-		objM.put("info",objI);
+		objM.put("info",objArray);
 		
 		return objM;
 	}

@@ -85,9 +85,10 @@ public class PressureController {
 	 * 
 	 * @param nameCity The city'sname
 	 * @return All pressure's value registered for a city
+	 * @throws DateFormatException 
 	 */
 	@GetMapping("/getAllPressure")
-	public ResponseEntity<Object> getAllPressure(@RequestParam("city")String nameCity){
+	public ResponseEntity<Object> getAllPressure(@RequestParam("city")String nameCity) throws DateFormatException{
 		ShowAllPressure show = new ShowAllPressure ();
 		return new ResponseEntity<>((show.showAllPressure(nameCity)), HttpStatus.OK);
 	}
