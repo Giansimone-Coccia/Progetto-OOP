@@ -62,6 +62,6 @@ public interface PressureService {
 	 * @throws DateFormatException 
 	 * @throws FileNotFoundException, IOExcepton, Exception
 	 */
-	public Pressure readJSON(String fileName,String init,String last) throws DateFormatException;
+	public Pressure readJSON(String fileName,String init,String last) throws DateFormatException, FileNotFoundException;
 
 }

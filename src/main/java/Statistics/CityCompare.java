@@ -1,5 +1,7 @@
 package Statistics;
 
+import java.io.FileNotFoundException;
+
 import org.json.simple.JSONObject;
 
 
@@ -35,9 +37,10 @@ public class CityCompare {
 	 * @return The JSONObject with right values
 	 * @throws DateFormatException for date format error
 	 * @throws DateChronologyException for date chronological error 
+	 * @throws FileNotFoundException 
 	 */
 	@SuppressWarnings("unchecked")
-	public JSONObject compare(String name1, String name2, String init, String last) throws DateFormatException, DateChronologyException {
+	public JSONObject compare(String name1, String name2, String init, String last) throws DateFormatException, DateChronologyException, FileNotFoundException {
 		
 		if(converter.dateToSeconds(init) > converter.dateToSeconds(last)) throw new DateChronologyException("Immissione cronologica delle date errato");
 		
