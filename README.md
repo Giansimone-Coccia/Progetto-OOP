@@ -140,96 +140,99 @@ Questo è un esempio di file JSON che si ottiene(riporto solo parte del file JSO
 ```
 {
     "Statistics": {
-        "Differenze di pressione totale": 3,
-        "Numero totale di info raccolte": 73,
-        "Valore di pressione minima totale": 1039,
-        "Valore di pressione massima totale": 1042,
-        "Valore di pressione medi totale": 1039.0
+        "Differenze di pressione totale": 12,
+        "Numero totale di info raccolte": 171,
+        "Valore di pressione minima totale": 1025,
+        "Valore di pressione massima totale": 1037,
+        "Valore di pressione medi totale": 1031.0
     },
-    "info": [
-        {
-            "info n.61": {
-                "date": "18/12/2021 12:06:57",
-                "pressure": 1040
-            },
-            "info n.60": {
-                "date": "18/12/2021 11:34:54",
-                "pressure": 1040
-            },
-            "info n.63": {
-                "date": "18/12/2021 13:07:00",
-                "pressure": 1039
-            },
-            "info n.62": {
-                "date": "18/12/2021 12:39:46",
-                "pressure": 1039
-            },
-            "info n.29": {
-                "date": "17/12/2021 18:53:21",
-                "pressure": 1040
-            },
-            "info n.28": {
-                "date": "17/12/2021 18:43:50",
-                "pressure": 1040
-            },
-            "info n.25": {
-                "date": "17/12/2021 18:13:31",
-                "pressure": 1040
-            },
-            "info n.69": {
-                "date": "18/12/2021 16:00:53",
-                "pressure": 1039
-            },
-            "info n.24": {
-                "date": "17/12/2021 18:05:11",
-                "pressure": 1040
-            },
-            "info n.68": {
-                "date": "18/12/2021 15:30:58",
-                "pressure": 1039
-            },
-            "info n.27": {
-                "date": "17/12/2021 18:36:10",
-                "pressure": 1040
-            },
-            "info n.26": {
-                "date": "17/12/2021 18:23:02",
-                "pressure": 1040
-            },
-            "info n.21": {
-                "date": "17/12/2021 17:32:19",
-                "pressure": 1040
-            },
-            "info n.65": {
-                "date": "18/12/2021 14:03:14",
-                "pressure": 1039
-            },
-            "info n.20": {
-                "date": "17/12/2021 17:23:38",
-                "pressure": 1040
-            },
-            "info n.64": {
-                "date": "18/12/2021 13:33:11",
-                "pressure": 1039
-            },
-            "info n.23": {
-                "date": "17/12/2021 17:55:04",
-                "pressure": 1040
-            },
-            "info n.67": {
-                "date": "18/12/2021 15:10:37",
-                "pressure": 1039
-            },
-            "info n.22": {
-                "date": "17/12/2021 17:43:56",
-                "pressure": 1040
-            },
-            "info n.66": {
-                "date": "18/12/2021 14:35:22",
-                "pressure": 1039
-            }
+    "info": {
+        "info n.131": {
+            "date": "19/12/2021 19:47:31",
+            "pressure": 1028
+        },
+        "info n.130": {
+            "date": "19/12/2021 19:37:23",
+            "pressure": 1028
+        },
+        "info n.133": {
+            "date": "19/12/2021 20:15:34",
+            "pressure": 1028
+        },
+        "info n.132": {
+            "date": "19/12/2021 19:47:31",
+            "pressure": 1028
+        },
+        "info n.124": {
+            "date": "19/12/2021 18:37:57",
+            "pressure": 1029
+        },
+        "info n.123": {
+            "date": "19/12/2021 18:27:53",
+            "pressure": 1029
+        },
+        "info n.126": {
+            "date": "19/12/2021 18:56:47",
+            "pressure": 1029
+        },
+        "info n.125": {
+            "date": "19/12/2021 18:45:30",
+            "pressure": 1029
+        },
+        "info n.29": {
+            "date": "17/12/2021 18:59:27",
+            "pressure": 1035
+        },
+        "info n.128": {
+            "date": "19/12/2021 19:22:12",
+            "pressure": 1029
+        },
+        "info n.28": {
+            "date": "17/12/2021 18:47:39",
+            "pressure": 1035
+        },
+        "info n.127": {
+            "date": "19/12/2021 19:06:49",
+            "pressure": 1029
+        },
+        "info n.129": {
+            "date": "19/12/2021 19:22:12",
+            "pressure": 1029
+        },
+        "info n.25": {
+            "date": "17/12/2021 18:06:38",
+            "pressure": 1035
+        },
+        "info n.24": {
+            "date": "17/12/2021 17:58:04",
+            "pressure": 1035
+        },
+        "info n.27": {
+            "date": "17/12/2021 18:28:50",
+            "pressure": 1035
+        },
+        "info n.26": {
+            "date": "17/12/2021 18:28:50",
+            "pressure": 1035
+        },
+        "info n.21": {
+            "date": "17/12/2021 17:37:21",
+            "pressure": 1035
+        },
+        "info n.20": {
+            "date": "17/12/2021 17:27:10",
+            "pressure": 1035
+        },
+        "info n.23": {
+            "date": "17/12/2021 17:58:04",
+            "pressure": 1035
+        },
+        "info n.22": {
+            "date": "17/12/2021 17:47:31",
+            "pressure": 1035
         }
- }
+     }
+}
  ```
 
 ## Rotte disponibili
@@ -292,111 +295,98 @@ Questo è ciò che viene restituito:
 ```
 {
     "Statistics": {
-        "Differenze di pressione totale": 3,
-        "Numero totale di info raccolte": 75,
-        "Valore di pressione minima totale": 1034,
+        "Differenze di pressione totale": 12,
+        "Numero totale di info raccolte": 171,
+        "Valore di pressione minima totale": 1025,
         "Valore di pressione massima totale": 1037,
-        "Valore di pressione medi totale": 1035.0
+        "Valore di pressione medi totale": 1031.0
     },
-    "info": [
-        {
-            "info n.61": {
-                "date": "18/12/2021 11:36:16",
-                "pressure": 1035
-            },
-            "info n.60": {
-                "date": "18/12/2021 00:06:57",
-                "pressure": 1036
-            },
-            "info n.63": {
-                "date": "18/12/2021 12:37:15",
-                "pressure": 1035
-            },
-            "info n.62": {
-                "date": "18/12/2021 12:12:05",
-                "pressure": 1035
-            },
-            "info n.29": {
-                "date": "17/12/2021 18:59:27",
-                "pressure": 1035
-            },
-            "info n.28": {
-                "date": "17/12/2021 18:47:39",
-                "pressure": 1035
-            },
-            "info n.25": {
-                "date": "17/12/2021 18:06:38",
-                "pressure": 1035
-            },
-            "info n.69": {
-                "date": "18/12/2021 15:34:22",
-                "pressure": 1034
-            },
-            "info n.24": {
-                "date": "17/12/2021 17:58:04",
-                "pressure": 1035
-            },
-            "info n.68": {
-                "date": "18/12/2021 15:08:16",
-                "pressure": 1034
-            },
-            "info n.27": {
-                "date": "17/12/2021 18:28:50",
-                "pressure": 1035
-            },
-            "info n.26": {
-                "date": "17/12/2021 18:28:50",
-                "pressure": 1035
-            },
-            "info n.21": {
-                "date": "17/12/2021 17:37:21",
-                "pressure": 1035
-            },
-            "info n.65": {
-                "date": "18/12/2021 13:38:24",
-                "pressure": 1035
-            },
-            "info n.20": {
-                "date": "17/12/2021 17:27:10",
-                "pressure": 1035
-            },
-            "info n.64": {
-                "date": "18/12/2021 13:10:01",
-                "pressure": 1035
-            },
-            "info n.23": {
-                "date": "17/12/2021 17:58:04",
-                "pressure": 1035
-            },
-            "info n.67": {
-                "date": "18/12/2021 14:36:39",
-                "pressure": 1034
-            },
-            "info n.22": {
-                "date": "17/12/2021 17:47:31",
-                "pressure": 1035
-            },
-            "info n.66": {
-                "date": "18/12/2021 14:05:07",
-                "pressure": 1034
-            },
-            "info n.50": {
-                "date": "17/12/2021 22:22:47",
-                "pressure": 1035
-            },
-            "info n.52": {
-                "date": "17/12/2021 22:44:35",
-                "pressure": 1036
-            },
-            "info n.51": {
-                "date": "17/12/2021 22:34:25",
-                "pressure": 1035
-            },
-            "info n.18": {
-                "date": "17/12/2021 16:56:00",
-                "pressure": 1035
-            }
+    "info": {
+        "info n.131": {
+            "date": "19/12/2021 19:47:31",
+            "pressure": 1028
+        },
+        "info n.130": {
+            "date": "19/12/2021 19:37:23",
+            "pressure": 1028
+        },
+        "info n.133": {
+            "date": "19/12/2021 20:15:34",
+            "pressure": 1028
+        },
+        "info n.132": {
+            "date": "19/12/2021 19:47:31",
+            "pressure": 1028
+        },
+        "info n.124": {
+            "date": "19/12/2021 18:37:57",
+            "pressure": 1029
+        },
+        "info n.123": {
+            "date": "19/12/2021 18:27:53",
+            "pressure": 1029
+        },
+        "info n.126": {
+            "date": "19/12/2021 18:56:47",
+            "pressure": 1029
+        },
+        "info n.125": {
+            "date": "19/12/2021 18:45:30",
+            "pressure": 1029
+        },
+        "info n.29": {
+            "date": "17/12/2021 18:59:27",
+            "pressure": 1035
+        },
+        "info n.128": {
+            "date": "19/12/2021 19:22:12",
+            "pressure": 1029
+        },
+        "info n.28": {
+            "date": "17/12/2021 18:47:39",
+            "pressure": 1035
+        },
+        "info n.127": {
+            "date": "19/12/2021 19:06:49",
+            "pressure": 1029
+        },
+        "info n.129": {
+            "date": "19/12/2021 19:22:12",
+            "pressure": 1029
+        },
+        "info n.25": {
+            "date": "17/12/2021 18:06:38",
+            "pressure": 1035
+        },
+        "info n.24": {
+            "date": "17/12/2021 17:58:04",
+            "pressure": 1035
+        },
+        "info n.27": {
+            "date": "17/12/2021 18:28:50",
+            "pressure": 1035
+        },
+        "info n.26": {
+            "date": "17/12/2021 18:28:50",
+            "pressure": 1035
+        },
+        "info n.21": {
+            "date": "17/12/2021 17:37:21",
+            "pressure": 1035
+        },
+        "info n.20": {
+            "date": "17/12/2021 17:27:10",
+            "pressure": 1035
+        },
+        "info n.23": {
+            "date": "17/12/2021 17:58:04",
+            "pressure": 1035
+        },
+        "info n.22": {
+            "date": "17/12/2021 17:47:31",
+            "pressure": 1035
         }
+     }
 }
 ```
 
@@ -413,14 +403,12 @@ Di seguito, ciò che restituisce:
     "Lon": 139.6917,
     "City": "Tokyo",
     "Id": 1850144,
-    "Pressure_Data": [
-        {
-            "Pressure_med": 994.0,
-            "Pressure_diff": 0,
-            "Pressure_max": 994,
-            "Pressure_min": 994
-        }
-    ],
+    "Pressure_Data": {
+        "Pressure_med": 1010.0,
+        "Pressure_diff": 0,
+        "Pressure_max": 1010,
+        "Pressure_min": 1010
+    },
     "Lat": 35.6895
 }
 ```
