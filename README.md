@@ -321,7 +321,7 @@ Utilizzando come parametro il nome di una città(Value) che corrisponde alla Key
 - *localhost:8080/compare*                                                                                                                                                      
 Vi mostrerà le statistiche calcolate per le due città passate come parametro, nel lasso di tempo scelto(Key: "timeIniti", tempoiniziale, Key: "endTime", tempo finale). Ecco un esempio(ho passato come città Milan e New York nei giorni 18/12/2021 13:43:12 e 19/12/2021 17:15:54:                                                                                  
 
-![](https://github.com/Walter-Di-Sabatino/ProgettoEsameCocciaDiSabatinoGennaio2022/blob/Main/chiamataCompare.png)                                                               
+![](https://github.com/Walter-Di-Sabatino/ProgettoEsameCocciaDiSabatinoGennaio2022/blob/Main/chiamataCompareNew.png)                                                               
 
 
 E questo è ciò che restituisce:                                                                                                                                               
