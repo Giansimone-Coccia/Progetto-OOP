@@ -50,9 +50,8 @@ public class PressureStats {
 	public Long getMedValue(Vector<Long> pressure) {
 
 		long pressure_med=0;
-		for(int i=0;i<pressure.size();i++) {
-			pressure_med+=pressure.get(i);
-		}
+		for(Long press: pressure)
+			pressure_med+=press;
 
 		return pressure_med/pressure.size();
 	}
