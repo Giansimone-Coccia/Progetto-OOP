@@ -37,7 +37,7 @@ public class CityCompare {
 	 * @return The JSONObject with right values
 	 * @throws DateFormatException for date format error
 	 * @throws DateChronologyException for date chronological error 
-	 * @throws FileNotFoundException 
+	 * @throws FileNotFoundException for file not founded
 	 */
 	@SuppressWarnings("unchecked")
 	public JSONObject compare(String name1, String name2, String init, String last) throws DateFormatException, DateChronologyException, FileNotFoundException {

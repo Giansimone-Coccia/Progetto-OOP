@@ -39,9 +39,13 @@ import Utilities.DateConverter;
 @Service
 public class PressureServiceImpl implements PressureService{
 
-	//Stringa che contiene l'API key da utilizzare nella chiamata
+	/**
+	 * Stringa che contiene l'API key da utilizzare nella chiamata
+	 */
 	private String apiKey = "10b2f29f8e21bd179b27ff96923bca4a";
-	//Stringa che contiene l'URL che verrà richiamato
+	/**
+	 * Stringa che contiene l'URL che verrà richiamato
+	 */
 	private String url = "https://api.openweathermap.org/data/2.5/weather?q=";
 	Pressure p = new Pressure();
 	

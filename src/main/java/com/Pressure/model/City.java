@@ -33,10 +33,11 @@ public class City extends Country{
 	
 	/**
 	 * Costruttore
+	 * @param nameC The counstry's name
 	 * @param name Il nome della città
 	 * @param id L'identificativo della città
-	 * @param code Il codice della città
-	 * @param timezone Fuso orario della città
+	 * @param lon The longitude
+	 * @param lat The lantitude
 	 * @param pressure Valore pressione nella città
 	 */
 	public City(String nameC, String name, Long id, Pressure pressure, Double lon, Double lat) {
@@ -113,7 +114,7 @@ public class City extends Country{
 	
 	/**
 	 * 
-	 * @param longi The longitude to set
+	 * @param lon The longitude to set
 	 */
 	public void setLongi(Double lon) {
 		this.lon = lon;

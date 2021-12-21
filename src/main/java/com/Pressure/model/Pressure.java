@@ -49,7 +49,6 @@ public class Pressure implements Value{
 	/**
 	 * This method allows to set the pressure passed
 	 * @param pressure The pressure to set
-	 * @throws ArrayIndexOutOfBoundsException, Exception
 	 */
 	@Override
 	public void setValue(long pressure) {

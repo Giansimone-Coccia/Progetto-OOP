@@ -30,7 +30,6 @@ public interface PressureService {
 	 * 
 	 * @param city The city
 	 * @return The Postman's JSONObject
-	 * @throws IOException, Exception
 	 */
 	public JSONObject getJSONfromPman(String city);
 	
@@ -52,15 +51,14 @@ public interface PressureService {
 	/**
 	 * 
 	 * @param cityName The city's name
-	 * @throws IOException
 	 */
 	public void saveData(String cityName);
 	
 	/**
 	 * 
 	 * @param fileName The file's name to read
-	 * @throws DateFormatException 
-	 * @throws FileNotFoundException, IOExcepton, Exception
+	 * @throws DateFormatException for date format
+	 * @throws FileNotFoundException for file not founded
 	 */
 	public Pressure readJSON(String fileName,String init,String last) throws DateFormatException, FileNotFoundException;
 
