@@ -130,8 +130,6 @@ public class PressureServiceImpl implements PressureService{
 		cityData.put("Lat", city.getLat());
 		cityData.put("Lon", city.getLon());
 		
-		JSONArray pressureData=new JSONArray();
-		
 		JSONObject pressureObj=new JSONObject();
 		
 		pressureObj.put("Pressure_max", city.getPressure().getValue_max());
