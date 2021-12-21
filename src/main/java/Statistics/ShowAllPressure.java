@@ -33,8 +33,6 @@ public class ShowAllPressure {
 		JSONObject objI = new JSONObject();
 		JSONObject objS = new JSONObject();
 		
-		JSONArray array=new JSONArray();
-		
 	
 		objS.put("Numero totale di info raccolte", p.getPressureVector().size());
 		objS.put("Valore di pressione massima totale", p.getValue_max());
@@ -54,9 +52,8 @@ public class ShowAllPressure {
 			obj.put("date", dates.get(i));
 			objI.put("info n."+(i+1),obj);
 		}
-		array.add(objI);
 		
-		objM.put("info",array);
+		objM.put("info",objI);
 		
 		return objM;
 	}

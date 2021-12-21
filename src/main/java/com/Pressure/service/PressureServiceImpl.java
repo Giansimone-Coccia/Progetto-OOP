@@ -138,10 +138,9 @@ public class PressureServiceImpl implements PressureService{
 		pressureObj.put("Pressure_min", city.getPressure().getValue_min());
 		pressureObj.put("Pressure_med", city.getPressure().getValue_med());
 		pressureObj.put("Pressure_diff", city.getPressure().getValue_diff());
+	
 		
-		pressureData.add(pressureObj);
-		
-		cityData.put("Pressure_Data", pressureData);
+		cityData.put("Pressure_Data",pressureObj);
 		
 		return cityData;
 	}
