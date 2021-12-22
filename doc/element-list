@@ -1,7 +1,7 @@
 com.Pressure.controller
+com.Pressure.exceptions
 com.Pressure.model
 com.Pressure.PressureChecker
 com.Pressure.service
-Exception
-Statistics
-Utilities
+com.Pressure.statistics
+com.Pressure.utilities

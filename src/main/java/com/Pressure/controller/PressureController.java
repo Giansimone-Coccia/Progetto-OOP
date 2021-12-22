@@ -35,7 +35,6 @@ public class PressureController {
 	/**
 	 * 
 	 * @return The Milan's carachteristics We've selectioned
-	 * @throws FileNotFoundException 
 	 */
 	@RequestMapping(value = "/getMilan", method = RequestMethod.GET)
 	public ResponseEntity<Object> getPressure(){
@@ -76,7 +75,6 @@ public class PressureController {
 	 * 
 	 * @param nameCity The city's name
 	 * @return The JSONObject city, with all values on pressure and some general values
-	 * @throws FileNotFoundException 
 	 */
 	@GetMapping("/getCity")
 	public ResponseEntity<Object> getCity(@RequestParam("city")String nameCity){
