@@ -4,7 +4,7 @@ import java.util.Vector;
 
 /**
  * Classe per associare a delle pressioni reigistrate in
- * certi istante di tempi le loro rispettive date di registrazione. 
+ * certi istanti di tempo le loro rispettive date di registrazione. 
  * @author Giansimone&Walter
  */
 

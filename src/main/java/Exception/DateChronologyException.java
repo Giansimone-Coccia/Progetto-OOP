@@ -2,7 +2,8 @@ package Exception;
 
 /**
  * Classe per l'eccezione personalizzata che viene in caso richiamata nel metodo compare di 
- * cityCompare nel caso in cui l'istante iniziale è posticipato rispetto all'istante finale
+ * cityCompare quando l'istante iniziale è posticipato rispetto all'istante finale
+ * @author Giansimone&Walter
  *
  */
 public class DateChronologyException extends Exception{

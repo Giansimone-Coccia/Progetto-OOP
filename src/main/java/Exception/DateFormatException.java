@@ -1,7 +1,7 @@
 package Exception;
 
 /**
- * Classe che lancia l'eccezione personalizzata riguardante il formato della data.
+ * Classe che lancia l'eccezione personalizzata riguardante il formato della data
  * @author Giansimone&Walter
  *
  */

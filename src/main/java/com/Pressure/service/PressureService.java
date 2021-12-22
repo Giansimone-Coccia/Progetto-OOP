@@ -13,7 +13,7 @@ import Exception.VectorNull;
 
 /**
  * Public interface con metodi astratti basilari che verranno
- * implementati da altre classi (analogia con CRUD)
+ * implementati da altre classi
  * @author Giansimone&Walter
  *
  */
@@ -22,7 +22,7 @@ public interface PressureService {
 	/**
 	 * 
 	 * @param city The city
-	 * @return A JSONObject 
+	 * @return The JSONObject 
 	 */
 	public JSONObject toJSON(City city);
 	
@@ -43,7 +43,7 @@ public interface PressureService {
 	
 	/**
 	 * 
-	 * @return All the pressures misured in that city
+	 * @return All the pressures misured in a city
 	 * @throws VectorNull 
 	 */
 	public Vector<Long> getAllPressure() throws VectorNull;

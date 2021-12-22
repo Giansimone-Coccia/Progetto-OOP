@@ -11,6 +11,11 @@ import org.junit.jupiter.api.Test;
 import com.Pressure.model.Pressure;
 import com.Pressure.service.*;
 
+/**
+ * Classe di testing basata sulla classe Pressure
+ * @author Giansimone&Walter
+ *
+ */
 class PressureStatsTest {
 	
 	private Pressure pressure;

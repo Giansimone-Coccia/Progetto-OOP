@@ -11,6 +11,11 @@ import org.junit.jupiter.api.Test;
 
 import com.Pressure.service.PressureServiceImpl;
 
+/**
+ * Classe di testing basata sul lancio di una eccezione
+ * @author Giansimone&Walter
+ *
+ */
 class PressureServiceTest {
 
 	private PressureServiceImpl pService;

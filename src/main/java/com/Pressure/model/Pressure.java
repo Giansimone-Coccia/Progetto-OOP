@@ -11,7 +11,7 @@ import Statistics.PressureStats;
  *
  */
 public class Pressure implements Value{
-
+	
 	private Vector<Long> pressure=new Vector<Long>();
 	private long pressure_max;
 	private long pressure_min;
@@ -23,6 +23,7 @@ public class Pressure implements Value{
 	 * @param pressure_max The pressure's max value
 	 * @param pressure_min The pressure's min value
 	 * @param pressure_med The pressure's medium value
+	 * @param pressure_diff The pressure's difference between max and min
 	 */
 	public Pressure(long pressure_max, long pressure_min, double pressure_med, long pressure_diff) {
 		this.pressure_max = pressure_max;
@@ -55,9 +56,6 @@ public class Pressure implements Value{
 		
 		try {
 			this.pressure.add(pressure);
-
-			/*if(this.pressure.size()>24)
-				this.pressure.remove(0);*/
 
 			PressureStats pressureStats=new PressureStats();
 

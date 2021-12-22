@@ -9,6 +9,11 @@ import org.junit.jupiter.api.Test;
 
 import com.Pressure.model.City;
 
+/**
+ * Classe di testing riguardante la classe City
+ * @author Giansimone&Walter
+ *
+ */
 class PressureCityTest {
 	
 	private City city1;

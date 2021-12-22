@@ -9,7 +9,7 @@ import Exception.DateFormatException;
 
 
 /**
- * Classe utilizzata per effettuare le conversione da Date in millisecondi e viceversa
+ * Classe utilizzata per effettuare le conversione da Date in secondi e viceversa
  * @author Giansimone&Walter
  *
  */
@@ -26,6 +26,7 @@ public class DateConverter{
 	 * 
 	 * @param date The string date passed
 	 * @return The seconds converted
+	 * @throws DateFormatException for format date error
 	 */
 	public Long dateToSeconds(String date) throws DateFormatException{
 		

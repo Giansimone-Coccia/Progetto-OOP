@@ -40,11 +40,11 @@ import Utilities.DateConverter;
 public class PressureServiceImpl implements PressureService{
 
 	/**
-	 * Stringa che contiene l'API key da utilizzare nella chiamata
+	 * String that contains the API key to use in the call
 	 */
 	private String apiKey = "10b2f29f8e21bd179b27ff96923bca4a";
 	/**
-	 * Stringa che contiene l'URL che verrà richiamato
+	 * String that contains the URL for the API We've used
 	 */
 	private String url = "https://api.openweathermap.org/data/2.5/weather?q=";
 	Pressure p = new Pressure();
@@ -93,18 +93,13 @@ public class PressureServiceImpl implements PressureService{
 	@Override
 	public City getWeather(JSONObject obj) {
 		City city = new City();
-		//Pressure pressure = new Pressure();
-		//Vector<Pressure> pressureVec = new Vector<Pressure>();
 		try {
 			JSONObject coordinate = (JSONObject) obj.get("coord");
 			JSONObject main = (JSONObject) obj.get("main");
 			JSONObject sys = (JSONObject) obj.get("sys");
-			//JSONObject id = (JSONObject) obj.get("id");
-			//JSONObject name = (JSONObject) obj.get("name");
 
 			city.setLat((Double)coordinate.get("lat"));
 			city.setLongi((Double)coordinate.get("lon"));
-			//city.getPressure().setPressure((Long)main.get("pressure"));
 			city.getPressure().setValue((Long)main.get("pressure"));
 			city.setName((String)obj.get("name"));
 			city.setId((Long)obj.get("id"));//Long poichè  problemi di casting da Long a Integer
@@ -173,19 +168,6 @@ public class PressureServiceImpl implements PressureService{
 			@SuppressWarnings("unchecked")
 			@Override
 			public void run() {
-				/*City city=getWeather(getJSONfromPman(cityName));
-				JSONObject allData=toJSON(city);
-				 try {
-			         FileWriter fileWriter = new FileWriter(file, true);
-			         //FileWriter fileWriter = new FileWriter(file);
-			         BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-			         bufferedWriter.write(allData.toJSONString());
-			         //bufferedWriter.close();
-			         //bufferedWriter.append(allData.toJSONString());
-			         bufferedWriter.close();
-			      } catch (IOException e) {
-			         e.printStackTrace();
-			      }*/
 				
 				JSONObject main = (JSONObject) getJSONfromPman(cityName).get("main");
 				long pressure = (long) main.get("pressure");
@@ -218,7 +200,6 @@ public class PressureServiceImpl implements PressureService{
 	 */
 	@Override
 	public Pressure readJSON(String fileName,String init,String last) throws DateFormatException, FileNotFoundException{
-		//TODO controlla tipi
 
 		DateConverter converter=new DateConverter();
 		Long initS = null, lastS = null;
@@ -255,7 +236,6 @@ public class PressureServiceImpl implements PressureService{
 	}
 	
 	public PressureAndTime readAll(String fileName){
-		//TODO controlla tipi
 
 		PressureAndTime pressure=new PressureAndTime();
 		try {
