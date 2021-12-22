@@ -2,9 +2,7 @@
 Il nostro applicativo è un RESTful Web Service, ovvero un sistema software che, comunicando tramite il controllo HTTP, è in grado di mettersi al servizio di un Client, che può 
 essere un'applicazione, un sito web o Postman, così da consentire agli utenti che vi si collegano di usufruire delle azioni che mette a disposizione.
 
-Il progetto implementa un servizio meteo che, raccogliendo le informazioni meteo generali su due città, restituisce successivamente, delle statistiche calcolate sulla pressione,
-quali pressione minima, massima, differenza tra le due e la media, in un determinato periodo di tempo scelto, così da poter confrontare i diversi valori ottenuti nelle due città
-precedentemente scelte.
+Il progetto implementa un servizio meteo che, raccogliendo informazioni meteo generali su varie città, permette all'utente di scegliere due di queste così da poter restituire, mettendole a confronto, delle statistiche calcolate sulle loro pressioni, quali pressione massima,minima,differenza fra le due e la media, in un determinato periodo di tempo comunque stabilito dall'utente.
 
 A scopo dimostrativo, durante il periodo di sviluppo e testing dell'applicazione sono stati raccolti i dati di varie città, tra cui Milano, Tokyo, Londra, Parigi e New York. 
 Il salvataggio è avvenuto in diversi giorni, ad esempio il 17/12/2021, 18/12/2021, 19/12/2021 e 20/12/2021, ma non è assicurata la totale copertura delle fasce orarie, per cui, nel caso di inserimento di orari in cui non si sono verificati salvataggi di dati, avrete semplicemente dei valori pari a zero nelle statistiche richieste.
