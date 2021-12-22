@@ -510,6 +510,18 @@ Di seguito, ciò che restituisce:
 }
 ```
 
+# Note
+Al fine di ottenere una maggiore chiarezza durante la lettura del codice, è possibile usufruire della documentazione messa a disposisizone. Essa è accessibile aprendo il file "index.html" dal package "doc", attraverso un browser. Permette all'utente di scegliere in primis un package e, successivamente, navigare singolarmente per le varie classi contenute in esso.                                                                                                                                                           
+
+![](https://github.com/Walter-Di-Sabatino/ProgettoEsameCocciaDiSabatinoGennaio2022/blob/Main/packagesDoc.png)
+
+![](https://github.com/Walter-Di-Sabatino/ProgettoEsameCocciaDiSabatinoGennaio2022/blob/Main/classDoc.png)
+
+Inoltre, durante la fase di sviluppo dell'applicativo, sono stati implementati vari test sulle classi implementate:
+- *PressureCityTest e PressureTest* per il testing riguardanti le classi City e Pressure
+- *PressureStatsTest* per il testing sul calcolo delle statistiche
+- *PressureServiceTest* per il testing sul lacio di una eccezione
+
 # Strumenti utilizzati
 Per sviluppare questo applicativo abbiamo utilizzato i seguenti strumenti:
 - Il framework ***Spring*** includedo i moduli:
