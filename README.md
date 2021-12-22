@@ -7,7 +7,8 @@
 - [Rotte disponibili](#Rotte-disponibili)
 - [Statistiche](#Statistiche)
 - [Come si usa](#Come-si-usa)
-- [Note](#Note)
+- [Documentazione](#Documentazione)
+- [Test](#Test)
 - [Strumenti utilizzati](#Strumenti-utilizzati)
 - [Autori](#Autori)
 
@@ -328,7 +329,7 @@ Infine, per la differenza tra la pressione massima e minima, si è trattato di i
 # Come si usa
 Clonando questa repository sul vostro computer e importando nell'IDE Eclipse il progetto PressureChecker sarete subito pronti a partire: infatti, nel pacchetto scaricato, oltre all'applicativo, sono già presenti i file di configurazione predefiniti e il file di database contenente un cospicuo set di campioni su cui fare le prove. Una volta aperto Eclipse, per avviare il programma, basta selezionare PressureCheckerApplication nel proprio package explorer e dare il comando Run as -> Spring Boot App. L'avvio dell'applicazione è riconoscibile dalla comparsa del logo di Spring e di molte righe di informazioni scritte in formato logging. L'applicativo espone i propri Endpoint sulla rete interna all'indirizzo localhost, sulla porta 8080 dove, se tutto è stato lanciato in modo corretto, potrete accertarvi della partenza del server Tomcat. Per usufruire delle  funzionalità potete collegarvi alle rotte messe a disposizione con un'applicazione come Postman, o direttamente dal browser.  
 
-Usare questo comando da terminale per clonare la repository, altrimenti è possibile scaricare direttamente il file zip ed estrarlo
+Usare questo comando dal Prompt dei Comandi per clonare la repository, altrimenti è possibile scaricare direttamente il file zip ed estrarlo
 > git clone https://github.com/Walter-Di-Sabatino/ProgettoEsameCocciaDiSabatinoGennaio2022.git
 
 ***Metodo di utilizzo degli endpoint***    
@@ -529,13 +530,14 @@ Di seguito, ciò che restituisce:
 }
 ```
 
-# Note
+# Documentazione
 Al fine di ottenere una maggiore chiarezza durante la lettura del codice, è possibile usufruire della documentazione messa a disposisizone. Essa è accessibile aprendo il file "index.html" dal package "doc", attraverso un browser. Permette all'utente di scegliere in primis un package e, successivamente, navigare singolarmente per le varie classi contenute in esso.                                                                                                                                                           
 
 ![](https://github.com/Walter-Di-Sabatino/ProgettoEsameCocciaDiSabatinoGennaio2022/blob/Main/packagesDoc.png)
 
 ![](https://github.com/Walter-Di-Sabatino/ProgettoEsameCocciaDiSabatinoGennaio2022/blob/Main/classDoc.png)
 
+# Test
 Inoltre, durante la fase di sviluppo dell'applicativo, sono stati implementati vari test sulle classi implementate:
 - *PressureCityTest e PressureTest* per il testing riguardanti le classi City e Pressure
 - *PressureStatsTest* per il testing sul calcolo delle statistiche
