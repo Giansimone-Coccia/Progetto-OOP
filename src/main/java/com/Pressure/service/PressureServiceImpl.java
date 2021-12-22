@@ -235,7 +235,7 @@ public class PressureServiceImpl implements PressureService{
 		return pressure;
 	}
 	
-	public PressureAndTime readAll(String fileName){
+	public PressureAndTime readAll(String fileName) throws FileNotFoundException{
 
 		PressureAndTime pressure=new PressureAndTime();
 		try {
@@ -250,8 +250,9 @@ public class PressureServiceImpl implements PressureService{
 				pressure.setValue((Long)obj.get("pressure"));
 			}
 		} catch(FileNotFoundException fnfE) {
-			System.out.println("File non trovato");
-			System.out.println(fnfE);
+			//System.out.println("File non trovato");
+			//System.out.println(fnfE);
+			throw new FileNotFoundException("File non trovato");//Throw necessario per visualizzazione su postman.
 		} catch(IOException ioE) {
 			System.out.println("Problema di I/O");
 			System.out.println(ioE);

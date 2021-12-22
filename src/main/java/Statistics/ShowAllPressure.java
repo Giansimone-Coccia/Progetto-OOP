@@ -1,5 +1,6 @@
 package Statistics;
 
+import java.io.FileNotFoundException;
 import java.util.Vector;
 
 import org.json.simple.JSONArray;
@@ -26,9 +27,10 @@ public class ShowAllPressure {
 	 * @param cityName The city's name
 	 * @return The JSONObject
 	 * @throws DateFormatException 
+	 * @throws FileNotFoundException 
 	 */
 	@SuppressWarnings("unchecked")
-	public JSONObject showAllPressure(String cityName) throws DateFormatException{
+	public JSONObject showAllPressure(String cityName) throws DateFormatException, FileNotFoundException{
 		
 		PressureAndTime p=pressService.readAll("allData."+cityName+".json");
 		
