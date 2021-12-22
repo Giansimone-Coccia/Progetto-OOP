@@ -13,19 +13,19 @@ import Utilities.DateConverter;
 public class PressureAndTime extends Pressure {
 	
 	/**
-	 * Vettore che racchiude le date delle pressioni registrate
+	 * Vector that encloses the dates of the recorded pressures
 	 */
 	private Vector<String> time=new Vector<String>();
 	
 	/**
-	 * Costruttore di default
+	 * Default constructor
 	 */
 	public PressureAndTime() {
 		super();
 	}
 	
 	/**
-	 * Setter del vettore time
+	 * Setter of the Vector time
 	 * @param time
 	 */
 	
@@ -35,7 +35,7 @@ public class PressureAndTime extends Pressure {
 	}
 	
 	/**
-	 * Getter del vettore time
+	 * Getter of the Vector time
 	 * @return
 	 */
 	public Vector<String> getTimeVector(){

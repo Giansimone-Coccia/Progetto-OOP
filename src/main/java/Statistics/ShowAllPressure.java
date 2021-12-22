@@ -1,6 +1,5 @@
 package Statistics;
 
-import java.io.FileNotFoundException;
 import java.util.Vector;
 
 import org.json.simple.JSONArray;

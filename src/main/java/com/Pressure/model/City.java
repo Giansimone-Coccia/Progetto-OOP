@@ -33,12 +33,12 @@ public class City extends Country{
 	
 	/**
 	 * Costruttore
-	 * @param nameC The counstry's name
-	 * @param name Il nome della città
-	 * @param id L'identificativo della città
-	 * @param lon The longitude
-	 * @param lat The lantitude
-	 * @param pressure Valore pressione nella città
+	 * @param nameC The country's name
+	 * @param name The city's name
+	 * @param id The city's id
+	 * @param lon The city's longitude
+	 * @param lat The city's lantitude
+	 * @param pressure City's Pressure object
 	 */
 	public City(String nameC, String name, Long id, Pressure pressure, Double lon, Double lat) {
 		super(nameC);
@@ -55,9 +55,9 @@ public class City extends Country{
 	/**
 	 * 
 	 * @param name The city's name
-	 * @param id The id
-	 * @param lon The longitude
-	 * @param lat The latitude
+	 * @param id  The city's id
+	 * @param lon The city's longitude
+	 * @param lat The city's latitude
 	 */
 	public City(String name, Long id, Double lon, Double lat) {
 		this.name = name;

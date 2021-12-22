@@ -19,6 +19,12 @@ import Exception.DateFormatException;
  */
 public class CityCompare {
 	
+	/**
+	 * minC1,maxC1,diffC1,medC1: the minimum pressure,the maximum pressure,the difference between the
+	 * maximum and the minimum and the numerical average of some of the pressure of the city with name1  
+	 * minC2,maxC2,diffC2,medC2: the minimum pressure,the maximum pressure,the difference between the
+	 * maximum and the minimum and the numerical average of some of  the pressure of the city with name2
+	 */
 	private double minC1, minC2;
 	private double maxC1, maxC2;
 	private double medC1, medC2;
@@ -29,7 +35,6 @@ public class CityCompare {
 	DateConverter converter = new DateConverter();
 	
 	/**
-	 * 
 	 * @param name1 The first city name
 	 * @param name2 The second city name
 	 * @param init The initial instant time for calculating stats
@@ -62,7 +67,6 @@ public class CityCompare {
 		JSONObject obj1 = new JSONObject();
 		JSONObject obj2 = new JSONObject();
 		JSONObject objM = new JSONObject();
-		//JSONArray array = new JSONArray();
 		
 		obj1.put("name", name1);
 		obj2.put("name", name2);
