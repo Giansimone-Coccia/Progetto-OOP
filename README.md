@@ -1,4 +1,19 @@
 # ProgettoEsameCocciaDiSabatinoGennaio2022
+
+# Indice
+- [Introduzione](#Introduzione)
+- [Applicazione](#Applicazione)
+  - [Funzionamento](#Funzionamento)
+- [Rotte disponibili](#Rotte-disponibili)
+- [Statistiche](#Statistiche)
+- [Come si usa](#Come-si-usa)
+- [Documentazione](#Documentazione)
+- [Test](#Test)
+- [Strumenti utilizzati](#Strumenti-utilizzati)
+- [Autori](#Autori)
+
+
+# Introduzione
 Il nostro applicativo è un RESTful Web Service, ovvero un sistema software che, comunicando tramite il controllo HTTP, è in grado di mettersi al servizio di un Client, che può 
 essere un'applicazione, un sito web o Postman, così da consentire agli utenti che vi si collegano di usufruire delle azioni che mette a disposizione.
 
@@ -312,7 +327,11 @@ procedimento è analogo ma, tutti i valori contenuti nel vettore vengono sommati
 Infine, per la differenza tra la pressione massima e minima, si è trattato di implementare solo una piccola differenza tra i due valori già ricavati in precedenza.
 
 # Come si usa
-Clonando questa repository sul vostro computer e importando nell'IDE Eclipse il progetto PressureChecker sarete subito pronti a partire: infatti, nel pacchetto scaricato, oltre all'applicativo, sono già presenti i file di configurazione predefiniti e il file di database contenente un cospicuo set di campioni su cui fare le prove. Una volta aperto Eclipse, per avviare il programma, basta selezionare PressureCheckerApplication nel proprio package explorer e dare il comando Run as -> Spring Boot App. L'avvio dell'applicazione è riconoscibile dalla comparsa del logo di Spring e di molte righe di informazioni scritte in formato logging. L'applicativo espone i propri Endpoint sulla rete interna all'indirizzo localhost, sulla porta 8080 dove, se tutto è stato lanciato in modo corretto, potrete accertarvi della partenza del server Tomcat. Per usufruire delle  funzionalità potete collegarvi alle rotte messe a disposizione con un'applicazione come Postman, o direttamente dal browser.                                                                                                                                                                                                                                       
+Clonando questa repository sul vostro computer e importando nell'IDE Eclipse il progetto PressureChecker sarete subito pronti a partire: infatti, nel pacchetto scaricato, oltre all'applicativo, sono già presenti i file di configurazione predefiniti e il file di database contenente un cospicuo set di campioni su cui fare le prove. Una volta aperto Eclipse, per avviare il programma, basta selezionare PressureCheckerApplication nel proprio package explorer e dare il comando Run as -> Spring Boot App. L'avvio dell'applicazione è riconoscibile dalla comparsa del logo di Spring e di molte righe di informazioni scritte in formato logging. L'applicativo espone i propri Endpoint sulla rete interna all'indirizzo localhost, sulla porta 8080 dove, se tutto è stato lanciato in modo corretto, potrete accertarvi della partenza del server Tomcat. Per usufruire delle  funzionalità potete collegarvi alle rotte messe a disposizione con un'applicazione come Postman, o direttamente dal browser.  
+
+Usare questo comando dal Prompt dei Comandi per clonare la repository, altrimenti è possibile scaricare direttamente il file zip ed estrarlo
+> git clone https://github.com/Walter-Di-Sabatino/ProgettoEsameCocciaDiSabatinoGennaio2022.git
+
 ***Metodo di utilizzo degli endpoint***    
 - *localhost:8080/save*                                                                                                                                                       
 Utilizzando come parametro il nome di una città(Value) che corrisponde alla Key "name", consente di salvare in locale un file JSON con tutti i valori di pressione aggiornati ogni trenta minuti. Questo è il file che viene poi utilizzato per calcolare le statistiche e così restituire i valori richiesti. Nel caso di immissione giusta dei parametri, vedrete restituirvi il messaggio: "File creato/aggiornato con successo", ad indicare la riuscita creazione/aggiornamento del file. Ecco un esempio(il cui parametro passato come città è Tokyo):                 
@@ -511,13 +530,14 @@ Di seguito, ciò che restituisce:
 }
 ```
 
-# Note
+# Documentazione
 Al fine di ottenere una maggiore chiarezza durante la lettura del codice, è possibile usufruire della documentazione messa a disposisizone. Essa è accessibile aprendo il file "index.html" dal package "doc", attraverso un browser. Permette all'utente di scegliere in primis un package e, successivamente, navigare singolarmente per le varie classi contenute in esso.                                                                                                                                                           
 
 ![](https://github.com/Walter-Di-Sabatino/ProgettoEsameCocciaDiSabatinoGennaio2022/blob/Main/packagesDoc.png)
 
 ![](https://github.com/Walter-Di-Sabatino/ProgettoEsameCocciaDiSabatinoGennaio2022/blob/Main/classDoc.png)
 
+# Test
 Inoltre, durante la fase di sviluppo dell'applicativo, sono stati implementati vari test sulle classi implementate:
 - *PressureCityTest e PressureTest* per il testing riguardanti le classi City e Pressure
 - *PressureStatsTest* per il testing sul calcolo delle statistiche
