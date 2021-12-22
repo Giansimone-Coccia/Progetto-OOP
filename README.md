@@ -130,7 +130,10 @@ dati da Postman su un file JSON locale. Questo salvataggio viene eseguito ogni t
 Dopo aver effettuato il salvataggio delle singole città, è possibile effettuare una chiamata "GET /compare" la quale, sottopone il file locale ad una lettura che acquisice, in base al periodo scelto dall'utente, due diversi valori, il tempo e la pressione. Questi valori vengono utilizzati per calcolare varie statistiche, nel nostro caso la pressione minima e massima di ogni città, la media tra tutte le pressioni e la differenza tra la pressione  massima e la pressione minima.
 "GET /compare" è eseguita passando come parametri il nome delle due città, l'istante iniziale della ricerca e
 l'istante finale. Questi ultimi sono rappresentati nel file con 'dt' in secondi, ovvero tutti i secondi trascorsi dal 1 Gennaio 1970(Epoch), per cui, nel momento
-in cui l'utente passa come parametri le date e i rispettivi orari nei formati dd/MM/yyyy oppure dd/MM/yyyy HH:mm:ss(non è possibile inserire solo l'ora), abbiamo dovuto effettuare tramite alcuni metodi la conversione da data in secondi, per effettuare il matching. Effettuata questa chiamata, si vede restituire per ogni città, il valore minimo, massimo, la differenza tra i due e la media di tutti i valori salvati, così da poter avere una visuale più chiara su quale tra le due città ha registrato valori maggiori, minori ecc... E' bene ricordare che, in caso di inserimento di date errate, come ad esempio nel caso in cui la data iniziale risulta posticipata rispetto alla data finale, o anche per errori legati al formato, questi ultimi vengono gestiti correttamente mostrando un messaggio di errore all'utente.                                                                Questo è un esempio del JSON restituito:                                                                                          
+in cui l'utente passa come parametri le date e i rispettivi orari nei formati dd/MM/yyyy oppure dd/MM/yyyy HH:mm:ss(non è possibile inserire solo l'ora), abbiamo dovuto effettuare tramite alcuni metodi la conversione da data in secondi, per effettuare il matching. Effettuata questa chiamata, si vede restituire per ogni città, il valore minimo, massimo, la differenza tra i due e la media di tutti i valori salvati, così da poter avere una visuale più chiara su quale tra le due città ha registrato valori maggiori, minori ecc... E' bene ricordare che, in caso di inserimento di date errate, come ad esempio nel caso in cui la data iniziale risulta posticipata rispetto alla data finale, o anche per errori legati al formato, questi ultimi vengono gestiti correttamente mostrando un messaggio di errore all'utente.
+Nel caso invece ci siano errori di logica nell' inserimento delle date, come potrebbe essere l'inserimento errato del giorno rispetto al mese o del mese rispetto all'anno, ad esempio 32/12/2021 o 10/13/2021, il programma ricalcolarebbe le date corretteamente e restituirebbe invece 01/01/2022 e 10/01/2022. Tale requisito si applica anche per gli orari e quindi 30/12/2021 25:61:66 verrebbe considerato come 31/12/2021 01:02:06.
+
+Questo è un esempio del JSON restituito:                                                                                          
 
 ```
 {
@@ -152,7 +155,7 @@ in cui l'utente passa come parametri le date e i rispettivi orari nei formati dd
     }
 }
 ```
-5. *Altro*                                                                                                                                                                    
+4. *Altro*                                                                                                                                                                    
 Inoltre, affinchè sia possibile accertarsi dei reali valori di media, pressione minima, massima e differenza tra le due, abbiamo deciso di aggiungere anche una rotta che
 restituisca tutti i valori di pressione registrati per quella città. La rotta in questione si richiama tramite il metodo "GET /getAllPressure" e, passando come parametro
 il nome della città, si ottiene la lista di tutte le pressioni, ordinate anche per data e ora.
