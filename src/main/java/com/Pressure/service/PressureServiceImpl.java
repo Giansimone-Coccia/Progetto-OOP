@@ -74,7 +74,7 @@ public class PressureServiceImpl implements PressureService{
 			}
 			description = (JSONObject) JSONValue.parseWithException(data);
 		} catch(FileNotFoundException FnFe) {
-			System.out.println("File non trovato");
+			System.out.println("Città inserita inesistente");
 			System.out.println(FnFe);
 		} catch(IOException IOe) {
 			System.out.println("Errore I/O");
