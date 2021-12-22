@@ -1,7 +1,7 @@
-package Exception;
+package com.Pressure.exceptions;
 
 /**
- * Classe per l'eccezione personalizzata che estende Exception. Viene lanciata nel momento
+ * Classe per l'eccezione personalizzata che estende com.Pressure.exceptions. Viene lanciata nel momento
  * in cui vengono inserite date errate
  * @author Giansimone&Walter
  *

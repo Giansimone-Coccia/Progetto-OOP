@@ -1,16 +1,14 @@
-package Statistics;
+package com.Pressure.statistics;
 
 import java.io.FileNotFoundException;
 
 import org.json.simple.JSONObject;
 
-
+import com.Pressure.exceptions.DateChronologyException;
+import com.Pressure.exceptions.DateFormatException;
 import com.Pressure.model.Pressure;
 import com.Pressure.service.PressureServiceImpl;
-
-import Utilities.DateConverter;
-import Exception.DateChronologyException;
-import Exception.DateFormatException;
+import com.Pressure.utilities.DateConverter;
 
 /**
  * Classe utilizzata per comparare le statistiche tra due città

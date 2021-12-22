@@ -22,14 +22,12 @@ import org.json.simple.JSONValue;
 import org.json.simple.parser.JSONParser;
 import org.springframework.stereotype.Service;
 
+import com.Pressure.exceptions.DateFormatException;
+import com.Pressure.exceptions.VectorNull;
 import com.Pressure.model.City;
 import com.Pressure.model.Pressure;
 import com.Pressure.model.PressureAndTime;
-
-
-import Exception.DateFormatException;
-import Exception.VectorNull;
-import Utilities.DateConverter;
+import com.Pressure.utilities.DateConverter;
 
 /**
  * Questa classe implementa i metodi astratti di PressureService
@@ -75,11 +73,15 @@ public class PressureServiceImpl implements PressureService{
 				input.close();
 			}
 			description = (JSONObject) JSONValue.parseWithException(data);
-		
+		} catch(FileNotFoundException FnFe) {
+			System.out.println("File non trovato");
+			System.out.println(FnFe);
 		} catch(IOException IOe) {
-			IOe.printStackTrace();
+			System.out.println("Errore I/O");
+			System.out.println(IOe);
 		} catch(Exception e) {
-			e.printStackTrace();
+			System.out.println("Errore");
+			System.out.println(e);
 		}
 		
 		return description;

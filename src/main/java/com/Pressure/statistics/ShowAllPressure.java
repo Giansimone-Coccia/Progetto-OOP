@@ -1,4 +1,4 @@
-package Statistics;
+package com.Pressure.statistics;
 
 import java.io.FileNotFoundException;
 import java.util.Vector;
@@ -6,11 +6,10 @@ import java.util.Vector;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
+import com.Pressure.exceptions.DateFormatException;
 import com.Pressure.model.PressureAndTime;
 import com.Pressure.service.PressureServiceImpl;
-
-import Exception.DateFormatException;
-import Utilities.DateConverter;
+import com.Pressure.utilities.DateConverter;
 
 /**
  * Classe che viene richiamata per mostrare tutti i valori di pressioni registrati per una città
@@ -47,7 +46,7 @@ public class ShowAllPressure {
 		objS.put("Valore di pressione medi totale", p.getValue_med());
 		objS.put("Differenze di pressione totale", p.getValue_diff());
 		
-		objM.put("Statistics", objS);
+		objM.put("com.Pressure.statistics", objS);
 		
 		
 		Vector<Long> pressure=p.getPressureVector();

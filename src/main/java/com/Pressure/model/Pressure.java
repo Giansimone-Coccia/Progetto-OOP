@@ -2,7 +2,7 @@ package com.Pressure.model;
 
 import java.util.Vector;
 
-import Statistics.PressureStats;
+import com.Pressure.statistics.PressureStats;
 
 /**
  * Classe che descrive tutte le caratteristiche in termini di pressione(minima, massima,...)

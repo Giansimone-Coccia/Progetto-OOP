@@ -2,13 +2,7 @@ package com.Pressure.model;
 
 import java.util.Vector;
 
-/**
- * Classe per associare a delle pressioni reigistrate in
- * certi istanti di tempo le loro rispettive date di registrazione. 
- * @author Giansimone&Walter
- */
-
-import Utilities.DateConverter;
+import com.Pressure.utilities.DateConverter;
 
 public class PressureAndTime extends Pressure {
 	

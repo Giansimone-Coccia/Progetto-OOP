@@ -13,12 +13,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 //import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.Pressure.exceptions.DateChronologyException;
+import com.Pressure.exceptions.DateFormatException;
 import com.Pressure.service.PressureServiceImpl;
-
-import Exception.DateChronologyException;
-import Exception.DateFormatException;
-import Statistics.CityCompare;
-import Statistics.ShowAllPressure;
+import com.Pressure.statistics.CityCompare;
+import com.Pressure.statistics.ShowAllPressure;
 
 
 
@@ -36,6 +35,7 @@ public class PressureController {
 	/**
 	 * 
 	 * @return The Milan's carachteristics We've selectioned
+	 * @throws FileNotFoundException 
 	 */
 	@RequestMapping(value = "/getMilan", method = RequestMethod.GET)
 	public ResponseEntity<Object> getPressure(){
@@ -48,7 +48,7 @@ public class PressureController {
 	 * @return The file JSON saved in local with all the pressures registered
 	 */
 	@GetMapping("/save")
-	public ResponseEntity<String> save(@RequestParam("name") String nomeCitta) {
+	public ResponseEntity<String> save(@RequestParam("name") String nomeCitta){
 		PressureServiceImpl pressService = new PressureServiceImpl();
 		pressService.saveData(nomeCitta);
 		
@@ -76,6 +76,7 @@ public class PressureController {
 	 * 
 	 * @param nameCity The city's name
 	 * @return The JSONObject city, with all values on pressure and some general values
+	 * @throws FileNotFoundException 
 	 */
 	@GetMapping("/getCity")
 	public ResponseEntity<Object> getCity(@RequestParam("city")String nameCity){

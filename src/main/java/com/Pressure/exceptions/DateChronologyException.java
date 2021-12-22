@@ -1,4 +1,4 @@
-package Exception;
+package com.Pressure.exceptions;
 
 /**
  * Classe per l'eccezione personalizzata che viene in caso richiamata nel metodo compare di 

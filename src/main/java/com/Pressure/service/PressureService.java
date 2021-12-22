@@ -6,10 +6,10 @@ import java.io.IOException;
 import java.util.Vector;
 
 import org.json.simple.*;
-import com.Pressure.model.*;
 
-import Exception.DateFormatException;
-import Exception.VectorNull;
+import com.Pressure.exceptions.DateFormatException;
+import com.Pressure.exceptions.VectorNull;
+import com.Pressure.model.*;
 
 /**
  * Public interface con metodi astratti basilari che verranno
@@ -31,7 +31,7 @@ public interface PressureService {
 	 * @param city The city
 	 * @return The Postman's JSONObject
 	 */
-	public JSONObject getJSONfromPman(String city);
+	public JSONObject getJSONfromPman(String city)  throws FileNotFoundException;
 	
 	/**
 	 * 
@@ -52,7 +52,7 @@ public interface PressureService {
 	 * 
 	 * @param cityName The city's name
 	 */
-	public void saveData(String cityName);
+	public void saveData(String cityName) throws FileNotFoundException ;
 	
 	/**
 	 * 

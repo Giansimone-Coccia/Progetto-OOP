@@ -30,7 +30,7 @@ class PressureServiceTest {
 	}
 
 	@Test
-	@DisplayName("Test PressureService Exception")
+	@DisplayName("Test PressureService com.Pressure.exceptions")
 	void test() {
 		assertThrows(FileNotFoundException.class, ()->pService.readAll("fileNonEsistente.txt"));
 	}
